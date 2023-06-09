@@ -5,7 +5,7 @@ This project enables biologists, doctors, and anyone else to ask questions in th
 
 
 ## Format of a complete query
-Exact formats for queries are being defined. For the time being, the working draft of a complete formal query (CFQ), i.e. the expected output of a well-posed question in natural language, is shown in a few examples:
+Exact formats for queries are being defined. For the time being, the working draft of a complete formal query (CFQ), i.e. the expected output of a well-posed question in natural language, is shown in a few examples.
 
 - **Q:** What is the expression of Ptprc and Col1a1 in mouse lung?
 
@@ -31,5 +31,31 @@ query = {
 
 ```
 
+- **Q:** What organs are available for mouse?
+
+```javascript
+
+query = {
+    target: "organs",
+    organism: "m_musculus",
+}
+```
+
+- **Q:** What are the marker genes for alveolar fibroblasts in mouse lung?
+
+```javascript
+
+query = {
+    target: "markers",
+    organism: "m_musculus",
+    organ: "Lung",
+    celltype: "alveolar fibroblast",
+}
+
+```
+
+This format is related to but richer than the parameter object of the [REST API](https://atlasapprox.readthedocs.io/en/latest/rest/index.html#reference-api). The latter only includes the necessary information to obtain the data from the backend, whereas this format also specifies any subsequent transformations to be applied (e.g. for plotting, download).
+
+This format is also related to but not identical to the [atlas approximation visualisation data format](https://github.com/fabilab/cell_atlas_approximations_HI), which includes not only the query for some data but the data itself (i.e. the answer to the query). Also, this format can be used for other things than visualisation (e.g. for data download).
 
 **NOTE:** JavaScript used throughout. Trivial conversions into Python dictionaries, JSON, etc. are available of course.
