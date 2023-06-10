@@ -1,0 +1,17 @@
+{
+ "organisms": [
+   "h_sapiens",
+   "m_musculus"
+ ],
+ "organs": {
+   "h_sapiens": [
+     "Lung",
+     "Heart"
+   ],
+   "m_musculus": [
+     "Lung",
+     "Heart",
+     "Pancreas"
+   ]
+ }
+}

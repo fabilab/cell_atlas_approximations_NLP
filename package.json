@@ -5,6 +5,7 @@
   },
   "scripts": {
     "trainMock": "node src/trainMock.js",
+    "train": "node src/train.js",
     "testBrowser": "browserify ./test/index.js | terser --compress --mangle > ./build/index.js && cp test/index.html build/ && firefox build/index.html"
   },
   "dependencies": {

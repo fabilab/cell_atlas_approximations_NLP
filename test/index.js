@@ -5,7 +5,8 @@ const { LangEn } = require('@nlpjs/lang-en-min');
 (async () => {
     
     // Get data from URL (gist)
-    const modelUrl = "https://gist.githubusercontent.com/iosonofabio/44f816c3ad8b82c3ccc1ba7b56906c4a/raw/e8e5bcba579ff3355923435fd88a0b62bda975ae/model.nlp";
+    const modelMockUrl = "https://gist.githubusercontent.com/iosonofabio/44f816c3ad8b82c3ccc1ba7b56906c4a/raw/e8e5bcba579ff3355923435fd88a0b62bda975ae/model.nlp";
+    const modelUrl = "https://gist.githubusercontent.com/iosonofabio/c42d91f7297c949eff0168078940af2d/raw/cfc0e0cbc6265b09ef91cd06afa802e03fd7c344/model.nlp";
     const response = await fetch(modelUrl);
     if (!response.ok) {
         throw new Error(`HTTP error: ${response.status}`);

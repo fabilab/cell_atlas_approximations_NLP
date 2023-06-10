@@ -1,0 +1,46 @@
+{
+  "name": "Corpus for Cell Atlas Approximations",
+  "locale": "en-US",
+  "contextData": "src/contextData.json",
+  "data": [
+    {
+      "intent": "organisms",
+      "utterances": [
+        "which organisms do you have",
+        "which organisms are present",
+        "which organisms are available",
+        "what organisms do you have",
+        "what organisms are present",
+        "what organisms are available"
+      ],
+      "answers": [
+        "The following organisms are available: {{ _data[organisms] }}"
+      ]
+    },
+    {
+      "intent": "organism.organs",
+      "utterances": [
+        "what organs are available for @organism?",
+	"what organs are there for @organism?",
+	"what organs do you have for @organism?"
+      ],
+      "answers": [
+        "The available organs for {{ organism }} are: {{ _data.organs[entities.organisms.option] }}"
+      ]
+    }
+  ],
+  "entities": {
+    "organisms": {
+      "options": {
+        "h_sapiens": ["human", "h_sapiens", "homo sapiens"],
+        "m_musculus": ["mouse", "murine", "m_musculus"]
+      }
+    },
+    "organs": {
+      "options": {
+        "Lung": ["Lung", "lung"],
+        "Heart": ["Heart", "heart"]
+      }
+    }
+  }
+}
