@@ -6,7 +6,8 @@
  "organs": {
    "h_sapiens": [
      "Lung",
-     "Heart"
+     "Heart",
+     "Pancreas"
    ],
    "m_musculus": [
      "Lung",

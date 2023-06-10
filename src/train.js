@@ -38,7 +38,7 @@ const { dockStart } = require('@nlpjs/basic');
   // Export model (to model.nlp, presumably)
   //const minified = true;
   //const data = manager.export(minified);
-  manager.save("./build/model.nlp")
+  manager.save("./gists/model/model.nlp")
 
   //const response = await nlp.process('en', 'I should go now');
   //console.log(response);
