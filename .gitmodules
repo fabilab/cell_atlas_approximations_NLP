@@ -1,0 +1,3 @@
+[submodule "gists/model"]
+	path = gists/model
+	url = git@gist.github.com:c42d91f7297c949eff0168078940af2d.git
