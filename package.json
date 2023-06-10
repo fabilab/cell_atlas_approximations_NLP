@@ -1,0 +1,17 @@
+{
+  "devDependencies": {
+    "browserify": "^17.0.0",
+    "terser": "^5.17.7"
+  },
+  "scripts": {
+    "trainMock": "node src/trainMock.js",
+    "testBrowser": "browserify ./test/index.js | terser --compress --mangle > ./build/index.js && cp test/index.html build/ && firefox build/index.html"
+  },
+  "dependencies": {
+    "@nlpjs/basic": "^4.27.0",
+    "@nlpjs/core": "^4.26.1",
+    "@nlpjs/lang-en-min": "^4.26.1",
+    "@nlpjs/nlp": "^4.27.0",
+    "@nlpjs/request-rn": "^4.25.0"
+  }
+}
