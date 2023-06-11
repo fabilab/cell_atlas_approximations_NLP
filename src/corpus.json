@@ -4,8 +4,10 @@
   "contextData": "src/contextData.json",
   "data": [
     {
-      "intent": "organisms",
+      "intent": "organisms.list",
       "utterances": [
+        "show organisms",
+        "list organisms",
         "which organisms do you have",
         "which organisms are present",
         "which organisms are available",
@@ -18,8 +20,13 @@
       ]
     },
     {
-      "intent": "organism.organs",
+      "intent": "organs.list",
       "utterances": [
+        "list organs",
+        "list organs for @organism",
+        "show organs",
+        "show organs for @organism",
+        "what organs are available",
         "what organs are available for @organism?",
 	"what organs are there for @organism?",
 	"what organs do you have for @organism?"

@@ -1,12 +1,13 @@
 {
-  "devDependencies": {
-    "browserify": "^17.0.0",
-    "terser": "^5.17.7"
-  },
   "scripts": {
     "trainMock": "node src/trainMock.js",
     "train": "node src/train.js && cd gists/model && git add . && git commit -m 'bump' && git push && cd ../..",
-    "testBrowser": "browserify ./test/index.js | terser --compress --mangle > ./build/index.js && cp test/index.html build/ && firefox build/index.html"
+    "testBrowser": "browserify ./test/index.js | terser --compress --mangle > ./build/index.js && cp test/index.html build/ && firefox build/index.html",
+    "testNode": "run(){ node test/index.js \"$1\"; }; run"
+  },
+  "devDependencies": {
+    "browserify": "^17.0.0",
+    "terser": "^5.17.7"
   },
   "dependencies": {
     "@nlpjs/basic": "^4.27.0",
