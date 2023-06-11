@@ -87,5 +87,22 @@ query = {
 In this case, multiple aspects are missing from the query, including what organism to look at. Once an organism is specified, the user can choose either an organ (more common) or a cell type across organs.
 
 
-## Processor architecture
-TBD. The first prototype will have zero machine learning and see what issues arise.
+## Processor and generator architecture
+Early prototypes are using [nlpjs](https://github.com/axa-group/nlp.js) which seems to be flexible and powerful enough.
+
+### Current architechture
+- pre-train a model using `npm run train`
+- the model uses `src/corpus.json` as training for the various questions, entities, etc.
+- the model *tries* to use `src/contextData.json` to list what kinds of organisms and organs are available etc. See below for issues.
+- `npm run train` saves the model in `gists/model/model.nlp` which is a git submodule. It also pushed a new commit to the gist repo.
+- `npm run testBrowser` creates a browser-compatible `index.js` and an `index.html` into `build` and opens it in Firefox. Opening the inspector shows an example call and exposes a function called `answerFun` to probe the model by hand.
+- The test page using an asynchronous `fetch` to import the data from the gist repo above, latest commit.
+
+### Development cycle
+- work on the model
+- run `npm run train` to push the new gist
+- run `npm run testBrowser` or, if already open, refresh the page.
+
+### Issues
+- The context data file does not really fly. First, it seems like the browser cannot see it. Second, it is redundant with the API itself. Instead, we should transform that file into an API call to be done on the fly... I mean that's the whole purpose!
+- The `entities` entry in the corpus is a different matter and should stay there as it's related to language synonyms more than with what's actually available.
