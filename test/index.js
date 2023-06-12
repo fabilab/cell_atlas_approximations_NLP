@@ -2,6 +2,40 @@ const { containerBootstrap } = require('@nlpjs/core');
 const { Nlp } = require('@nlpjs/nlp');
 const { LangEn } = require('@nlpjs/lang-en-min');
 
+async function callAPI(intent, entities) {
+    // Convert entities in request parameters
+    let params = {};
+    for (let i=0; i < entities.length; i++) {
+        params[entities[i].entity] = entities[i].option;
+    }
+
+    // Phrase https request
+    const uriSuffix = new URLSearchParams(params).toString();
+    const uri = "https://api.atlasapprox.org/v1/" + intent + "?" + uriSuffix;
+    let response = await fetch(uri);
+
+    // Check response
+    if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+    }
+    let data = await response.json();
+
+    let answer;
+    if (intent == "organisms") {
+        answer = "The available organisms are ";
+        for (let i=0; i < data.organisms.length; i++) {
+            answer += data.organisms[i];
+            if (i != data.organisms.length - 1)
+                answer += ", ";
+            else
+                answer += ".";
+        }
+        return answer;
+    }
+
+    return data;
+}
+
 (async () => {
 
     let usingNode = (typeof window === 'undefined');
@@ -33,8 +67,11 @@ const { LangEn } = require('@nlpjs/lang-en-min');
     await manager.import(data);
 
     // Create a function to interact with the bot
-    function ask(question) {
-        return manager.process("en", question);
+    async function ask(question) {
+        let response = await manager.process("en", question);
+        console.log("calling API...");
+        let answer = await callAPI(response.intent, response.entities);
+        return answer;
     }
 
     if (usingNode) {

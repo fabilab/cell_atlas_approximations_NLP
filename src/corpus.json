@@ -4,23 +4,7 @@
   "contextData": "src/contextData.json",
   "data": [
     {
-      "intent": "organisms.list",
-      "utterances": [
-        "show organisms",
-        "list organisms",
-        "which organisms do you have",
-        "which organisms are present",
-        "which organisms are available",
-        "what organisms do you have",
-        "what organisms are present",
-        "what organisms are available"
-      ],
-      "answers": [
-        "The following organisms are available: {{ _data[organisms] }}"
-      ]
-    },
-    {
-      "intent": "organs.list",
+      "intent": "organs",
       "utterances": [
         "list organs",
         "list organs for @organism",
@@ -31,22 +15,34 @@
 	"what organs are there for @organism?",
 	"what organs do you have for @organism?"
       ],
-      "answers": [
-        "The available organs for {{ organism }} are: {{ _data.organs[entities.organisms.option] }}"
+      "slotFilling": {
+        "organism": {
+	  "mandatory": true,
+	  "question": "In what organism?"
+	}
+      }
+    },
+    {
+      "intent": "organisms",
+      "utterances": [
+        "show organisms",
+        "list organisms",
+        "show available organisms",
+        "list available organisms",
+        "which organisms do you have",
+        "which organisms are present",
+        "which organisms are available",
+        "what organisms do you have",
+        "what organisms are present",
+        "what organisms are available?"
       ]
     }
   ],
   "entities": {
-    "organisms": {
+    "organism": {
       "options": {
         "h_sapiens": ["human", "h_sapiens", "homo sapiens"],
         "m_musculus": ["mouse", "murine", "m_musculus"]
-      }
-    },
-    "organs": {
-      "options": {
-        "Lung": ["Lung", "lung"],
-        "Heart": ["Heart", "heart"]
       }
     }
   }

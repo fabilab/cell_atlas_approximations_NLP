@@ -3,7 +3,7 @@
     "trainMock": "node src/trainMock.js",
     "train": "node src/train.js && cd gists/model && git add . && git commit -m 'bump' && git push && cd ../..",
     "testBrowser": "browserify ./test/index.js | terser --compress --mangle > ./build/index.js && cp test/index.html build/ && firefox build/index.html",
-    "testNode": "run(){ node test/index.js \"$1\"; }; run"
+    "testNode": "run(){ node src/train.js && node test/index.js \"$1\"; }; run"
   },
   "devDependencies": {
     "browserify": "^17.0.0",
