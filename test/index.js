@@ -2,6 +2,33 @@ const { containerBootstrap } = require('@nlpjs/core');
 const { Nlp } = require('@nlpjs/nlp');
 const { LangEn } = require('@nlpjs/lang-en-min');
 
+function phraseAnswer(intent, data) {
+    function _chainList(list, sep, end) {
+        let text = "";
+        for (let i=0; i < list.length; i++) {
+            text += list[i];
+            if (i != list.length - 1)
+                text += sep;
+            else
+                text += end;
+        }
+        return text;
+    }
+
+    let answer;
+    if (intent == "organisms") {
+        answer = "The available organisms are: " + _chainList(
+            data.organisms, ", ", ".");
+    } else if (intent == "organs") {
+        answer = "The available organs for " + data.organism + " are: " + _chainList(
+            data.organs, ", ", ".");
+        if ((data.organs.length == 1) && (data.organs[0] === "whole")) {
+            answer += " The entire organism was dissociated at once and sequenced."
+        }
+    }
+    return answer;
+}
+
 async function callAPI(intent, entities) {
     // Convert entities in request parameters
     let params = {};
@@ -19,21 +46,8 @@ async function callAPI(intent, entities) {
         throw new Error(`HTTP error: ${response.status}`);
     }
     let data = await response.json();
-
-    let answer;
-    if (intent == "organisms") {
-        answer = "The available organisms are ";
-        for (let i=0; i < data.organisms.length; i++) {
-            answer += data.organisms[i];
-            if (i != data.organisms.length - 1)
-                answer += ", ";
-            else
-                answer += ".";
-        }
-        return answer;
-    }
-
-    return data;
+    const answer = phraseAnswer(intent, data);
+    return answer;
 }
 
 (async () => {

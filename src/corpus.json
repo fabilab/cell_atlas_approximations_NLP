@@ -42,7 +42,11 @@
     "organism": {
       "options": {
         "h_sapiens": ["human", "h_sapiens", "homo sapiens"],
-        "m_musculus": ["mouse", "murine", "m_musculus"]
+        "m_musculus": ["mouse", "murine", "m_musculus"],
+	"m_myoxinus": ["monkey", "lemur", "mouse lemur", "m_myoxinus"],
+	"d_rerio": ["d_rerio", "zebrafish", "fish"],
+	"c_elegans": ["c_elegans", "worm"],
+	"s_lacustris": ["s_lacustris", "sponge"]
       }
     }
   }
