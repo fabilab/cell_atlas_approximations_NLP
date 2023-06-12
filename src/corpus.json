@@ -13,6 +13,7 @@
         "what organs are available",
         "what organs are available for @organism?",
 	"what organs are there for @organism?",
+	"what organs do you have?",
 	"what organs do you have for @organism?"
       ],
       "slotFilling": {

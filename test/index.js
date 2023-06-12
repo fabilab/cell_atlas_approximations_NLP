@@ -2,6 +2,7 @@ const { containerBootstrap } = require('@nlpjs/core');
 const { Nlp } = require('@nlpjs/nlp');
 const { LangEn } = require('@nlpjs/lang-en-min');
 
+// Construct an answer given the API has provided the requested information
 function phraseAnswer(intent, data) {
     function _chainList(list, sep, end) {
         let text = "";
@@ -29,6 +30,7 @@ function phraseAnswer(intent, data) {
     return answer;
 }
 
+// Call the REST API for Cell Atlas Approximations and build an answer
 async function callAPI(intent, entities) {
     // Convert entities in request parameters
     let params = {};
@@ -36,7 +38,11 @@ async function callAPI(intent, entities) {
         params[entities[i].entity] = entities[i].option;
     }
 
-    // Phrase https request
+    // Some verbosity for debug
+    console.log("API endpoint (intent): " + intent + ".");
+    console.log("Request parameters: " + JSON.stringify(params));
+
+    // Phrase https request (they are all GET for now, so URI encoding suffices)
     const uriSuffix = new URLSearchParams(params).toString();
     const uri = "https://api.atlasapprox.org/v1/" + intent + "?" + uriSuffix;
     let response = await fetch(uri);
@@ -45,8 +51,12 @@ async function callAPI(intent, entities) {
     if (!response.ok) {
         throw new Error(`HTTP error: ${response.status}`);
     }
+    // NOTE: response.body is a stream, so it can be processed only ONCE
     let data = await response.json();
+
+    // Construct a NL answer from the data. This might be better outsourced to nlpjs.
     const answer = phraseAnswer(intent, data);
+
     return answer;
 }
 
@@ -83,9 +93,16 @@ async function callAPI(intent, entities) {
     // Create a function to interact with the bot
     async function ask(question) {
         let response = await manager.process("en", question);
+
+        // Check if there are slotFill, in which case the question is not well posed
+        if (response.slotFill) {
+            return response;
+        }
+
         console.log("calling API...");
         let answer = await callAPI(response.intent, response.entities);
-        return answer;
+        response.answer = answer;
+        return response;
     }
 
     if (usingNode) {
