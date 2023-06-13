@@ -1,3 +1,6 @@
 [submodule "gists/model"]
 	path = gists/model
 	url = git@gist.github.com:c42d91f7297c949eff0168078940af2d.git
+[submodule "gists/atlasapproxnlp"]
+	path = gists/atlasapproxnlp
+	url = git@gist.github.com:c73c9201362b0b9824260a62caa0a514.git

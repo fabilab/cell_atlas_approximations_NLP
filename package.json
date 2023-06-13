@@ -2,8 +2,9 @@
   "scripts": {
     "trainMock": "node src/trainMock.js",
     "train": "node src/train.js && cd gists/model && git add . && git commit -m 'bump' && git push && cd ../..",
-    "testBrowser": "browserify ./test/index.js | terser --compress --mangle > ./build/index.js && cp test/index.html build/ && firefox build/index.html",
-    "testNode": "run(){ node src/train.js && node test/index.js \"$1\"; }; run"
+    "testBrowser": "browserify src/app.js | terser --compress --mangle > test/index.js && firefox test/index.html",
+    "testNode": "run(){ node src/train.js && node test/node.js \"$1\"; }; run",
+    "deploy": "browserify src/app.js | sed 's/debug = true/debug = false/' | terser --compress --mangle > ./gists/atlasapproxnlp/atlasapproxnlp.js && cd gists/atlasapproxnlp && git add . && git commit -m 'bump' && git push && cd ../.."
   },
   "devDependencies": {
     "browserify": "^17.0.0",

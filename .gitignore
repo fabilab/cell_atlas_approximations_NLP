@@ -1,2 +1,4 @@
 build
+# This is generated from src/app.js
+test/index.js
 node_modules
