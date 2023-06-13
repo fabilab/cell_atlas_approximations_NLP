@@ -26,6 +26,9 @@ function phraseAnswer(intent, data) {
         if ((data.organs.length == 1) && (data.organs[0] === "whole")) {
             answer += " The entire organism was dissociated at once and sequenced."
         }
+    } else if (intent == "celltypes") {
+        answer = "The cell types in " + data.organism + " " + data.organ + " are: " + _chainList(
+        data.celltypes, ", ", ".");
     }
     return answer;
 }
@@ -78,7 +81,7 @@ async function callAPI(intent, entities) {
     } else {
         // Get data from URL (gist)
         const modelMockUrl = "https://gist.githubusercontent.com/iosonofabio/44f816c3ad8b82c3ccc1ba7b56906c4a/raw/e8e5bcba579ff3355923435fd88a0b62bda975ae/model.nlp";
-        const modelUrl = "https://gist.githubusercontent.com/iosonofabio/c42d91f7297c949eff0168078940af2d/raw/f784bd8e77cc18706d1d8e98248106c303ed21f9/model.nlp";
+        const modelUrl = "https://gist.githubusercontent.com/iosonofabio/c42d91f7297c949eff0168078940af2d/raw/6bc612f2f96925c3cd75767c949a6de58ed4ee6d/model.nlp";
 
         let response = await fetch(modelUrl);
         if (!response.ok) {
@@ -91,8 +94,8 @@ async function callAPI(intent, entities) {
     await manager.import(data);
 
     // Create a function to interact with the bot
-    async function ask(question) {
-        let response = await manager.process("en", question);
+    async function ask(question, context = {}) {
+        let response = await manager.process("en", question, context);
 
         // Check if there are slotFill, in which case the question is not well posed
         if (response.slotFill) {
@@ -109,8 +112,21 @@ async function callAPI(intent, entities) {
         exports.ask = ask;
         exports.nlp = manager;
         if (process.argv.length >= 2) {
-            const question = process.argv[2];
-            console.log(await ask(question));
+            //const question = process.argv[2];
+            const context = {};
+            let questions = [
+                "what cell types are available?",
+                "in mouse",
+                "in lung",
+            ];
+            console.log("--------------------------------------------");
+            for (let i = 0; i < questions.length; i++) {
+                let question = questions[i];
+                console.log(question);
+                console.log(await ask(question, context));
+                console.log("--------------------------------------------");
+            }
+
         }
     } else {
         window.ask = ask
