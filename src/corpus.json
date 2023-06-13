@@ -55,11 +55,57 @@
       "slotFilling": {
         "organism": {
 	  "mandatory": true,
-	  "question": "Cell types in what organism?"
+	  "question": "You requested cell types: in what organism?"
 	},
 	"organ": {
 	  "mandatory": true,
-	  "question": "Cell types in what organ?"
+	  "question": "You requested cell types: in what organ?"
+	}
+      }
+    },
+    {
+      "intent": "average.geneExpression",
+      "utterances": [
+        "what is the expression of @features?",
+        "what is the expression of @features in @organism?",
+        "what is the expression of @features in @organism @organ?",
+        "show the expression of @features in @organism @organ?",
+        "plot the expression of @features in @organism @organ?",
+        "display the expression of @features in @organism @organ?"
+      ],
+      "slotFilling": {
+        "features": {
+	   "mandatory": true,
+	   "question": "You requested average gene expression: what genes?"
+	},
+        "organism": {
+	  "mandatory": true,
+	  "question": "You requested average gene expression: in what organism?"
+	},
+	"organ": {
+	  "mandatory": true,
+	  "question": "You requested average gene expression: in what organ?"
+	}
+      }
+    },
+    {
+      "intent": "fraction_detected.geneExpression",
+      "utterances": [
+        "what is the fraction of cells expressing @features?",
+        "what is the fraction of cells expressing @features in @organism?",
+        "what is the fraction of cells expressing @features in @organism @organ?",
+        "show the fraction of cells expressing @features in @organism @organ?",
+        "plot the fraction of cells expressing @features in @organism @organ?",
+        "display the fraction of cells expressing @features in @organism @organ?"
+      ],
+      "slotFilling": {
+        "organism": {
+	  "mandatory": true,
+	  "question": "You requested fraction of cells expressing: in what organism?"
+	},
+	"organ": {
+	  "mandatory": true,
+	  "question": "You requested fraction of cells expressing: in what organ?"
 	}
       }
     }
@@ -83,6 +129,19 @@
 	"Tongue": ["Tongue", "tongue"],
 	"whole": ["whole", "entire"]
       }
+    },
+    "features": {
+      "trim": [
+        {
+          "position": "betweenLast",
+          "leftWords": ["of"],
+          "rightWords": ["in"]
+        },
+        {
+          "position": "afterLast",
+          "words": ["of"]
+        }
+      ]
     }
   }
 }

@@ -29,6 +29,10 @@ function phraseAnswer(intent, data) {
     } else if (intent == "celltypes") {
         answer = "The cell types in " + data.organism + " " + data.organ + " are: " + _chainList(
         data.celltypes, ", ", ".");
+    } else if (intent == "average.geneExpression") {
+        answer = "The average expression of " + data.features + " in " + data.organism + " " + data.organ + " is: " + data.average;
+    } else if (intent == "fraction_detected.geneExpression") {
+        answer = "The fraction of cells expressing " + data.features + " in " + data.organism + " " + data.organ + " is: " + data.fractions;
     }
     return answer;
 }
@@ -38,16 +42,29 @@ async function callAPI(intent, entities) {
     // Convert entities in request parameters
     let params = {};
     for (let i=0; i < entities.length; i++) {
-        params[entities[i].entity] = entities[i].option;
+        const entity = entities[i];
+        let param;
+        if (entity.type == "enum") {
+            param = entity.option;
+        } else {
+            param = entity.utteranceText;
+        }
+        params[entity.entity] = param;
     }
 
+    // intent and endpoint are not exactly the same
+    let endpoint = intent.split(".")[0];
+
     // Some verbosity for debug
-    console.log("API endpoint (intent): " + intent + ".");
-    console.log("Request parameters: " + JSON.stringify(params));
+    console.log("API endpoint: " + endpoint + ".");
+    //console.log("Request parameters: " + JSON.stringify(params));
 
     // Phrase https request (they are all GET for now, so URI encoding suffices)
     const uriSuffix = new URLSearchParams(params).toString();
-    const uri = "https://api.atlasapprox.org/v1/" + intent + "?" + uriSuffix;
+    const uri = "https://api.atlasapprox.org/v1/" + endpoint + "?" + uriSuffix;
+
+    console.log("API URI: " + uri)
+
     let response = await fetch(uri);
 
     // Check response
@@ -97,15 +114,18 @@ async function callAPI(intent, entities) {
     async function ask(question, context = {}) {
         let response = await manager.process("en", question, context);
 
+        console.log(response);
+
         // Check if there are slotFill, in which case the question is not well posed
         if (response.slotFill) {
-            return response;
+            return response.answer;
         }
 
         console.log("calling API...");
         let answer = await callAPI(response.intent, response.entities);
         response.answer = answer;
-        return response;
+
+        return response.answer;
     }
 
     if (usingNode) {
@@ -114,17 +134,22 @@ async function callAPI(intent, entities) {
         if (process.argv.length >= 2) {
             //const question = process.argv[2];
             const context = {};
-            let questions = [
-                "what cell types are available?",
-                "in mouse",
-                "in lung",
+            let questionsGroups = [
+                //["what cell types are available?", "in mouse", "lung"],
+                ["what is the expression of Col1a1 in mouse heart"],
+                //["what is the expression of Col1a1?", "in mouse", "in heart"],
             ];
-            console.log("--------------------------------------------");
-            for (let i = 0; i < questions.length; i++) {
-                let question = questions[i];
-                console.log(question);
-                console.log(await ask(question, context));
+            for (let k = 0; k < questionsGroups.length; k++) {
+                let questions = questionsGroups[k];
+                console.log("############################################");
                 console.log("--------------------------------------------");
+                for (let i = 0; i < questions.length; i++) {
+                    let question = questions[i];
+                    console.log(question);
+                    console.log(await ask(question, context));
+                    console.log("--------------------------------------------");
+                }
+                console.log("############################################");
             }
 
         }
