@@ -3,6 +3,7 @@ const { Nlp } = require('@nlpjs/nlp');
 const { LangEn } = require('@nlpjs/lang-en-min');
 
 let debug = true;
+const modelUrl = "https://gist.githubusercontent.com/iosonofabio/c42d91f7297c949eff0168078940af2d/raw/6e9071f9cf2f7b4f0f25166cb2a309c55bb71ba9/model.nlp";
 
 // Construct an answer given the API has provided the requested information
 function phraseAnswer(intent, data) {
@@ -35,6 +36,8 @@ function phraseAnswer(intent, data) {
         answer = "The average expression of " + data.features + " in " + data.organism + " " + data.organ + " is shown in the plot.";
     } else if (intent == "fraction_detected.geneExpression") {
         answer = "The fraction of cells expressing " + data.features + " in " + data.organism + " " + data.organ + " is shown in the plot.";
+    } else if (intent == "markers.geneExpression") {
+        answer = "The marker genes for " + data.celltype + " in " + data.organism + " " + data.organ + " are: " + data.markers;
     }
     return answer;
 }
@@ -65,18 +68,22 @@ async function callAPIFromNLP(intent, entities) {
     // Extract endpoint from intent
     let endpoint = intent.split(".")[0];
 
-    // Extract request parameters from entities
+    // Convert entities in request parameters
     let params = {};
     for (let i=0; i < entities.length; i++) {
         const entity = entities[i];
         let param;
         if (entity.type == "enum") {
-            param = entity.option;
+            paramValue = entity.option;
         } else {
-            // NOTE: utteranceText might contain question marks etc.
-            param = entity.sourceText;
+            paramValue = entity.sourceText;
         }
-        params[entity.entity] = param;
+        // entity names and API parameter names are not exactly the same for clarity
+        let paramName = entity.entity;
+        if (paramName == "nMarker")
+            paramName = "number";
+
+        params[paramName] = paramValue;
     }
 
     // Call API with endpoint and request parameters
@@ -130,7 +137,6 @@ async function ask(question, context = {}) {
     const manager = container.get('nlp');
 
     // Get data from URL (gist)
-    const modelUrl = "https://gist.githubusercontent.com/iosonofabio/c42d91f7297c949eff0168078940af2d/raw/55e6f38b8189f762518476f6d6919bde859a71ab/model.nlp";
     let response = await fetch(modelUrl);
     if (!response.ok) {
         throw new Error(`HTTP error: ${response.status}`);
