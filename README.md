@@ -1,3 +1,5 @@
+<img src="https://raw.githubusercontent.com/fabilab/cell_atlas_approximations/main/figures/figure_NLP.png" width="150" height="150">
+
 # Cell Atlas Approximations - Natural Language Processing
 Cell atlases are single cell data sets on the scale of whole organisms. There are presumably many ways for humans to query these atlases using natural language (e.g. English), however human-atlas interactions are currently limited to Python or R programmers.
 
