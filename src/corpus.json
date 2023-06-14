@@ -99,6 +99,10 @@
         "display the fraction of cells expressing @features in @organism @organ?"
       ],
       "slotFilling": {
+        "features": {
+	   "mandatory": true,
+	   "question": "You requested fraction of cells expressing: what genes?"
+	},
         "organism": {
 	  "mandatory": true,
 	  "question": "You requested fraction of cells expressing: in what organism?"
@@ -106,6 +110,36 @@
 	"organ": {
 	  "mandatory": true,
 	  "question": "You requested fraction of cells expressing: in what organ?"
+	}
+      }
+    },
+    {
+      "intent": "markers.geneExpression",
+      "utterances": [
+        "show marker genes for @celltype",
+        "plot the @nMarker top marker genes for @celltype in @organism @organ",
+        "show the @nMarker top marker genes for @celltype in @organism @organ",
+        "plot the @nMarker marker genes for @celltype in @organism @organ",
+        "show the @nMarker marker genes for @celltype in @organism @organ",
+        "what are the marker genes for @celltype in @organism @organ?",
+        "what are the markers for @celltype in @organism @organ?"
+      ],
+      "slotFilling": {
+	"nMarker": {
+	  "mandatory": true,
+	  "question": "You requested marker genes: how many?"
+	},
+        "celltype": {
+	   "mandatory": true,
+	   "question": "You requested marker genes: what cell type?"
+	},
+        "organism": {
+	  "mandatory": true,
+	  "question": "You requested marker genes: in what organism?"
+	},
+	"organ": {
+	  "mandatory": true,
+	  "question": "You requested marker genes: in what organ?"
 	}
       }
     }
@@ -140,6 +174,27 @@
         {
           "position": "afterLast",
           "words": ["of"]
+        }
+      ]
+    },
+    "nMarker": {
+      "trim": [
+        {
+          "position": "before",
+          "rightWords": ["marker", "top marker", "markers", "top markers"]
+        }
+      ]
+    },
+    "celltype": {
+      "trim": [
+        {
+          "position": "betweenLast",
+          "leftWords": ["for"],
+          "rightWords": ["in"]
+        },
+        {
+          "position": "afterLast",
+          "words": ["for"]
         }
       ]
     }
