@@ -45,8 +45,11 @@ function phraseAnswer(intent, data) {
 // Shortcut function to the API
 async function callAPI(endpoint, params = {}) {
     // Phrase https request from params (they are all GET for now, so URI encoding suffices)
+    let uri = "https://api.atlasapprox.org/v1/" + endpoint
+
     const uriSuffix = new URLSearchParams(params).toString();
-    const uri = "https://api.atlasapprox.org/v1/" + endpoint + "?" + uriSuffix;
+    if (uriSuffix != "")
+        uri += "?" + uriSuffix;
 
     if (debug)
         console.log("API URI: " + uri)
