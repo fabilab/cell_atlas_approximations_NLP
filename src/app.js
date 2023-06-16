@@ -57,11 +57,15 @@ async function callAPI(endpoint, params = {}) {
     let response = await fetch(uri);
 
     // Check response
+    let data;
     if (!response.ok) {
-        throw new Error(`HTTP error: ${response.status}`);
+        data = {
+            error: "API call failed";
+        }
+    } else {
+        // NOTE: response.body is a stream, so it can be processed only ONCE
+        data = await response.json();
     }
-    // NOTE: response.body is a stream, so it can be processed only ONCE
-    let data = await response.json();
 
     return data;
 }

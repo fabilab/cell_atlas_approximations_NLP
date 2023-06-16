@@ -4,13 +4,31 @@
   "contextData": "src/contextData.json",
   "data": [
     {
+      "intent": "hello",
+      "utterances": [
+        "hello",
+	"good morning",
+	"good day",
+	"g'day",
+	"hi",
+	"hey"
+      ],
+      "answer": "Hey there! Type help if you need".
+    },
+    {
       "intent": "organs",
       "utterances": [
+        "list tissues",
         "list organs",
+        "list organs in @organism",
+	"list tissues in @organism",
         "list organs for @organism",
+	"list tissues for @organism",
         "show organs",
+	"show tissues",
+	"show tissues for @organism",
         "show organs for @organism",
-        "what organs are available",
+        "what organs are available?",
         "what organs are available for @organism?",
 	"what organs are there for @organism?",
 	"what organs do you have?",
@@ -26,15 +44,23 @@
     {
       "intent": "organisms",
       "utterances": [
+        "show species",
+	"list species",
         "show organisms",
         "list organisms",
-        "show available organisms",
-        "list available organisms",
-        "which organisms do you have",
-        "which organisms are present",
-        "which organisms are available",
-        "what organisms do you have",
-        "what organisms are present",
+	"which species are present?",
+	"which species are available?",
+	"what species are present?",
+	"what species are there?",
+	"what organisms are there?",
+	"what species are available?",
+        "show available organisms?",
+        "list available organisms?",
+        "which organisms do you have?",
+        "which organisms are present?",
+        "which organisms are available?",
+        "what organisms do you have?",
+        "what organisms are present?",
         "what organisms are available?"
       ]
     },
@@ -142,6 +168,19 @@
 	  "question": "You requested marker genes: in what organ?"
 	}
       }
+    },
+    {
+      "intent": "add.features",
+      "utterances": [
+        "add @features"
+      ]
+    },
+    {
+      "intent": "remove.features",
+      "utterances": [
+        "remove @features",
+	"delete @features"
+      ]
     }
   ],
   "entities": {
@@ -174,7 +213,11 @@
         {
           "position": "afterLast",
           "words": ["of"]
-        }
+        },
+	{
+	  "position": "afterFirst",
+	  "words": ["add", "remove", "delete"]
+	}
       ]
     },
     "nMarker": {
