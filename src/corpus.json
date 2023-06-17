@@ -17,6 +17,8 @@
     {
       "intent": "highest.geneExpression",
        "utterances": [
+	 "who expresses @features?",
+	 "who expresses most @features?",
 	 "who is the highest expressor of @features?",
 	 "who is the highest expressing cell type of @features?",
 	 "what cell type is the highest expressor of @features?",
