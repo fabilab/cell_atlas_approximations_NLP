@@ -12,8 +12,18 @@
 	"g'day",
 	"hi",
 	"hey"
-      ],
-      "answer": "Hey there! Type help if you need".
+      ]
+    },
+    {
+      "intent": "highest.geneExpression",
+       "utterances": [
+	 "who is the highest expressor of @features?",
+	 "who is the highest expressing cell type of @features?",
+	 "what cell type is the highest expressor of @features?",
+	 "who expresses @features the highest?",
+	 "list highest expressors of @features",
+	 "show top expressing cell types of @features"
+       ]
     },
     {
       "intent": "organs",
