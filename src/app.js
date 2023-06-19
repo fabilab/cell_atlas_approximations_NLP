@@ -3,7 +3,7 @@ const { Nlp } = require('@nlpjs/nlp');
 const { LangEn } = require('@nlpjs/lang-en-min');
 
 let debug = true;
-const modelUrl = "https://gist.githubusercontent.com/iosonofabio/c42d91f7297c949eff0168078940af2d/raw/6e9071f9cf2f7b4f0f25166cb2a309c55bb71ba9/model.nlp";
+const modelUrl = "https://gist.githubusercontent.com/iosonofabio/c42d91f7297c949eff0168078940af2d/raw/1c238dc919d7e89a46e40bebce041c7bab78a20b/model.nlp";
 
 // Construct an answer given the API has provided the requested information
 function phraseAnswer(intent, data) {
@@ -60,7 +60,7 @@ async function callAPI(endpoint, params = {}) {
     let data;
     if (!response.ok) {
         data = {
-            error: "API call failed";
+            error: "API call failed",
         }
     } else {
         // NOTE: response.body is a stream, so it can be processed only ONCE

@@ -53,7 +53,7 @@ async function callAPI(intent, entities) {
         }
         // entity names and API parameter names are not exactly the same for clarity
         let paramName = entity.entity;
-        if (paramName == "nMarker")
+        if (["nFeatures", "nCelltypes"].includes(paramName))
             paramName = "number";
 
         params[paramName] = paramValue;
@@ -128,11 +128,14 @@ async function callAPI(intent, entities) {
         questionsGroups.push([process.argv[2]]);
     } else {
         questionsGroups = [
-            ["what cell types are available?", "in mouse", "lung"],
-            ["what are the markers for fibroblast in mouse lung"],
-            ["what is the expression of Col1a1 in mouse heart"],
-            ["what is the expression of Col1a1?", "in mouse", "in heart"],
-            ["what are the 10 marker genes for fibroblast in murine lung?", "10"],
+            //["what cell types are available?", "in mouse", "lung"],
+            //["what are the markers for fibroblast in mouse lung"],
+            //["what is the expression of Col1a1 in mouse heart"],
+            //["what is the expression of Col1a1?", "in mouse", "in heart"],
+            //["what are the 10 marker genes for fibroblast in murine lung?", "10"],
+            //["who expresses Col1a1", "in mouse", "lung"],
+            //["show genes similar to Pecam1", "10", "in mouse lung"],
+            ["show cell types like fibroblast", "in mouse", "10"],
         ];
     }
 

@@ -15,19 +15,6 @@
       ]
     },
     {
-      "intent": "highest.geneExpression",
-       "utterances": [
-	 "who expresses @features?",
-	 "who expresses most @features?",
-	 "who is the highest expressor of @features?",
-	 "who is the highest expressing cell type of @features?",
-	 "what cell type is the highest expressor of @features?",
-	 "who expresses @features the highest?",
-	 "list highest expressors of @features",
-	 "show top expressing cell types of @features"
-       ]
-    },
-    {
       "intent": "organs",
       "utterances": [
         "list tissues",
@@ -79,9 +66,7 @@
     {
       "intent": "celltypes",
       "utterances": [
-        "show cell types",
 	"list cell types",
-        "show cell types in @organism @organ",
 	"list cell types in @organism @organ",
 	"what are the cell types in @organism",
 	"what are the cell types in @organism @organ",
@@ -107,6 +92,7 @@
         "what is the expression of @features?",
         "what is the expression of @features in @organism?",
         "what is the expression of @features in @organism @organ?",
+        "what is the expression level of @features in @organism @organ?",
         "show the expression of @features in @organism @organ?",
         "plot the expression of @features in @organism @organ?",
         "display the expression of @features in @organism @organ?"
@@ -155,10 +141,13 @@
       "intent": "markers.geneExpression",
       "utterances": [
         "show marker genes for @celltype",
-        "plot the @nMarker top marker genes for @celltype in @organism @organ",
-        "show the @nMarker top marker genes for @celltype in @organism @organ",
-        "plot the @nMarker marker genes for @celltype in @organism @organ",
-        "show the @nMarker marker genes for @celltype in @organism @organ",
+        "show marker genes of @celltype",
+        "plot the @nFeatures top marker genes for @celltype in @organism @organ",
+        "show the @nFeatures top marker genes for @celltype in @organism @organ",
+        "show the @nFeatures top marker genes of @celltype in @organism @organ",
+        "plot the @nFeatures marker genes for @celltype in @organism @organ",
+        "show the @nFeatures marker genes for @celltype in @organism @organ",
+        "show the @nFeatures marker genes of @celltype in @organism @organ",
         "what are the marker genes for @celltype in @organism @organ?",
         "what are the markers for @celltype in @organism @organ?"
       ],
@@ -193,8 +182,84 @@
         "remove @features",
 	"delete @features"
       ]
+    },
+    {
+      "intent": "highest_measurement.geneExpression",
+      "utterances": [
+	 "who expresses @feature in @organism?",
+	 "who expresses most @feature in @organism?",
+	 "who is the highest expressor of @feature in @organism?",
+	 "who is the highest expressing cell type of @feature in @organism?",
+	 "what cell type is the highest expressor of @feature in @organism?",
+	 "who expresses @feature the highest in @organism?",
+	 "list highest expressors of @feature in @organism",
+	 "show top expressing cell types of @feature in @organism"
+      ],
+      "slotFilling": {
+	"feature": {
+	  "mandatory": true,
+	  "question": "You requested highest expressors: of what gene?"
+	},
+        "organism": {
+	  "mandatory": true,
+	  "question": "You requested highest expressors: in what organism?"
+	}
+       }
+    },
+    {
+      "intent": "similar_features.genes",
+      "utterances": [
+        "what are @nFeatures genes similar to @feature in @organism @organ?",
+        "show @nFeatures genes similar to @feature in @organism @organ",
+	"show @nFeatures genes like @feature in @organism @organ",
+	"show @nFeatures similar genes to @feature in @organism @organ"
+      ],
+      "slotFilling": {
+	"nFeatures": {
+	  "mandatory": true,
+	  "question": "You requested similar genes: how many?"
+	},
+	"feature": {
+	  "mandatory": true,
+	  "question": "You requested similar genes: similar to what gene?"
+	},
+        "organism": {
+	  "mandatory": true,
+	  "question": "You requested similar genes: in what organism?"
+	},
+	"organ": {
+	  "mandatory": true,
+	  "question": "You requested similar genes: in what organ?"
+	}
+      }
+    },
+    {
+      "intent": "similar_celltypes",
+      "utterances": [
+        "what are cell types similar to @celltype in @organism?",
+        "show @nCelltypes cell types similar to @celltype in @organism",
+	"show cell types like @celltype",
+	"show @nCelltypes cell types like @celltype in @organism",
+	"show @nCelltypes similar cell types to @celltype in @organism"
+      ],
+      "slotFilling": {
+	"nCelltypes": {
+	  "mandatory": true,
+	  "question": "You requested similar cell types: how many?"
+	},
+        "organism": {
+	  "mandatory": true,
+	  "question": "You requested similar cell types: in what organism?"
+	},
+	"celltype": {
+	  "mandatory": true,
+	  "question": "You requested similar cell types: similar to what cell type?"
+	}
+      }
+
     }
   ],
+
   "entities": {
     "organism": {
       "options": {
@@ -215,6 +280,14 @@
 	"whole": ["whole", "entire"]
       }
     },
+    "feature": {
+      "trim": [
+        {
+          "position": "after",
+	  "words": ["similar to", "genes like", "similar genes to", "expresses", "expressor of"]
+	}
+      ]
+    },
     "features": {
       "trim": [
         {
@@ -232,25 +305,30 @@
 	}
       ]
     },
-    "nMarker": {
+    "nFeatures": {
       "trim": [
-        {
-          "position": "before",
-          "rightWords": ["marker", "top marker", "markers", "top markers"]
-        }
+	{
+	  "position": "betweenFirst",
+	  "leftWords": ["show the", "show", "list"],
+	  "rightWords": ["markers", "genes", "features", "peaks", "top genes", "top features", "top peaks", "highest peaks", "top markers", "genes similar", "similar genes"]
+	}
       ]
     },
     "celltype": {
       "trim": [
         {
           "position": "betweenLast",
-          "leftWords": ["for"],
+          "leftWords": ["for", "markers of", "marker genes of"],
           "rightWords": ["in"]
         },
         {
           "position": "afterLast",
-          "words": ["for"]
-        }
+          "words": ["for", "markers of", "marker genes of"]
+        },
+	{
+	  "position": "after",
+	  "words": ["cell types like", "cell types similar to", "similar to"]
+	}
       ]
     }
   }
