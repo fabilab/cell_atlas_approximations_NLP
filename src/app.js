@@ -35,9 +35,15 @@ function phraseAnswer(intent, data) {
     } else if (intent == "average.geneExpression") {
         answer = "The average expression of " + data.features + " in " + data.organism + " " + data.organ + " is shown in the plot.";
     } else if (intent == "fraction_detected.geneExpression") {
-        answer = "The fraction of cells expressing " + data.features + " in " + data.organism + " " + data.organ + " is shown in the plot.";
+        answer = "A dot plot of " + data.features + " in " + data.organism + " " + data.organ + " is shown in the plot.";
     } else if (intent == "markers.geneExpression") {
         answer = "The marker genes for " + data.celltype + " in " + data.organism + " " + data.organ + " are: " + data.markers;
+    } else if (intent == "similar_features.genes") {
+        answer = "The genes similar to " + data.feature + " in " + data.organism + + " " + organ + " are: " + data.similar_features;
+    } else if (intent == "similar_celltypes") {
+        answer = "The cell types similar to " + data.celltype + " in " + data.organism + " are: " + data.similar_celltypes;
+    } else if (intent == "celltypexorgan") {
+        answer = "The presence matrix of cell types in " + data.organism + " is shown in the plot.";
     }
     return answer;
 }

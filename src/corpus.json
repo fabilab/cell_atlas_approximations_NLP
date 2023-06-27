@@ -87,6 +87,23 @@
       }
     },
     {
+      "intent": "celltypexorgan",
+      "utterances": [
+	"show the table of cell types in all @organism organs",
+	"what cell types are present in each organ of @organism",
+	"show the presence matrix for cell types in @organism",
+	"where are cell types found in @organism",
+	"show cell type presence across organs",
+	"show binary table of cell type presence in @organism"
+      ],
+      "slotFilling": {
+        "organism": {
+	  "mandatory": true,
+	  "question": "You requested cell type X organ presence table: in what organism?"
+	}
+      }
+    },
+    {
       "intent": "average.geneExpression",
       "utterances": [
         "what is the expression of @features?",
@@ -118,7 +135,10 @@
         "what is the fraction of cells expressing @features?",
         "what is the fraction of cells expressing @features in @organism?",
         "what is the fraction of cells expressing @features in @organism @organ?",
-        "show the fraction of cells expressing @features in @organism @organ?",
+        "show the fraction of cells expressing @features in @organism @organ",
+	"show a dotplot of @features in @organism @organ",
+	"make a dotplot of @features in @organism @organ",
+	"display a dotplot of @features in @organism @organ",
         "plot the fraction of cells expressing @features in @organism @organ?",
         "display the fraction of cells expressing @features in @organism @organ?"
       ],
@@ -140,6 +160,8 @@
     {
       "intent": "markers.geneExpression",
       "utterances": [
+        "show @nFeatures markers for @celltype",
+        "show @nFeatures markers of @celltype",
         "show marker genes for @celltype",
         "show marker genes of @celltype",
         "plot the @nFeatures top marker genes for @celltype in @organism @organ",
@@ -152,7 +174,7 @@
         "what are the markers for @celltype in @organism @organ?"
       ],
       "slotFilling": {
-	"nMarker": {
+	"nFeatures": {
 	  "mandatory": true,
 	  "question": "You requested marker genes: how many?"
 	},

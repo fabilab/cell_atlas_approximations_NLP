@@ -32,9 +32,15 @@ function phraseAnswer(intent, data) {
     } else if (intent == "average.geneExpression") {
         answer = "The average expression of " + data.features + " in " + data.organism + " " + data.organ + " is: " + data.average;
     } else if (intent == "fraction_detected.geneExpression") {
-        answer = "The fraction of cells expressing " + data.features + " in " + data.organism + " " + data.organ + " is: " + data.fractions;
+        answer = "The fraction of cells expressing " + data.features + " in " + data.organism + " " + data.organ + " is: " + data.fraction_detected;
     } else if (intent == "markers.geneExpression") {
         answer = "The marker genes for " + data.celltype + " in " + data.organism + " " + data.organ + " are: " + data.markers;
+    } else if (intent == "similar_features.genes") {
+        answer = "The genes similar to " + data.feature + " in " + data.organism + + " " + organ + " are: " + data.similar_features;
+    } else if (intent == "similar_celltypes") {
+        answer = "The cell types similar to " + data.celltype + " in " + data.organism + " are: " + data.similar_celltypes;
+    } else if (intent == "celltypexorgan") {
+        answer = "The presence matrix for " + data.organism + " is: " + data.detected;
     }
     return answer;
 }
@@ -135,7 +141,9 @@ async function callAPI(intent, entities) {
             //["what are the 10 marker genes for fibroblast in murine lung?", "10"],
             //["who expresses Col1a1", "in mouse", "lung"],
             //["show genes similar to Pecam1", "10", "in mouse lung"],
-            ["show cell types like fibroblast", "in mouse", "10"],
+            //["show cell types like fibroblast", "in mouse", "10"],
+            //["make dotplot of Col1a1,Ptprc in mouse lung"],
+            ["show the presence matrix of cell types in human"],
         ];
     }
 
