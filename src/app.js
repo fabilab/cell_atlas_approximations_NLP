@@ -3,7 +3,7 @@ const { Nlp } = require('@nlpjs/nlp');
 const { LangEn } = require('@nlpjs/lang-en-min');
 
 let debug = true;
-const modelUrl = "https://gist.githubusercontent.com/iosonofabio/c42d91f7297c949eff0168078940af2d/raw/7e5121bf6c5a5a2c587d25ef1e8e5962d5c9b1a8/model.nlp";
+const modelUrl = "https://gist.githubusercontent.com/iosonofabio/c42d91f7297c949eff0168078940af2d/raw/d3956c9e62b400a19530a5aa6bb9314b44a09683/model.nlp";
 
 // Construct an answer given the API has provided the requested information
 function buildAnswer(intent, data) {
@@ -106,8 +106,8 @@ async function callAPI(endpoint, params = {}) {
 
 async function ask(question, context = {}) {
 
-    // When this function is used, it's always after window.nlp has been set
-    const manager = window.nlp;
+    // When this function is used, it's always after window.nlpManager has been set
+    const manager = window.nlpManager;
 
     let response = await manager.process("en", question, context);
 
@@ -174,7 +174,7 @@ async function ask(question, context = {}) {
     // Import the model into manager
     await manager.import(data);
 
-    //window.nlp = manager;
+    window.nlpManager = manager;
     window.ask = ask;
     window.buildAPIParams = buildAPIParams;
     window.buildAnswer = buildAnswer;
