@@ -3,10 +3,10 @@ const { Nlp } = require('@nlpjs/nlp');
 const { LangEn } = require('@nlpjs/lang-en-min');
 
 let debug = true;
-const modelUrl = "https://gist.githubusercontent.com/iosonofabio/c42d91f7297c949eff0168078940af2d/raw/1c238dc919d7e89a46e40bebce041c7bab78a20b/model.nlp";
+const modelUrl = "https://gist.githubusercontent.com/iosonofabio/c42d91f7297c949eff0168078940af2d/raw/7e5121bf6c5a5a2c587d25ef1e8e5962d5c9b1a8/model.nlp";
 
 // Construct an answer given the API has provided the requested information
-function phraseAnswer(intent, data) {
+function buildAnswer(intent, data) {
     function _chainList(list, sep, end) {
         let text = "";
         for (let i=0; i < list.length; i++) {
@@ -48,6 +48,34 @@ function phraseAnswer(intent, data) {
     return answer;
 }
 
+function buildAPIParams(intent, entities) {
+    // Extract endpoint from intent
+    let endpoint = intent.split(".")[0];
+
+    // Convert entities in request parameters
+    let params = {};
+    for (let i=0; i < entities.length; i++) {
+        const entity = entities[i];
+        let param;
+        if (entity.type == "enum") {
+            paramValue = entity.option;
+        } else {
+            paramValue = entity.sourceText;
+        }
+        // entity names and API parameter names are not exactly the same for clarity
+        let paramName = entity.entity;
+        if (["nFeatures", "nCelltypes"].includes(paramName))
+            paramName = "number";
+
+        params[paramName] = paramValue;
+    }
+
+    return {
+        'endpoint': endpoint,
+        'params': params,
+    }
+}
+
 // Shortcut function to the API
 async function callAPI(endpoint, params = {}) {
     // Phrase https request from params (they are all GET for now, so URI encoding suffices)
@@ -76,44 +104,6 @@ async function callAPI(endpoint, params = {}) {
     return data;
 }
 
-// Call the REST API for Cell Atlas Approximations and build an answer
-async function callAPIFromNLP(intent, entities) {
-    // Extract endpoint from intent
-    let endpoint = intent.split(".")[0];
-
-    // Convert entities in request parameters
-    let params = {};
-    for (let i=0; i < entities.length; i++) {
-        const entity = entities[i];
-        let param;
-        if (entity.type == "enum") {
-            paramValue = entity.option;
-        } else {
-            paramValue = entity.sourceText;
-        }
-        // entity names and API parameter names are not exactly the same for clarity
-        let paramName = entity.entity;
-        if (paramName == "nMarker")
-            paramName = "number";
-
-        params[paramName] = paramValue;
-    }
-
-    // Call API with endpoint and request parameters
-    let data = await callAPI(endpoint, params);
-
-    // Construct a NL answer from the data. This might be better outsourced to nlpjs.
-    const answer = phraseAnswer(intent, data);
-
-    return {
-        intent: intent,
-        endpoint: endpoint,
-        params: params,
-        data: data,
-        answer: answer,
-    };
-}
-
 async function ask(question, context = {}) {
 
     // When this function is used, it's always after window.nlp has been set
@@ -124,19 +114,44 @@ async function ask(question, context = {}) {
     if (debug)
         console.log(response);
 
-    // Check if there are slotFill, in which case the question is not well posed
+    // Check if there are slotFill, in which case the question is not complete
     if (response.slotFill) {
         return {
-            answer: response.answer,
             complete: false,
+            followUpQuestion: response.answer,
         };
     }
 
-    if (debug)
-        console.log("calling API...");
-    let APIAnswer = await callAPIFromNLP(response.intent, response.entities);
-    APIAnswer.complete = true;
-    return APIAnswer;
+    // Otherwise, the question is complete, ready for API call by the caller
+    return {
+        complete: true,
+        intent: response.intent,
+        entities: response.entities,
+    }
+
+    //if (debug)
+    //    console.log("calling API...");
+
+    //// Build API request parameters
+    //let { endpoint, params } = buildAPIParams(response.intent, response.entities);
+
+    //// Call API with endpoint and request parameters
+    //let data = await callAPI(endpoint, params);
+
+    //// Construct a NL answer from the data. This might be better outsourced to nlpjs.
+    //const answer = buildAnswer(response.intent, data);
+
+    //return {
+    //    intent: response.intent,
+    //    endpoint: endpoint,
+    //    params: params,
+    //    data: data,
+    //    answer: answer,
+    //};
+
+
+    //APIAnswer.complete = true;
+    //return APIAnswer;
 
 };
 
@@ -159,7 +174,8 @@ async function ask(question, context = {}) {
     // Import the model into manager
     await manager.import(data);
 
-    window.nlp = manager;
+    //window.nlp = manager;
     window.ask = ask;
-    window.atlasapproxAPI = callAPI;
+    window.buildAPIParams = buildAPIParams;
+    window.buildAnswer = buildAnswer;
 })();
