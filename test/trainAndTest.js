@@ -88,7 +88,8 @@ function getRandomInt(min, max) {
         //"what cell type is the highest expressor of ALK in human?",
         //"what cell types are present in each organ of mouse?",
         //"what are 10 genes similar to COL1A1 in human lung?",
-        "what are 10 cell types similar to fibroblast in human?",
+        //"what are 10 cell types similar to fibroblast in human?",
+        "what kind of data is available?",
       ];
   }
 

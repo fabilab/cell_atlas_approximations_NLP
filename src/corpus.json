@@ -20,6 +20,22 @@
       ]
     },
     {
+      "intent": "measurementType",
+      "utterances": [
+         "show list of measurement types",
+         "list measurement types",
+         "list assay types",
+         "show list of assays",
+         "what assays are available?",
+         "what data are available?",
+         "what data are available in AtlasApprox?",
+         "what kind of data is available?",
+         "what kind of data is available in AtlasApprox?",
+         "what kinds of measurement types are avaialbe?",
+         "what kinds of measurement types are avaialbe in AtlasApprox?"
+      ]
+    },
+    {
       "intent": "organs",
       "utterances": [
         "list tissues",
@@ -235,7 +251,7 @@
       }
     },
     {
-      "intent": "similar_features.genes",
+      "intent": "similar_features.geneExpression",
       "utterances": [
         "what are @nFeatures genes similar to @features in @organism @organ?",
         "show @nFeatures genes similar to @features in @organism @organ",
@@ -332,9 +348,10 @@
     },
     "features": {
       "regex": [
-        "/(?:genes similar to|genes like|similar genes to) (\\w+)/",
-        "/(?:peaks similar to|peaks like|similar peaks to) (\\w+)/",
-        "/(?:expresses|expressor of) (\\w+)/"
+        "/(?:expression of|fraction of|cells expressing) ([\\w;,\/]+)/",
+        "/(?:genes similar to|genes like|similar genes to) ([\\w;,\/]+)/",
+        "/(?:peaks similar to|peaks like|similar peaks to) ([\\w;,\/]+)/",
+        "/(?:expresses|expressor of) ([\\w;,\/]+)/"
       ]
     },
     "nFeatures": {
