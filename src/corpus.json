@@ -4,14 +4,19 @@
   "contextData": "src/contextData.json",
   "data": [
     {
-      "intent": "hello",
+      "intent": "greetings.hello",
       "utterances": [
         "hello",
-	"good morning",
-	"good day",
-	"g'day",
-	"hi",
-	"hey"
+        "hello there!",
+        "good morning",
+        "good day",
+        "g'day",
+        "hi",
+        "hey"
+      ],
+      "answers": [
+        "Hello! Type \"help\" to get started.",
+        "Hi there! Type \"clear\" to reset the chat bot."
       ]
     },
     {
@@ -20,39 +25,39 @@
         "list tissues",
         "list organs",
         "list organs in @organism",
-	"list tissues in @organism",
+        "list tissues in @organism",
         "list organs for @organism",
-	"list tissues for @organism",
+        "list tissues for @organism",
         "show organs",
-	"show tissues",
-	"show tissues for @organism",
+        "show tissues",
+        "show tissues for @organism",
         "show organs for @organism",
         "what organs are available?",
         "what organs are available for @organism?",
-	"what organs are there for @organism?",
-	"what organs do you have?",
-	"what organs do you have for @organism?"
+        "what organs are there for @organism?",
+        "what organs do you have?",
+        "what organs do you have for @organism?"
       ],
       "slotFilling": {
         "organism": {
-	  "mandatory": true,
-	  "question": "In what organism?"
-	}
+          "mandatory": true,
+          "question": "In what organism?"
+        }
       }
     },
     {
       "intent": "organisms",
       "utterances": [
         "show species",
-	"list species",
+        "list species",
         "show organisms",
         "list organisms",
-	"which species are present?",
-	"which species are available?",
-	"what species are present?",
-	"what species are there?",
-	"what organisms are there?",
-	"what species are available?",
+        "which species are present?",
+        "which species are available?",
+        "what species are present?",
+        "what species are there?",
+        "what organisms are there?",
+        "what species are available?",
         "show available organisms?",
         "list available organisms?",
         "which organisms do you have?",
@@ -60,47 +65,48 @@
         "which organisms are available?",
         "what organisms do you have?",
         "what organisms are present?",
-        "what organisms are available?"
+        "what organisms are available?",
+        "What organisms are available in AtlasApprox?"
       ]
     },
     {
       "intent": "celltypes",
       "utterances": [
-	"list cell types",
-	"list cell types in @organism @organ",
-	"what are the cell types in @organism",
-	"what are the cell types in @organism @organ",
-	"what cell types are there?",
-	"what cell types are there in @organism @organ?",
-	"what cell types are available?",
-	"what cell types are available in @organism @organ?"
+        "list cell types",
+        "list cell types in @organism @organ",
+        "what are the cell types in @organism",
+        "what are the cell types in @organism @organ",
+        "what cell types are there?",
+        "what cell types are there in @organism @organ?",
+        "what cell types are available?",
+        "what cell types are available in @organism @organ?"
       ],
       "slotFilling": {
         "organism": {
-	  "mandatory": true,
-	  "question": "You requested cell types: in what organism?"
-	},
-	"organ": {
-	  "mandatory": true,
-	  "question": "You requested cell types: in what organ?"
-	}
+          "mandatory": true,
+          "question": "You requested cell types: in what organism?"
+        },
+        "organ": {
+          "mandatory": true,
+          "question": "You requested cell types: in what organ?"
+        }
       }
     },
     {
       "intent": "celltypexorgan",
       "utterances": [
-	"show the table of cell types in all @organism organs",
-	"what cell types are present in each organ of @organism",
-	"show the presence matrix for cell types in @organism",
-	"where are cell types found in @organism",
-	"show cell type presence across organs",
-	"show binary table of cell type presence in @organism"
+        "show the table of cell types in all @organism organs",
+        "what cell types are present in each organ of @organism",
+        "show the presence matrix for cell types in @organism",
+        "where are cell types found in @organism",
+        "show cell type presence across organs",
+        "show binary table of cell type presence in @organism"
       ],
       "slotFilling": {
         "organism": {
-	  "mandatory": true,
-	  "question": "You requested cell type X organ presence table: in what organism?"
-	}
+          "mandatory": true,
+          "question": "You requested cell type X organ presence table: in what organism?"
+        }
       }
     },
     {
@@ -116,17 +122,17 @@
       ],
       "slotFilling": {
         "features": {
-	   "mandatory": true,
-	   "question": "You requested average gene expression: what genes?"
-	},
+          "mandatory": true,
+          "question": "You requested average gene expression: what genes?"
+        },
         "organism": {
-	  "mandatory": true,
-	  "question": "You requested average gene expression: in what organism?"
-	},
-	"organ": {
-	  "mandatory": true,
-	  "question": "You requested average gene expression: in what organ?"
-	}
+          "mandatory": true,
+          "question": "You requested average gene expression: in what organism?"
+        },
+        "organ": {
+          "mandatory": true,
+          "question": "You requested average gene expression: in what organ?"
+        }
       }
     },
     {
@@ -136,25 +142,25 @@
         "what is the fraction of cells expressing @features in @organism?",
         "what is the fraction of cells expressing @features in @organism @organ?",
         "show the fraction of cells expressing @features in @organism @organ",
-	"show a dotplot of @features in @organism @organ",
-	"make a dotplot of @features in @organism @organ",
-	"display a dotplot of @features in @organism @organ",
+        "show a dotplot of @features in @organism @organ",
+        "make a dotplot of @features in @organism @organ",
+        "display a dotplot of @features in @organism @organ",
         "plot the fraction of cells expressing @features in @organism @organ?",
         "display the fraction of cells expressing @features in @organism @organ?"
       ],
       "slotFilling": {
         "features": {
-	   "mandatory": true,
-	   "question": "You requested fraction of cells expressing: what genes?"
-	},
+          "mandatory": true,
+          "question": "You requested fraction of cells expressing: what genes?"
+        },
         "organism": {
-	  "mandatory": true,
-	  "question": "You requested fraction of cells expressing: in what organism?"
-	},
-	"organ": {
-	  "mandatory": true,
-	  "question": "You requested fraction of cells expressing: in what organ?"
-	}
+          "mandatory": true,
+          "question": "You requested fraction of cells expressing: in what organism?"
+        },
+        "organ": {
+          "mandatory": true,
+          "question": "You requested fraction of cells expressing: in what organ?"
+        }
       }
     },
     {
@@ -174,22 +180,22 @@
         "what are the markers for @celltype in @organism @organ?"
       ],
       "slotFilling": {
-	"nFeatures": {
-	  "mandatory": true,
-	  "question": "You requested marker genes: how many?"
-	},
+        "nFeatures": {
+          "mandatory": true,
+          "question": "You requested marker genes: how many?"
+        },
         "celltype": {
-	   "mandatory": true,
-	   "question": "You requested marker genes: what cell type?"
-	},
+          "mandatory": true,
+          "question": "You requested marker genes: what cell type?"
+        },
         "organism": {
-	  "mandatory": true,
-	  "question": "You requested marker genes: in what organism?"
-	},
-	"organ": {
-	  "mandatory": true,
-	  "question": "You requested marker genes: in what organ?"
-	}
+          "mandatory": true,
+          "question": "You requested marker genes: in what organism?"
+        },
+        "organ": {
+          "mandatory": true,
+          "question": "You requested marker genes: in what organ?"
+        }
       }
     },
     {
@@ -202,57 +208,57 @@
       "intent": "remove.features",
       "utterances": [
         "remove @features",
-	"delete @features"
+        "delete @features"
       ]
     },
     {
       "intent": "highest_measurement.geneExpression",
       "utterances": [
-	 "who expresses @feature in @organism?",
-	 "who expresses most @feature in @organism?",
-	 "who is the highest expressor of @feature in @organism?",
-	 "who is the highest expressing cell type of @feature in @organism?",
-	 "what cell type is the highest expressor of @feature in @organism?",
-	 "who expresses @feature the highest in @organism?",
-	 "list highest expressors of @feature in @organism",
-	 "show top expressing cell types of @feature in @organism"
+        "who expresses @features in @organism?",
+        "who expresses most @features in @organism?",
+        "who is the highest expressor of @features in @organism?",
+        "who is the highest expressing cell type of @features in @organism?",
+        "what cell type is the highest expressor of @features in @organism?",
+        "who expresses @features the highest in @organism?",
+        "list highest expressors of @features in @organism",
+        "show top expressing cell types of @features in @organism"
       ],
       "slotFilling": {
-	"feature": {
-	  "mandatory": true,
-	  "question": "You requested highest expressors: of what gene?"
-	},
+        "features": {
+          "mandatory": true,
+          "question": "You requested highest expressors: of what gene?"
+        },
         "organism": {
-	  "mandatory": true,
-	  "question": "You requested highest expressors: in what organism?"
-	}
-       }
+          "mandatory": true,
+          "question": "You requested highest expressors: in what organism?"
+        }
+      }
     },
     {
       "intent": "similar_features.genes",
       "utterances": [
-        "what are @nFeatures genes similar to @feature in @organism @organ?",
-        "show @nFeatures genes similar to @feature in @organism @organ",
-	"show @nFeatures genes like @feature in @organism @organ",
-	"show @nFeatures similar genes to @feature in @organism @organ"
+        "what are @nFeatures genes similar to @features in @organism @organ?",
+        "show @nFeatures genes similar to @features in @organism @organ",
+        "show @nFeatures genes like @features in @organism @organ",
+        "show @nFeatures similar genes to @features in @organism @organ"
       ],
       "slotFilling": {
-	"nFeatures": {
-	  "mandatory": true,
-	  "question": "You requested similar genes: how many?"
-	},
-	"feature": {
-	  "mandatory": true,
-	  "question": "You requested similar genes: similar to what gene?"
-	},
-        "organism": {
-	  "mandatory": true,
-	  "question": "You requested similar genes: in what organism?"
-	},
-	"organ": {
-	  "mandatory": true,
-	  "question": "You requested similar genes: in what organ?"
-	}
+        "nFeatures": {
+          "mandatory": true,
+          "question": "You requested similar genes: how many?"
+        },
+        "features": {
+          "mandatory": true,
+          "question": "You requested similar genes: similar to what gene?"
+        },
+              "organism": {
+          "mandatory": true,
+          "question": "You requested similar genes: in what organism?"
+        },
+        "organ": {
+          "mandatory": true,
+          "question": "You requested similar genes: in what organ?"
+        }
       }
     },
     {
@@ -260,25 +266,25 @@
       "utterances": [
         "what are cell types similar to @celltype in @organism?",
         "show @nCelltypes cell types similar to @celltype in @organism",
-	"show cell types like @celltype",
-	"show @nCelltypes cell types like @celltype in @organism",
-	"show @nCelltypes similar cell types to @celltype in @organism"
+        "show cell types like @celltype",
+        "show @nCelltypes cell types like @celltype in @organism",
+        "show @nCelltypes similar cell types to @celltype in @organism"
       ],
       "slotFilling": {
-	"nCelltypes": {
-	  "mandatory": true,
-	  "question": "You requested similar cell types: how many?"
-	},
+	      "nCelltypes": {
+	        "mandatory": false,
+          "default": 10,
+	        "question": "You requested similar cell types: how many?"
+        },
         "organism": {
-	  "mandatory": true,
-	  "question": "You requested similar cell types: in what organism?"
-	},
-	"celltype": {
-	  "mandatory": true,
-	  "question": "You requested similar cell types: similar to what cell type?"
-	}
+          "mandatory": true,
+          "question": "You requested similar cell types: in what organism?"
+        },
+        "celltype": {
+          "mandatory": true,
+          "question": "You requested similar cell types: similar to what cell type?"
+        }
       }
-
     }
   ],
 
@@ -287,70 +293,64 @@
       "options": {
         "h_sapiens": ["human", "h_sapiens", "homo sapiens"],
         "m_musculus": ["mouse", "murine", "m_musculus"],
-	"m_myoxinus": ["monkey", "lemur", "mouse lemur", "m_myoxinus"],
-	"d_rerio": ["d_rerio", "zebrafish", "fish"],
-	"c_elegans": ["c_elegans", "worm"],
-	"s_lacustris": ["s_lacustris", "sponge"]
+        "m_myoxinus": [
+          "monkey", "lemur", "mouse lemur", "m_myoxinus",
+          "microbebus myoxinus", "microcebus"
+        ],
+        "d_rerio": ["d_rerio", "zebrafish", "fish"],
+        "c_elegans": ["c_elegans", "worm"],
+        "s_lacustris": ["s_lacustris", "sponge"]
       }
     },
     "organ": {
       "options": {
         "Lung": ["Lung", "lung"],
-	"Heart": ["Heart", "heart"],
-	"Pancreas": ["Pancreas", "pancreas"],
-	"Tongue": ["Tongue", "tongue"],
-	"whole": ["whole", "entire"]
+        "Heart": ["Heart", "heart"],
+        "Pancreas": ["Pancreas", "pancreas"],
+        "Tongue": ["Tongue", "tongue"],
+        "Salivary": ["Salivary", "salivary gland"],
+        "Trachea": ["trachea"],
+        "Brain": ["brain", "head"],
+        "Liver": ["liver"],
+        "Adrenal": ["adrenal", "adrenal gland"],
+        "Kidney": ["kidney", "kidneys"],
+        "Spleen": ["spleen"],
+        "Thyroid": ["thyroid"],
+        "Thymus": ["thymus"],
+        "Marrow": ["marrow", "bone marrow"],
+        "Muscle": ["muscle", "muscles"],
+        "Esophagus": ["esophagus"],
+        "Stomach": ["stomach"],
+        "Gut": ["intestine", "gut", "small intestine", "duodenum"],
+        "Colon": ["colon", "large intestine", "rectum"],
+        "Skin": ["skin"],
+        "Fat": ["fat", "brown fat", "white fat"],
+        "Ovary": ["ovary", "ovaries"],
+        "Uterus": ["uterus"],
+        "whole": ["whole", "entire"]
       }
     },
-    "feature": {
-      "trim": [
-        {
-          "position": "after",
-	  "words": ["similar to", "genes like", "similar genes to", "expresses", "expressor of"]
-	}
-      ]
-    },
     "features": {
-      "trim": [
-        {
-          "position": "betweenLast",
-          "leftWords": ["of"],
-          "rightWords": ["in"]
-        },
-        {
-          "position": "afterLast",
-          "words": ["of"]
-        },
-	{
-	  "position": "afterFirst",
-	  "words": ["add", "remove", "delete"]
-	}
+      "regex": [
+        "/(?:genes similar to|genes like|similar genes to) (\\w+)/",
+        "/(?:peaks similar to|peaks like|similar peaks to) (\\w+)/",
+        "/(?:expresses|expressor of) (\\w+)/"
       ]
     },
     "nFeatures": {
-      "trim": [
-	{
-	  "position": "betweenFirst",
-	  "leftWords": ["show the", "show", "list"],
-	  "rightWords": ["markers", "genes", "features", "peaks", "top genes", "top features", "top peaks", "highest peaks", "top markers", "genes similar", "similar genes"]
-	}
+      "regex": [
+        "/([0-9]+) (genes|marker|top|feature|peak|similar)/"
+      ]
+    },
+    "nCelltypes": {
+      "regex": [
+        "/([0-9]+) (cell types|similar)/"
       ]
     },
     "celltype": {
-      "trim": [
-        {
-          "position": "betweenLast",
-          "leftWords": ["for", "markers of", "marker genes of"],
-          "rightWords": ["in"]
-        },
-        {
-          "position": "afterLast",
-          "words": ["for", "markers of", "marker genes of"]
-        },
-	{
-	  "position": "after",
-	  "words": ["cell types like", "cell types similar to", "similar to"]
-	}
+      "regex": [
+        "/(?:types like|similar to) (\\w+)/",
+        "/(?:for|markers of|marker genes of|marker peaks of) (\\w+)/"
       ]
     }
   }
