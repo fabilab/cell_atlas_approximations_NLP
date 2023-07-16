@@ -20,23 +20,51 @@
       ]
     },
     {
-      "intent": "measurementType",
+      "intent": "greetings.hate",
+      "utterances": [
+        "I hate this website",
+        "I don't like you",
+        "I hate this bot"
+      ],
+      "answers": [
+        "Sorry to hear, perhaps open a GitHub issue with your concern?",
+        "Oh sorry about that, I wish I was smarter.",
+        "Sorry to hear that. Perhaps type \"help\" to see some examples?"
+      ]
+    },
+    {
+      "intent": "greetings.love",
+      "utterances": [
+        "I like this website",
+        "I really like this bot",
+        "This is useful",
+        "I love you"
+      ],
+      "answers": [
+        "Thank you. We try our best :-)",
+        "Great! Check out https://fabilab.org to see what else we do."
+      ]
+    },
+    {
+      "intent": "measurement_types",
       "utterances": [
          "show list of measurement types",
          "list measurement types",
          "list assay types",
          "show list of assays",
          "what assays are available?",
+         "what measurement kinds are there?",
+         "what data kinds are there?",
          "what data are available?",
          "what data are available in AtlasApprox?",
          "what kind of data is available?",
          "what kind of data is available in AtlasApprox?",
-         "what kinds of measurement types are avaialbe?",
-         "what kinds of measurement types are avaialbe in AtlasApprox?"
+         "what kinds of measurement types are available?",
+         "what kinds of measurement types are available in AtlasApprox?"
       ]
     },
     {
-      "intent": "organs",
+      "intent": "organs.geneExpression",
       "utterances": [
         "list tissues",
         "list organs",
@@ -62,7 +90,33 @@
       }
     },
     {
-      "intent": "organisms",
+      "intent": "organs.chromatinAccessibility",
+      "utterances": [
+        "list tissues in chromatin accessibility",
+        "list organs in chromatin accessibility",
+        "list organs in @organism in chromatin accessibility",
+        "list tissues in @organism in chromatin accessibility",
+        "list organs for @organism in chromatin accessibility",
+        "list tissues for @organism in chromatin accessibility",
+        "show organs in chromatin accessibility",
+        "show tissues in chromatin accessibility",
+        "show tissues for @organism in chromatin accessibility",
+        "show organs for @organism in chromatin accessibility",
+        "what organs are available by chromatin accessibility?",
+        "what organs are available for @organism by chromatin accessibility? ",
+        "what organs are there for @organism by chromatin accessibility?",
+        "what organs do you have by chromatin accessibility?",
+        "what organs do you have for @organism by chromatin accessibility?"
+      ],
+      "slotFilling": {
+        "organism": {
+          "mandatory": true,
+          "question": "In what organism?"
+        }
+      }
+    },
+    {
+      "intent": "organisms.geneExpression",
       "utterances": [
         "show species",
         "list species",
@@ -74,8 +128,8 @@
         "what species are there?",
         "what organisms are there?",
         "what species are available?",
-        "show available organisms?",
-        "list available organisms?",
+        "show available organisms",
+        "list available organisms",
         "which organisms do you have?",
         "which organisms are present?",
         "which organisms are available?",
@@ -86,7 +140,30 @@
       ]
     },
     {
-      "intent": "celltypes",
+      "intent": "organisms.chromatinAccessibility",
+      "utterances": [
+        "show species for chromatin accessibility",
+        "list species for chromatin accessibility",
+        "show organisms for chromatin accessibility",
+        "list organisms for chromatin accessibility",
+        "which species are present in chromatin accessibility data?",
+        "which species are available in chromatin accessibility?",
+        "what species are present in chromatin accessibility?",
+        "what species are there in the chromatin accessibility data?",
+        "what organisms are there in the chromatin accessibility data?",
+        "what species are available in the chromatin accessibility data?",
+        "show available organisms in chromatin accessibility",
+        "list available organisms in chromatin accessibility",
+        "which organisms do you have in the chromatin accessibility data?",
+        "which organisms are present in the chromatin accessibility data?",
+        "which organisms are available in the chromatin accessibility data?",
+        "what organisms do you have in the chromatin accessibility data?",
+        "what organisms are present in the chromatin accessibility data?",
+        "what organisms are available via chromatin accessibility?"
+      ]
+    },
+    {
+      "intent": "celltypes.geneExpression",
       "utterances": [
         "list cell types",
         "list cell types in @organism @organ",
@@ -109,7 +186,34 @@
       }
     },
     {
-      "intent": "celltypexorgan",
+      "intent": "celltypes.chromatinAccessibility",
+      "utterances": [
+        "list cell types in chromatin accessibility",
+        "list chromatin accessibility cell types in @organism @organ",
+        "list ATAC cell types in @organism @organ",
+        "list ATAC-Seq cell types in @organism @organ",
+        "what are the ATAC cell types in @organism",
+        "what are the ATAC-Seq cell types in @organism",
+        "what are the chromatin accessibility cell types in @organism",
+        "what are the cell types in @organism @organ chromatin accessibility",
+        "what cell types are there by chromatin accessibility?",
+        "what cell types are there in @organism @organ by chromatin accessibility?",
+        "what cell types are available by chromatin accessibility?",
+        "what cell types are available in @organism @organ by chromatin accessibility?"
+      ],
+      "slotFilling": {
+        "organism": {
+          "mandatory": true,
+          "question": "You requested cell types: in what organism?"
+        },
+        "organ": {
+          "mandatory": true,
+          "question": "You requested cell types: in what organ?"
+        }
+      }
+    },
+    {
+      "intent": "celltypexorgan.geneExpression",
       "utterances": [
         "show the table of cell types in all @organism organs",
         "what cell types are present in each organ of @organism",
@@ -117,6 +221,23 @@
         "where are cell types found in @organism",
         "show cell type presence across organs",
         "show binary table of cell type presence in @organism"
+      ],
+      "slotFilling": {
+        "organism": {
+          "mandatory": true,
+          "question": "You requested cell type X organ presence table: in what organism?"
+        }
+      }
+    },
+    {
+      "intent": "celltypexorgan.chromatinAccessibility",
+      "utterances": [
+        "show the table of cell types by chromatin accessibility in all @organism organs",
+        "what cell types are present in chromatin accessibility in each organ of @organism",
+        "show the presence matrix in chromatin accessibility for cell types in @organism",
+        "where are cell types found by chromatin accessibility in @organism",
+        "show cell type presence by chromatin accessibility across organs",
+        "show binary table of cell type presence by chromatin accessibility in @organism"
       ],
       "slotFilling": {
         "organism": {
@@ -148,6 +269,32 @@
         "organ": {
           "mandatory": true,
           "question": "You requested average gene expression: in what organ?"
+        }
+      }
+    },
+    {
+      "intent": "average.chromatinAccessibility",
+      "utterances": [
+        "what is the chromatin accessibility of @features?",
+        "what is the chromatin accessibility of @features in @organism?",
+        "what is the chromatin accessibility of @features in @organism @organ?",
+        "what is the accessibility of @features in @organism @organ?",
+        "show the accessibility of @features in @organism @organ?",
+        "plot the accessibility of @features in @organism @organ?",
+        "display the chromatin accessibility of @features in @organism @organ?"
+      ],
+      "slotFilling": {
+        "features": {
+          "mandatory": true,
+          "question": "You requested average chromatin accessibility: what genes?"
+        },
+        "organism": {
+          "mandatory": true,
+          "question": "You requested average chromatin accessibility: in what organism?"
+        },
+        "organ": {
+          "mandatory": true,
+          "question": "You requested average chromatin accessibility: in what organ?"
         }
       }
     },
@@ -215,17 +362,38 @@
       }
     },
     {
-      "intent": "add.features",
+      "intent": "markers.chromatinAccessibility",
       "utterances": [
-        "add @features"
-      ]
-    },
-    {
-      "intent": "remove.features",
-      "utterances": [
-        "remove @features",
-        "delete @features"
-      ]
+        "show @nFeatures marker peaks for @celltype",
+        "show @nFeatures marker peaks of @celltype",
+        "show marker peaks for @celltype",
+        "show marker peaks of @celltype",
+        "plot the @nFeatures top marker peaks for @celltype in @organism @organ",
+        "show the @nFeatures top marker peaks for @celltype in @organism @organ",
+        "show the @nFeatures top marker peaks of @celltype in @organism @organ",
+        "plot the @nFeatures marker peaks for @celltype in @organism @organ",
+        "show the @nFeatures marker peaks for @celltype in @organism @organ",
+        "show the @nFeatures marker peaks of @celltype in @organism @organ",
+        "what are the marker peaks for @celltype in @organism @organ?"
+      ],
+      "slotFilling": {
+        "nFeatures": {
+          "mandatory": true,
+          "question": "You requested marker peaks: how many?"
+        },
+        "celltype": {
+          "mandatory": true,
+          "question": "You requested marker peaks: what cell type?"
+        },
+        "organism": {
+          "mandatory": true,
+          "question": "You requested marker peaks: in what organism?"
+        },
+        "organ": {
+          "mandatory": true,
+          "question": "You requested marker peaks: in what organ?"
+        }
+      }
     },
     {
       "intent": "highest_measurement.geneExpression",
@@ -247,6 +415,28 @@
         "organism": {
           "mandatory": true,
           "question": "You requested highest expressors: in what organism?"
+        }
+      }
+    },
+    {
+      "intent": "highest_measurement.chromatinAccessibility",
+      "utterances": [
+        "who has the most accessible chromatin at @features in @organism?",
+        "who has the most open peaks in @features in @organism?",
+        "who is the highest accessibility of @features in @organism?",
+        "who is the cell type with the highest accessibility of @features in @organism?",
+        "who opens @features the highest in @organism?",
+        "list highest accessibility of @features in @organism",
+        "show top accessible cell types of @features in @organism"
+      ],
+      "slotFilling": {
+        "features": {
+          "mandatory": true,
+          "question": "You requested highest accessibility: of what peaks?"
+        },
+        "organism": {
+          "mandatory": true,
+          "question": "You requested highest accessibility: in what organism?"
         }
       }
     },
@@ -278,7 +468,34 @@
       }
     },
     {
-      "intent": "similar_celltypes",
+      "intent": "similar_features.chromatinAccessibility",
+      "utterances": [
+        "what are @nFeatures peaks similar to @features in @organism @organ?",
+        "show @nFeatures peaks similar to @features in @organism @organ",
+        "show @nFeatures peaks like @features in @organism @organ",
+        "show @nFeatures similar peaks to @features in @organism @organ"
+      ],
+      "slotFilling": {
+        "nFeatures": {
+          "mandatory": true,
+          "question": "You requested similar peaks: how many?"
+        },
+        "features": {
+          "mandatory": true,
+          "question": "You requested similar peaks: similar to what gene?"
+        },
+              "organism": {
+          "mandatory": true,
+          "question": "You requested similar peaks: in what organism?"
+        },
+        "organ": {
+          "mandatory": true,
+          "question": "You requested similar peaks: in what organ?"
+        }
+      }
+    },
+    {
+      "intent": "similar_celltypes.geneExpression",
       "utterances": [
         "what are cell types similar to @celltype in @organism?",
         "show @nCelltypes cell types similar to @celltype in @organism",
@@ -299,6 +516,57 @@
         "celltype": {
           "mandatory": true,
           "question": "You requested similar cell types: similar to what cell type?"
+        }
+      }
+    },
+    {
+      "intent": "similar_celltypes.chromatinAccessibility",
+      "utterances": [
+        "what are cell types in chromatin accessibility similar to @celltype in @organism?",
+        "show @nCelltypes cell types with similar chromatin peaks to @celltype in @organism",
+        "show cell types like @celltype by chromatin accessibility",
+        "show @nCelltypes cell types like @celltype by chromatin accessibility in @organism",
+        "show @nCelltypes similar cell types to @celltype in @organism by chromatin accessibility"
+      ],
+      "slotFilling": {
+	      "nCelltypes": {
+	        "mandatory": false,
+          "default": 10,
+	        "question": "You requested similar cell types: how many?"
+        },
+        "organism": {
+          "mandatory": true,
+          "question": "You requested similar cell types: in what organism?"
+        },
+        "celltype": {
+          "mandatory": true,
+          "question": "You requested similar cell types: similar to what cell type?"
+        }
+      }
+    },
+    {
+      "intent": "add.features",
+      "utterances": [
+        "add @features",
+        "include @features"
+      ],
+      "slotFilling": {
+        "features": {
+          "mandatory": true,
+          "question": "You requested add features: what features?"
+        } 
+      }
+    },
+    {
+      "intent": "remove.features",
+      "utterances": [
+        "remove @features",
+        "delete @features"
+      ],
+      "slotFilling": {
+        "features": {
+          "mandatory": true,
+          "question": "You requested remove features: what features?"
         }
       }
     }
@@ -351,7 +619,8 @@
         "/(?:expression of|fraction of|cells expressing) ([\\w;,\/]+)/",
         "/(?:genes similar to|genes like|similar genes to) ([\\w;,\/]+)/",
         "/(?:peaks similar to|peaks like|similar peaks to) ([\\w;,\/]+)/",
-        "/(?:expresses|expressor of) ([\\w;,\/]+)/"
+        "/(?:expresses|expressor of) ([\\w;,\/]+)/",
+        "/(?:add|include|delete|remove) ([\\w;,\/]+)/"
       ]
     },
     "nFeatures": {
@@ -366,7 +635,8 @@
     },
     "celltype": {
       "regex": [
-        "/(?:types like|similar to) (\\w+)/",
+        "/(?:types like|similar) (?:as|to) (\\w+)/",
+        "/(?:similar genes|similar peaks|similar chromatin peaks) (?:as|to) (\\w+)/",
         "/(?:for|markers of|marker genes of|marker peaks of) (\\w+)/"
       ]
     }

@@ -20,24 +20,6 @@ function getRandomInt(min, max) {
 
   const manager = dock.get('nlp');
 
-  // NOTE: done in the corpus.json
-  //// Adds the utterances and intents for the NLP
-  //manager.addDocument('en', 'goodbye for now', 'greetings.bye');
-  //manager.addDocument('en', 'bye bye take care', 'greetings.bye');
-  //manager.addDocument('en', 'okay see you later', 'greetings.bye');
-  //manager.addDocument('en', 'bye for now', 'greetings.bye');
-  //manager.addDocument('en', 'i must go', 'greetings.bye');
-  //manager.addDocument('en', 'hello', 'greetings.hello');
-  //manager.addDocument('en', 'hi', 'greetings.hello');
-  //manager.addDocument('en', 'howdy', 'greetings.hello');
-  
-  // TODO: Here for testing, actually move to corpus
-  //// Train also the NLG
-  //manager.addAnswer('en', 'greetings.bye', 'Till next time');
-  //manager.addAnswer('en', 'greetings.bye', 'see you soon!');
-  //manager.addAnswer('en', 'greetings.hello', 'Hey there!');
-  //manager.addAnswer('en', 'greetings.hello', 'Greetings!');
-
   // Train the network
   await manager.train();
 
@@ -89,7 +71,11 @@ function getRandomInt(min, max) {
         //"what cell types are present in each organ of mouse?",
         //"what are 10 genes similar to COL1A1 in human lung?",
         //"what are 10 cell types similar to fibroblast in human?",
-        "what kind of data is available?",
+        //"what kind of data is available?",
+        //"what measurement kinds are there?",
+        //"what are 10 cell types with similar chromatin peaks to fibroblast in human?",
+        //"what ATAC-Seq cell types are there in human lung?",
+        ["what are the marker peaks for fibroblast in human lung?", "3"],
       ];
   }
 
@@ -114,49 +100,3 @@ function getRandomInt(min, max) {
   }
 
 })();
-
-
-/*
- *      "trim": [
-        {
-          "position": "betweenLast",
-          "leftWords": ["of", "to"],
-          "rightWords": ["in"]
-        },
-        {
-          "position": "afterLast",
-          "words": ["of"]
-        },
-        {
-          "position": "afterFirst",
-          "words": ["add", "remove", "delete"]
-        },
-        {
-          "position": "after",
-      	  "words": [
-            "similar to", "genes like", "similar genes to",
-            "expresses", "expressor of"
-          ]
-        }
-      ]
- *
- *
- *      "trim": [
-        {
-          "position": "betweenLast",
-          "leftWords": ["for", "markers of", "marker genes of"],
-          "rightWords": ["in"]
-        },
-        {
-          "position": "afterLast",
-          "words": ["for", "markers of", "marker genes of"]
-        },
-        {
-          "position": "after",
-          "words": ["cell types like", "cell types similar to", "similar to"]
-        }
-      ]
-    }
- *
- *
- * */

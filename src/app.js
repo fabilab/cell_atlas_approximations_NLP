@@ -3,7 +3,7 @@ const { Nlp } = require('@nlpjs/nlp');
 const { LangEn } = require('@nlpjs/lang-en-min');
 
 let debug = true;
-const modelUrl = "https://gist.githubusercontent.com/iosonofabio/c42d91f7297c949eff0168078940af2d/raw/7e3334ec4fc1b0a7720c8ca49c0bdc3ed9da36d5/model.nlp";
+const modelUrl = "https://gist.githubusercontent.com/iosonofabio/c42d91f7297c949eff0168078940af2d/raw/510d6af46175af4ec823f513b192eda648f222b6/model.nlp";
 
 // Construct an answer given the API has provided the requested information
 function buildAnswer(intent, data) {
@@ -20,31 +20,108 @@ function buildAnswer(intent, data) {
     }
 
     let answer;
-    if (intent == "organisms") {
-        answer = "The available organisms are: " + _chainList(
-            data.organisms, ", ", ".");
-    } else if (intent == "organs") {
-        answer = "The available organs for " + data.organism + " are: " + _chainList(
-            data.organs, ", ", ".");
-        if ((data.organs.length == 1) && (data.organs[0] === "whole")) {
-            answer += " The entire organism was dissociated at once and sequenced."
+    const intentParts = intent.split(".");
+    const gIntent = intentParts[0];
+    let sIntent;
+    if (intentParts.length > 1)
+      sIntent = intentParts[1];
+    else
+      sIntent == "";
+      
+    switch (gIntent) {
+      case "organisms":
+        answer = "The available organisms are: " + _chainList(data.organisms, ", ", ".");
+        break;
+      case "organs":
+        answer = "The available organs for " + data.organism + " are: " + _chainList(data.organs, ", ", ".");
+        if ((data.organs.length == 1) && (data.organs[0] === "whole"))
+            answer += " The organism was dissociated as a whole and sequenced.";
+        break;
+      case "celltypes":
+        answer = "The cell types in " + data.organism + " " + data.organ + " are: " + _chainList(data.celltypes, ", ", ".");
+        break;
+      case "average":
+        switch (sIntent) {
+          case "geneExpression":
+            answer = "The average expression of " + data.features + " in " + data.organism + " " + data.organ + " is shown in the plot.";
+            break;
+          case "chromatinAccessibility":
+            answer = "The average accessibility of " + data.features + " in " + data.organism + " " + data.organ + " is shown in the plot.";
+            break;
+          default:
+            answer = "The average is shown in the plot.";
         }
-    } else if (intent == "celltypes") {
-        answer = "The cell types in " + data.organism + " " + data.organ + " are: " + _chainList(
-        data.celltypes, ", ", ".");
-    } else if (intent == "average.geneExpression") {
-        answer = "The average expression of " + data.features + " in " + data.organism + " " + data.organ + " is shown in the plot.";
-    } else if (intent == "fraction_detected.geneExpression") {
+        break;
+      case "fraction_detected":
         answer = "A dot plot of " + data.features + " in " + data.organism + " " + data.organ + " is shown in the plot.";
-    } else if (intent == "markers.geneExpression") {
-        answer = "The marker genes for " + data.celltype + " in " + data.organism + " " + data.organ + " are: " + data.markers;
-    } else if (intent == "similar_features.genes") {
-        answer = "The genes similar to " + data.feature + " in " + data.organism + + " " + organ + " are: " + data.similar_features;
-    } else if (intent == "similar_celltypes") {
+        break;
+      case "markers":
+        switch (sIntent) {
+          case "geneExpression":
+            answer = "The marker genes for " + data.celltype + " in " + data.organism + " " + data.organ + " are: " + data.markers;
+            break;
+          case "chromatinAccessibility":
+            answer = "The marker peaks for " + data.celltype + " in " + data.organism + " " + data.organ + " are: " + data.markers;
+            break;
+          default:
+            answer = "The markers for " + data.celltype + " in " + data.organism + " " + data.organ + " are: " + data.markers;
+        }
+        break;
+      case "similar_features":
+        switch (sIntent) {
+          case "geneExpression":
+            answer = "The genes similar to " + data.feature + " in " + data.organism + " " + organ + " are: " + data.similar_features;
+            break;
+          case "chromatinAccessibility":
+            answer = "The peaks with similar accessibility to " + data.feature + " in " + data.organism + + " " + organ + " are: " + data.similar_features;
+            break;
+          default:
+            answer = "The features similar to " + data.feature + " in " + data.organism + " " + organ + " are: " + data.similar_features;
+        }
+        break;
+      case "similar_celltypes":
         answer = "The cell types similar to " + data.celltype + " in " + data.organism + " are: " + data.similar_celltypes;
-    } else if (intent == "celltypexorgan") {
+        break;
+      case "celltypexorgan":
         answer = "The presence matrix of cell types in " + data.organism + " is shown in the plot.";
-    }
+        break;
+      case "highest_measurement":
+        switch (sIntent) {
+          case "geneExpression":
+            answer = "The highest expressors of " + data.feature + " are:";
+            break;
+          case "chromatinAccessibility":
+            answer = "The cell types with the most accessibility of " + data.feature + " are:";
+            break;
+          default:
+            answer = "The highest measurement are in:";
+        }
+        for (let i = 0; i < data.celltypes.length; i++)
+          answer += "<br>" + data.organs[i] + ", " + data.celltypes[i];
+        break;
+      case "add":
+        switch (sIntent) {
+          case "features":
+            answer = "Features added.";
+            break;
+          default:
+            answer = "Added.";
+        }
+        break;
+      case "remove":
+        switch (sIntent) {
+          case "features":
+            answer = "Features removed.";
+            break;
+          default:
+            answer = "Removed.";
+        }
+        break;
+
+      default:
+        answer = "Sorry, I have no answer to that.";
+    };
+
     return answer;
 }
 
@@ -76,37 +153,10 @@ function buildAPIParams(intent, entities) {
     }
 }
 
-// Shortcut function to the API
-async function callAPI(endpoint, params = {}) {
-    // Phrase https request from params (they are all GET for now, so URI encoding suffices)
-    let uri = "https://api.atlasapprox.org/v1/" + endpoint
-
-    const uriSuffix = new URLSearchParams(params).toString();
-    if (uriSuffix != "")
-        uri += "?" + uriSuffix;
-
-    if (debug)
-        console.log("API URI: " + uri)
-
-    let response = await fetch(uri);
-
-    // Check response
-    let data;
-    if (!response.ok) {
-        data = {
-            error: "API call failed",
-        }
-    } else {
-        // NOTE: response.body is a stream, so it can be processed only ONCE
-        data = await response.json();
-    }
-
-    return data;
-}
 
 async function ask(question, context = {}) {
 
-    // When this function is used, it's always after window.nlpManager has been set
+    // This function is only used after window.nlpManager has been set
     const manager = window.nlpManager;
 
     let response = await manager.process("en", question, context);
@@ -128,31 +178,6 @@ async function ask(question, context = {}) {
         intent: response.intent,
         entities: response.entities,
     }
-
-    //if (debug)
-    //    console.log("calling API...");
-
-    //// Build API request parameters
-    //let { endpoint, params } = buildAPIParams(response.intent, response.entities);
-
-    //// Call API with endpoint and request parameters
-    //let data = await callAPI(endpoint, params);
-
-    //// Construct a NL answer from the data. This might be better outsourced to nlpjs.
-    //const answer = buildAnswer(response.intent, data);
-
-    //return {
-    //    intent: response.intent,
-    //    endpoint: endpoint,
-    //    params: params,
-    //    data: data,
-    //    answer: answer,
-    //};
-
-
-    //APIAnswer.complete = true;
-    //return APIAnswer;
-
 };
 
 // Prepare the nlp manager at loading time
