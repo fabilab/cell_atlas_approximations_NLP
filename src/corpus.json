@@ -213,6 +213,27 @@
       }
     },
     {
+      "intent": "celltype_location.geneExpression",
+      "utterances": [
+        "where are @celltype in @organism?",
+        "where are @celltype detected in @organism?",
+        "where were @celltype found in @organism?",
+        "what organs contain @celltype in @organism?",
+        "show locations of @celltype in @organism",
+        "list organs containing @celltype in @organism"
+      ],
+      "slotFilling": {
+        "organism": {
+          "mandatory": true,
+          "question": "You requested cell type location: in what organism?"
+        },
+        "celltype": {
+          "mandatory": true,
+          "question": "You requested cell type location: of what cell type?"
+        }
+      }
+    },
+    {
       "intent": "celltypexorgan.geneExpression",
       "utterances": [
         "show the table of cell types in all @organism organs",
@@ -419,6 +440,60 @@
       }
     },
     {
+      "intent": "averageAcrossOrgans.geneExpression",
+      "utterances": [
+        "compare expression of @features in @celltype across organs in @organism",
+        "compare expression of @features in @celltype across tissues in @organism",
+        "what is the expression of @features across organs in @organism @celltype?",
+        "what is the expression of @features across tissues in @organism @celltype?",
+        "what is the gene expression of @features across organs in @organism @celltype?",
+        "what is the gene expression of @features across tissues in @organism @celltype?",
+        "across @organism tissues, what is the expression of @features in @celltype?",
+        "across tissues in @organism, what is the expression of @features in @celltype?"
+      ],
+      "slotFilling": {
+        "features": {
+          "mandatory": true,
+          "question": "You requested average expression across organs: what genes?"
+        },
+        "organism": {
+          "mandatory": true,
+          "question": "You requested average expression across organs: in what organism?"
+        },
+        "celltype": {
+          "mandatory": true,
+          "question": "You requested average expression across organs: in what cell type?"
+        }
+      }
+    },
+    {
+      "intent": "fraction_detectedAcrossOrgans.geneExpression",
+      "utterances": [
+        "compare fraction of cells expressing @features in @celltype across organs in @organism",
+        "compare fraction of cells expressing @features in @celltype across tissues in @organism",
+        "what is the fraction of cells expressing @features across organs in @organism @celltype?",
+        "what is the fraction of cells expressing @features across tissues in @organism @celltype?",
+        "what is the fraction expressing @features across organs in @organism @celltype?",
+        "what is the fraction expressing @features across tissues in @organism @celltype?",
+        "across @organism tissues, what is the fraction of cells expressing @features in @celltype?",
+        "across tissues in @organism, what is the fraction expressing @features in @celltype?"
+      ],
+      "slotFilling": {
+        "features": {
+          "mandatory": true,
+          "question": "You requested average expression across organs: what genes?"
+        },
+        "organism": {
+          "mandatory": true,
+          "question": "You requested average expression across organs: in what organism?"
+        },
+        "celltype": {
+          "mandatory": true,
+          "question": "You requested average expression across organs: in what cell type?"
+        }
+      }
+    },
+    {
       "intent": "highest_measurement.chromatinAccessibility",
       "utterances": [
         "who has the most accessible chromatin at @features in @organism?",
@@ -497,11 +572,13 @@
     {
       "intent": "similar_celltypes.geneExpression",
       "utterances": [
-        "what are cell types similar to @celltype in @organism?",
-        "show @nCelltypes cell types similar to @celltype in @organism",
+        "what cell types are similar to @organ @celltype in @organism?",
+        "what are cell types similar to @organ @celltype in @organism?",
+        "show @nCelltypes cell types similar to @organ @celltype in @organism",
+        "show cell types like @organ @celltype",
         "show cell types like @celltype",
-        "show @nCelltypes cell types like @celltype in @organism",
-        "show @nCelltypes similar cell types to @celltype in @organism"
+        "show @nCelltypes cell types like @organ @celltype in @organism",
+        "show @nCelltypes similar cell types to @organ @celltype in @organism"
       ],
       "slotFilling": {
 	      "nCelltypes": {
@@ -512,6 +589,10 @@
         "organism": {
           "mandatory": true,
           "question": "You requested similar cell types: in what organism?"
+        },
+        "organ": {
+          "mandatory": true,
+          "question": "You requested similar cell types: similar to a cell type from what organ?"
         },
         "celltype": {
           "mandatory": true,
@@ -522,11 +603,11 @@
     {
       "intent": "similar_celltypes.chromatinAccessibility",
       "utterances": [
-        "what are cell types in chromatin accessibility similar to @celltype in @organism?",
-        "show @nCelltypes cell types with similar chromatin peaks to @celltype in @organism",
-        "show cell types like @celltype by chromatin accessibility",
-        "show @nCelltypes cell types like @celltype by chromatin accessibility in @organism",
-        "show @nCelltypes similar cell types to @celltype in @organism by chromatin accessibility"
+        "what are cell types in chromatin accessibility similar to @organ @celltype in @organism?",
+        "show @nCelltypes cell types with similar chromatin peaks to @organ @celltype in @organism",
+        "show cell types like @organ @celltype by chromatin accessibility",
+        "show @nCelltypes cell types like @organ @celltype by chromatin accessibility in @organism",
+        "show @nCelltypes similar cell types to @organ @celltype in @organism by chromatin accessibility"
       ],
       "slotFilling": {
 	      "nCelltypes": {
@@ -537,6 +618,10 @@
         "organism": {
           "mandatory": true,
           "question": "You requested similar cell types: in what organism?"
+        },
+        "organ": {
+          "mandatory": true,
+          "question": "You requested similar cell types: similar to a cell type from what organ?"
         },
         "celltype": {
           "mandatory": true,
@@ -583,7 +668,8 @@
         ],
         "d_rerio": ["d_rerio", "zebrafish", "fish"],
         "c_elegans": ["c_elegans", "worm"],
-        "s_lacustris": ["s_lacustris", "sponge"]
+        "s_lacustris": ["s_lacustris", "sponge"],
+        "x_laevis": ["x_laevis", "xenopus", "frog"]
       }
     },
     "organ": {
@@ -601,7 +687,7 @@
         "Spleen": ["spleen"],
         "Thyroid": ["thyroid"],
         "Thymus": ["thymus"],
-        "Marrow": ["marrow", "bone marrow"],
+        "Bone_Marrow": ["marrow", "bone marrow"],
         "Muscle": ["muscle", "muscles"],
         "Esophagus": ["esophagus"],
         "Stomach": ["stomach"],
@@ -610,6 +696,7 @@
         "Skin": ["skin"],
         "Fat": ["fat", "brown fat", "white fat"],
         "Ovary": ["ovary", "ovaries"],
+        "Oviduct": ["oviduct"],
         "Uterus": ["uterus"],
         "whole": ["whole", "entire"]
       }
@@ -637,7 +724,9 @@
       "regex": [
         "/(?:types like|similar) (?:as|to) (\\w+)/",
         "/(?:similar genes|similar peaks|similar chromatin peaks) (?:as|to) (\\w+)/",
-        "/(?:for|markers of|marker genes of|marker peaks of) (\\w+)/"
+        "/(?:for|markers of|marker genes of|marker peaks of) (\\w+)/",
+        "/(?:where are|where were|organs contain|organs containing|locations of|location of) (\\w+)/",
+        "/across (?:organs|tissues) in (?:\\w+) (\\w+)/"
       ]
     }
   }

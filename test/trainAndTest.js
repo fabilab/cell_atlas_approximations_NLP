@@ -75,7 +75,11 @@ function getRandomInt(min, max) {
         //"what measurement kinds are there?",
         //"what are 10 cell types with similar chromatin peaks to fibroblast in human?",
         //"what ATAC-Seq cell types are there in human lung?",
-        ["what are the marker peaks for fibroblast in human lung?", "3"],
+        //["what are the marker peaks for fibroblast in human lung?", "3"],
+        //"where are fibroblast in human?",
+        //"What is the average expression of ALK,CD8A,CD19 across organs in human fibroblast?",
+        "What is the fraction of cells expressing ALK,CD8A,CD19 across organs in human fibroblast?",
+
       ];
   }
 

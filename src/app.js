@@ -3,7 +3,7 @@ const { Nlp } = require('@nlpjs/nlp');
 const { LangEn } = require('@nlpjs/lang-en-min');
 
 let debug = true;
-const modelUrl = "https://gist.githubusercontent.com/iosonofabio/c42d91f7297c949eff0168078940af2d/raw/510d6af46175af4ec823f513b192eda648f222b6/model.nlp";
+const modelUrl = "https://gist.githubusercontent.com/iosonofabio/c42d91f7297c949eff0168078940af2d/raw/5a88f44167d9b16b871901a670a6b8408c88230c/model.nlp";
 
 // Construct an answer given the API has provided the requested information
 function buildAnswer(intent, data) {
@@ -40,6 +40,9 @@ function buildAnswer(intent, data) {
       case "celltypes":
         answer = "The cell types in " + data.organism + " " + data.organ + " are: " + _chainList(data.celltypes, ", ", ".");
         break;
+      case "celltype_location":
+        answer = "The cell type " + data.celltype + " was detected in " + data.organism + " " + data.organ + " are: " + _chainList(data.organs, ", ", ".");
+        break;
       case "average":
         switch (sIntent) {
           case "geneExpression":
@@ -52,8 +55,23 @@ function buildAnswer(intent, data) {
             answer = "The average is shown in the plot.";
         }
         break;
+      case "averageAcrossOrgans":
+        switch (sIntent) {
+          case "geneExpression":
+            answer = "The average expression of " + data.features + " in " + data.organism + " " + data.celltype + " is shown in the plot.";
+            break;
+          case "chromatinAccessibility":
+            answer = "The average accessibility of " + data.features + " in " + data.organism + " " + data.celltype + " is shown in the plot.";
+            break;
+          default:
+            answer = "The average is shown in the plot.";
+        }
+        break;
       case "fraction_detected":
         answer = "A dot plot of " + data.features + " in " + data.organism + " " + data.organ + " is shown in the plot.";
+        break;
+      case "fraction_detectedAcrossOrgans":
+        answer = "A dot plot of " + data.features + " in " + data.organism + " " + data.celltype + " is shown in the plot.";
         break;
       case "markers":
         switch (sIntent) {
