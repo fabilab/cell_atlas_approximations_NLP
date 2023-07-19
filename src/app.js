@@ -3,7 +3,7 @@ const { Nlp } = require('@nlpjs/nlp');
 const { LangEn } = require('@nlpjs/lang-en-min');
 
 let debug = true;
-const modelUrl = "https://gist.githubusercontent.com/iosonofabio/c42d91f7297c949eff0168078940af2d/raw/5a88f44167d9b16b871901a670a6b8408c88230c/model.nlp";
+const modelUrl = "https://gist.githubusercontent.com/iosonofabio/c42d91f7297c949eff0168078940af2d/raw/aa984aba6dfdaf801c0e7911fca4d5c2734a6b53/model.nlp";
 
 // Construct an answer given the API has provided the requested information
 function buildAnswer(intent, data) {

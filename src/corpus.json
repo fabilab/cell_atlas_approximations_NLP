@@ -597,6 +597,10 @@
         "celltype": {
           "mandatory": true,
           "question": "You requested similar cell types: similar to what cell type?"
+        },
+        "features": {
+          "mandatory": true,
+          "question": "You requested similar cell types. Similarity between cell types is a little ambiguous and depends on the genes chosen. What genes would you like to use?"
         }
       }
     },
@@ -674,29 +678,31 @@
     },
     "organ": {
       "options": {
-        "Lung": ["Lung", "lung"],
-        "Heart": ["Heart", "heart"],
-        "Pancreas": ["Pancreas", "pancreas"],
-        "Tongue": ["Tongue", "tongue"],
-        "Salivary": ["Salivary", "salivary gland"],
-        "Trachea": ["trachea"],
-        "Brain": ["brain", "head"],
-        "Liver": ["liver"],
         "Adrenal": ["adrenal", "adrenal gland"],
-        "Kidney": ["kidney", "kidneys"],
-        "Spleen": ["spleen"],
-        "Thyroid": ["thyroid"],
-        "Thymus": ["thymus"],
         "Bone_Marrow": ["marrow", "bone marrow"],
-        "Muscle": ["muscle", "muscles"],
-        "Esophagus": ["esophagus"],
-        "Stomach": ["stomach"],
-        "Gut": ["intestine", "gut", "small intestine", "duodenum"],
+        "Brain": ["brain", "head"],
         "Colon": ["colon", "large intestine", "rectum"],
-        "Skin": ["skin"],
+        "Esophagus": ["esophagus"],
+        "Eye": ["eye", "eyes"],
         "Fat": ["fat", "brown fat", "white fat"],
+        "Gut": ["intestine", "gut", "small intestine", "duodenum"],
+        "Heart": ["Heart", "heart"],
+        "Kidney": ["kidney", "kidneys"],
+        "Liver": ["liver"],
+        "Lung": ["Lung", "lung"],
+        "Muscle": ["muscle", "muscles"],
         "Ovary": ["ovary", "ovaries"],
         "Oviduct": ["oviduct"],
+        "Pancreas": ["Pancreas", "pancreas"],
+        "Salivary": ["Salivary", "salivary gland"],
+        "Skin": ["skin"],
+        "Spleen": ["spleen"],
+        "Stomach": ["stomach"],
+        "Testis": ["testis", "testes"],
+        "Thymus": ["thymus"],
+        "Thyroid": ["thyroid"],
+        "Tongue": ["Tongue", "tongue"],
+        "Trachea": ["trachea"],
         "Uterus": ["uterus"],
         "whole": ["whole", "entire"]
       }

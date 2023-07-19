@@ -78,8 +78,8 @@ function getRandomInt(min, max) {
         //["what are the marker peaks for fibroblast in human lung?", "3"],
         //"where are fibroblast in human?",
         //"What is the average expression of ALK,CD8A,CD19 across organs in human fibroblast?",
-        "What is the fraction of cells expressing ALK,CD8A,CD19 across organs in human fibroblast?",
-
+        //"What is the fraction of cells expressing ALK,CD8A,CD19 across organs in human fibroblast?",
+        ["what cell type is similar to lung fibroblast in human?", "Col1a1,Col2a1"],
       ];
   }
 
