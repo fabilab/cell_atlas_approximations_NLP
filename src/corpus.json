@@ -672,8 +672,12 @@
         ],
         "d_rerio": ["d_rerio", "zebrafish", "fish"],
         "c_elegans": ["c_elegans", "worm"],
+        "a_queenslandica": ["a_queenslandica", "amphimedon"],
+        "t_adherens": ["t_adherens", "trichoplax", "placozoa"],
         "s_lacustris": ["s_lacustris", "sponge"],
-        "x_laevis": ["x_laevis", "xenopus", "frog"]
+        "x_laevis": ["x_laevis", "xenopus", "frog"],
+        "m_leidyi": ["m_leidyi", "ctenophore", "jellyfish"],
+        "s_mediterranea": ["s_mediterranea", "planarian", "plenaria", "flatworm"]
       }
     },
     "organ": {

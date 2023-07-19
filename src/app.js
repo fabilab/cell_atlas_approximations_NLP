@@ -115,7 +115,7 @@ function buildAnswer(intent, data) {
             answer = "The highest measurement are in:";
         }
         for (let i = 0; i < data.celltypes.length; i++)
-          answer += "<br>" + data.organs[i] + ", " + data.celltypes[i];
+          answer += "<br>" + (i+1) + ". " + data.celltypes[i] + " in " + data.organs[i];
         break;
       case "add":
         switch (sIntent) {
