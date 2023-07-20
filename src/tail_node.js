@@ -20,6 +20,8 @@ async function initialize() {
     this.ask = ask.bind(this);
     this.buildAPIParams = buildAPIParams;
     this.buildAnswer = buildAnswer;
-})
+
+    return this;
+}
 
 module.exports = initialize;

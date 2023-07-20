@@ -15,17 +15,18 @@
   "scripts": {
     "trainMock": "node src/trainMock.js",
     "train": "node src/train.js && cd gists/model && git add . && git commit -m 'bump' && git push && cd ../..",
-    "trainTestNode": "run(){ node test/trainAndTest.js \"$1\" \"$2\"; }; run",
+    "testCorpus": "run(){ node test/trainAndTest.js \"$1\" \"$2\"; }; run",
     "build": "cat src/app.js src/tail_window.js > build/index.js",
     "deploy": "npm run build && sed -i 's/debug = true/debug = false/' build/index.js && npx webpack build --entry ./build/index.js -o ./gists/atlasapproxnlp --mode production && mv gists/atlasapproxnlp/main.js gists/atlasapproxnlp/atlasapproxnlp.js && cd gists/atlasapproxnlp && git add . && git commit -m 'bump' && git push && cd ../..",
     "testBrowser": "npm run build && npx webpack build --entry ./build/index.js -o ./test --mode development && mv test/main.js test/index.js && firefox test/index.html",
     "buildNpm": "cat src/app.js src/tail_node.js > index.js",
     "deployNpm": "npm run buildNpm && npm publish",
-    "testNpm": "echo 'NOT IMPLEMENTED'"
+    "testNpm": "npm run buildNpm && cp index.js test/atlasapprox-nlp.js && npx webpack serve ./test/webpack.js --static ./test --open /webpack.html --mode development"
   },
   "devDependencies": {
     "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
     "@nlpjs/basic": "^4.27.0",
