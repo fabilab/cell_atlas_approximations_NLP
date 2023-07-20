@@ -3,7 +3,7 @@ const { Nlp } = require('@nlpjs/nlp');
 const { LangEn } = require('@nlpjs/lang-en-min');
 
 let debug = true;
-const modelUrl = "https://gist.githubusercontent.com/iosonofabio/c42d91f7297c949eff0168078940af2d/raw/2c8a6784af2bbab1975fbdea044045b09a083bae/model.nlp";
+const modelUrl = "https://gist.githubusercontent.com/iosonofabio/c42d91f7297c949eff0168078940af2d/raw/c5c6e4544b4548192b88fb3eb6639c29b48d582b/model.nlp";
 
 // Construct an answer given the API has provided the requested information
 function buildAnswer(intent, data) {
@@ -182,7 +182,7 @@ function buildAPIParams(intent, entities) {
 async function ask(question, context = {}) {
 
     // This function is only used after window.nlpManager has been set
-    const manager = window.nlpManager;
+    const manager = this.nlpManager || window.nlpManager;
 
     let response = await manager.process("en", question, context);
 
@@ -205,27 +205,3 @@ async function ask(question, context = {}) {
     }
 };
 
-// Prepare the nlp manager at loading time
-(async () => {
-
-    // Initialize nlpjs objects
-    const container = await containerBootstrap();
-    container.use(Nlp);
-    container.use(LangEn);
-    const manager = container.get('nlp');
-
-    // Get data from URL (gist)
-    let response = await fetch(modelUrl);
-    if (!response.ok) {
-        throw new Error(`HTTP error: ${response.status}`);
-    }
-    let data = await response.text();
-    
-    // Import the model into manager
-    await manager.import(data);
-
-    window.nlpManager = manager;
-    window.ask = ask;
-    window.buildAPIParams = buildAPIParams;
-    window.buildAnswer = buildAnswer;
-})();

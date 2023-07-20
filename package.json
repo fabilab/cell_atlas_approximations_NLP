@@ -1,11 +1,22 @@
 {
+  "name": "atlasapprox-nlp",
+  "version": "0.1.0",
+  "main": "index.js",
+  "files": ["index.js", "README.md"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabilab/cell_atlas_approximations_NLP.git"
+  },
   "scripts": {
     "trainMock": "node src/trainMock.js",
     "train": "node src/train.js && cd gists/model && git add . && git commit -m 'bump' && git push && cd ../..",
-    "testBrowser": "browserify src/app.js | terser --compress --mangle > test/index.js && firefox test/index.html",
     "trainTestNode": "run(){ node test/trainAndTest.js \"$1\" \"$2\"; }; run",
-    "testNode": "run(){ node src/train.js && node test/node.js \"$1\"; }; run",
-    "deploy": "browserify src/app.js | sed 's/debug = true/debug = false/' | terser --compress --mangle > ./gists/atlasapproxnlp/atlasapproxnlp.js && cd gists/atlasapproxnlp && git add . && git commit -m 'bump' && git push && cd ../.."
+    "build": "cat src/app.js src/tail_window.js > build/index.js",
+    "deploy": "npm run build && browserify build/index.js | sed 's/debug = true/debug = false/' | terser --compress --mangle > ./gists/atlasapproxnlp/atlasapproxnlp.js && cd gists/atlasapproxnlp && git add . && git commit -m 'bump' && git push && cd ../..",
+    "testBrowser": "npm run build && browserify build/index.js | terser --compress --mangle > test/index.js && firefox test/index.html",
+    "buildNpm": "cat src/app.js src/tail_node.js > index.js",
+    "deployNpm": "npm run buildNpm && npm publish",
+    "testNpm": "echo 'NOT IMPLEMENTED'"
   },
   "devDependencies": {
     "browserify": "^17.0.0",

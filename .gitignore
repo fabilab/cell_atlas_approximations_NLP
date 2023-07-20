@@ -1,4 +1,6 @@
-build
-# This is generated from src/app.js
+# These are generated from src/app.js
+index.js
 test/index.js
+
+build
 node_modules
