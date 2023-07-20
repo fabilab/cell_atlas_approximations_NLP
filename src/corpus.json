@@ -444,7 +444,7 @@
       }
     },
     {
-      "intent": "averageAcrossOrgans.geneExpression",
+      "intent": "average.geneExpression.across_organs",
       "utterances": [
         "compare expression of @features in @celltype across organs in @organism",
         "compare expression of @features in @celltype across tissues in @organism",
@@ -471,7 +471,7 @@
       }
     },
     {
-      "intent": "fraction_detectedAcrossOrgans.geneExpression",
+      "intent": "fraction_detected.geneExpression.across_organs",
       "utterances": [
         "compare fraction of cells expressing @features in @celltype across organs in @organism",
         "compare fraction of cells expressing @features in @celltype across tissues in @organism",

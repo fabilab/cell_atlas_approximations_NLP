@@ -140,10 +140,10 @@ function getRandomInt(min, max) {
           "intent": "celltype_location.geneExpression"},
         {
           "questions": "What is the average expression of ALK,CD8A,CD19 across organs in human fibroblast?",
-          "intent": "averageAcrossOrgans.geneExpression"},
+          "intent": "average.geneExpression.across_organs"},
         {
           "questions": "What is the fraction of cells expressing ALK,CD8A,CD19 across organs in human fibroblast?",
-          "intent": "fraction_detectedAcrossOrgans.geneExpression"},
+          "intent": "fraction_detected.geneExpression.across_organs"},
         {
           "questions": ["what cell type is similar to lung fibroblast in human?", "Col1a1,Col2a1"],
           "intent": "similar_celltypes.geneExpression"},

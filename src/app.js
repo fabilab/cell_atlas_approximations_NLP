@@ -22,11 +22,12 @@ function buildAnswer(intent, data) {
     let answer;
     const intentParts = intent.split(".");
     const gIntent = intentParts[0];
-    let sIntent;
-    if (intentParts.length > 1)
+    let sIntent = "", addIntent = "";
+    if (intentParts.length > 1) {
       sIntent = intentParts[1];
-    else
-      sIntent == "";
+      if (intentParts.length > 2)
+        addIntent = intentParts[2];
+    }
       
     switch (gIntent) {
       case "organisms":
@@ -44,34 +45,40 @@ function buildAnswer(intent, data) {
         answer = "The cell type " + data.celltype + " was detected in " + data.organism + " " + data.organ + " are: " + _chainList(data.organs, ", ", ".");
         break;
       case "average":
-        switch (sIntent) {
-          case "geneExpression":
-            answer = "The average expression of " + data.features + " in " + data.organism + " " + data.organ + " is shown in the plot.";
-            break;
-          case "chromatinAccessibility":
-            answer = "The average accessibility of " + data.features + " in " + data.organism + " " + data.organ + " is shown in the plot.";
-            break;
-          default:
-            answer = "The average is shown in the plot.";
-        }
-        break;
-      case "averageAcrossOrgans":
-        switch (sIntent) {
-          case "geneExpression":
-            answer = "The average expression of " + data.features + " in " + data.organism + " " + data.celltype + " is shown in the plot.";
-            break;
-          case "chromatinAccessibility":
-            answer = "The average accessibility of " + data.features + " in " + data.organism + " " + data.celltype + " is shown in the plot.";
+        switch (addIntent) {
+          case "across_organs":
+            switch (sIntent) {
+              case "geneExpression":
+                answer = "The average expression of " + data.features + " in " + data.organism + " " + data.celltype + " is shown in the plot.";
+                break;
+              case "chromatinAccessibility":
+                answer = "The average accessibility of " + data.features + " in " + data.organism + " " + data.celltype + " is shown in the plot.";
+                break;
+              default:
+                answer = "The average is shown in the plot.";
+            }
             break;
           default:
-            answer = "The average is shown in the plot.";
+            switch (sIntent) {
+              case "geneExpression":
+                answer = "The average expression of " + data.features + " in " + data.organism + " " + data.organ + " is shown in the plot.";
+                break;
+              case "chromatinAccessibility":
+                answer = "The average accessibility of " + data.features + " in " + data.organism + " " + data.organ + " is shown in the plot.";
+                break;
+              default:
+                answer = "The average is shown in the plot.";
+            }
         }
         break;
       case "fraction_detected":
-        answer = "A dot plot of " + data.features + " in " + data.organism + " " + data.organ + " is shown in the plot.";
-        break;
-      case "fraction_detectedAcrossOrgans":
-        answer = "A dot plot of " + data.features + " in " + data.organism + " " + data.celltype + " is shown in the plot.";
+        switch (addIntent) {
+          case "across_organs":
+            answer = "A dot plot of " + data.features + " in " + data.organism + " " + data.celltype + " is shown in the plot.";
+            break;
+          default:
+            answer = "A dot plot of " + data.features + " in " + data.organism + " " + data.organ + " is shown in the plot.";
+        }
         break;
       case "markers":
         switch (sIntent) {
