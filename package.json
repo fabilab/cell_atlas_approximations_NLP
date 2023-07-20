@@ -1,8 +1,13 @@
 {
   "name": "atlasapprox-nlp",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "author": "Fabio Zanini",
+  "license": "MIT",
   "main": "index.js",
-  "files": ["index.js", "README.md"],
+  "files": [
+    "index.js",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fabilab/cell_atlas_approximations_NLP.git"
@@ -12,15 +17,15 @@
     "train": "node src/train.js && cd gists/model && git add . && git commit -m 'bump' && git push && cd ../..",
     "trainTestNode": "run(){ node test/trainAndTest.js \"$1\" \"$2\"; }; run",
     "build": "cat src/app.js src/tail_window.js > build/index.js",
-    "deploy": "npm run build && browserify build/index.js | sed 's/debug = true/debug = false/' | terser --compress --mangle > ./gists/atlasapproxnlp/atlasapproxnlp.js && cd gists/atlasapproxnlp && git add . && git commit -m 'bump' && git push && cd ../..",
-    "testBrowser": "npm run build && browserify build/index.js | terser --compress --mangle > test/index.js && firefox test/index.html",
+    "deploy": "npm run build && sed -i 's/debug = true/debug = false/' build/index.js && npx webpack build --entry ./build/index.js -o ./gists/atlasapproxnlp --mode production && mv gists/atlasapproxnlp/main.js gists/atlasapproxnlp/atlasapproxnlp.js && cd gists/atlasapproxnlp && git add . && git commit -m 'bump' && git push && cd ../..",
+    "testBrowser": "npm run build && npx webpack build --entry ./build/index.js -o ./test --mode development && mv test/main.js test/index.js && firefox test/index.html",
     "buildNpm": "cat src/app.js src/tail_node.js > index.js",
     "deployNpm": "npm run buildNpm && npm publish",
     "testNpm": "echo 'NOT IMPLEMENTED'"
   },
   "devDependencies": {
-    "browserify": "^17.0.0",
-    "terser": "^5.17.7"
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "@nlpjs/basic": "^4.27.0",
