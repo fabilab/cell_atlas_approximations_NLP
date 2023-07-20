@@ -64,6 +64,53 @@
       ]
     },
     {
+      "intent": "organisms.geneExpression",
+      "utterances": [
+        "show species",
+        "list species",
+        "show organisms",
+        "list organisms",
+        "which species are present?",
+        "which species are available?",
+        "what species are present?",
+        "what species are there?",
+        "what organisms are there?",
+        "what species are available?",
+        "show available organisms",
+        "list available organisms",
+        "which organisms do you have?",
+        "which organisms are present?",
+        "which organisms are available?",
+        "what organisms do you have?",
+        "what organisms are present?",
+        "what organisms are available?",
+        "What organisms are available in AtlasApprox?"
+      ]
+    },
+    {
+      "intent": "organisms.chromatinAccessibility",
+      "utterances": [
+        "show species for chromatin accessibility",
+        "list species for chromatin accessibility",
+        "show organisms for chromatin accessibility",
+        "list organisms for chromatin accessibility",
+        "which species are present in chromatin accessibility data?",
+        "which species are available in chromatin accessibility?",
+        "what species are present in chromatin accessibility?",
+        "what species are there in the chromatin accessibility data?",
+        "what organisms are there in the chromatin accessibility data?",
+        "what species are available in the chromatin accessibility data?",
+        "show available organisms in chromatin accessibility",
+        "list available organisms in chromatin accessibility",
+        "which organisms do you have in the chromatin accessibility data?",
+        "which organisms are present in the chromatin accessibility data?",
+        "which organisms are available in the chromatin accessibility data?",
+        "what organisms do you have in the chromatin accessibility data?",
+        "what organisms are present in the chromatin accessibility data?",
+        "what organisms are available via chromatin accessibility?"
+      ]
+    },
+    {
       "intent": "organs.geneExpression",
       "utterances": [
         "list tissues",
@@ -115,53 +162,7 @@
         }
       }
     },
-    {
-      "intent": "organisms.geneExpression",
-      "utterances": [
-        "show species",
-        "list species",
-        "show organisms",
-        "list organisms",
-        "which species are present?",
-        "which species are available?",
-        "what species are present?",
-        "what species are there?",
-        "what organisms are there?",
-        "what species are available?",
-        "show available organisms",
-        "list available organisms",
-        "which organisms do you have?",
-        "which organisms are present?",
-        "which organisms are available?",
-        "what organisms do you have?",
-        "what organisms are present?",
-        "what organisms are available?",
-        "What organisms are available in AtlasApprox?"
-      ]
-    },
-    {
-      "intent": "organisms.chromatinAccessibility",
-      "utterances": [
-        "show species for chromatin accessibility",
-        "list species for chromatin accessibility",
-        "show organisms for chromatin accessibility",
-        "list organisms for chromatin accessibility",
-        "which species are present in chromatin accessibility data?",
-        "which species are available in chromatin accessibility?",
-        "what species are present in chromatin accessibility?",
-        "what species are there in the chromatin accessibility data?",
-        "what organisms are there in the chromatin accessibility data?",
-        "what species are available in the chromatin accessibility data?",
-        "show available organisms in chromatin accessibility",
-        "list available organisms in chromatin accessibility",
-        "which organisms do you have in the chromatin accessibility data?",
-        "which organisms are present in the chromatin accessibility data?",
-        "which organisms are available in the chromatin accessibility data?",
-        "what organisms do you have in the chromatin accessibility data?",
-        "what organisms are present in the chromatin accessibility data?",
-        "what organisms are available via chromatin accessibility?"
-      ]
-    },
+
     {
       "intent": "celltypes.geneExpression",
       "utterances": [
@@ -419,6 +420,9 @@
     {
       "intent": "highest_measurement.geneExpression",
       "utterances": [
+        "who expresses @features?",
+        "who expresses @features the most?",
+        "what cell type expresses @features the most?",
         "who expresses @features in @organism?",
         "who expresses most @features in @organism?",
         "who is the highest expressor of @features in @organism?",
@@ -713,10 +717,10 @@
     },
     "features": {
       "regex": [
-        "/(?:expression of|fraction of|cells expressing) ([\\w;,\/]+)/",
+        "/(?:dotplot of|expression of|fraction of|cells expressing) ([\\w;,\/]+)/",
         "/(?:genes similar to|genes like|similar genes to) ([\\w;,\/]+)/",
         "/(?:peaks similar to|peaks like|similar peaks to) ([\\w;,\/]+)/",
-        "/(?:expresses|expressor of) ([\\w;,\/]+)/",
+        "/(?:expresses|expresses most|expressor of|expressors of) ([\\w;,\/]+)/",
         "/(?:add|include|delete|remove) ([\\w;,\/]+)/"
       ]
     },
