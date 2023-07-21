@@ -179,12 +179,13 @@ function buildAPIParams(intent, entities) {
 }
 
 
-async function ask(question, context = {}) {
+// This is a method class in the CommonJS module, because it needs the manager
+async function ask(question) {
 
     // This function is only used after window.nlpManager has been set
     const manager = this.nlpManager || window.nlpManager;
 
-    let response = await manager.process("en", question, context);
+    let response = await manager.process("en", question, this.context);
 
     if (debug)
         console.log(response);

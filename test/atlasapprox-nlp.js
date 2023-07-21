@@ -179,12 +179,13 @@ function buildAPIParams(intent, entities) {
 }
 
 
-async function ask(question, context = {}) {
+// This is a method class in the CommonJS module, because it needs the manager
+async function ask(question) {
 
     // This function is only used after window.nlpManager has been set
     const manager = this.nlpManager || window.nlpManager;
 
-    let response = await manager.process("en", question, context);
+    let response = await manager.process("en", question, this.context);
 
     if (debug)
         console.log(response);
@@ -205,7 +206,15 @@ async function ask(question, context = {}) {
     }
 };
 
-async function initialize() {
+function AtlasApproxNlp(context = {}) {
+  this.initialised = false;
+  this.context = context;
+}
+
+AtlasApproxNlp.prototype = {
+  async initialise() {
+    if (this.initialised == true)
+      return this;
 
     // Initialize nlpjs objects
     const container = await containerBootstrap();
@@ -216,7 +225,7 @@ async function initialize() {
     // Get data from URL (gist)
     let response = await fetch(modelUrl);
     if (!response.ok) {
-        throw new Error(`HTTP error: ${response.status}`);
+      throw new Error(`HTTP error: ${response.status}`);
     }
     let data = await response.text();
     
@@ -225,10 +234,21 @@ async function initialize() {
 
     this.nlpManager = manager;
     this.ask = ask.bind(this);
-    this.buildAPIParams = buildAPIParams;
-    this.buildAnswer = buildAnswer;
+
+    this.initialised = true;
 
     return this;
+  },
+
+  reset() {
+    this.context = {};
+    return this;
+  }
 }
 
-module.exports = initialize;
+
+module.exports = {
+  AtlasApproxNlp,
+  buildAPIParams,
+  buildAnswer,
+}

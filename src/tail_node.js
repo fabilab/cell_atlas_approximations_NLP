@@ -1,4 +1,12 @@
-async function initialize() {
+function AtlasApproxNlp(context = {}) {
+  this.initialised = false;
+  this.context = context;
+}
+
+AtlasApproxNlp.prototype = {
+  async initialise() {
+    if (this.initialised == true)
+      return this;
 
     // Initialize nlpjs objects
     const container = await containerBootstrap();
@@ -9,7 +17,7 @@ async function initialize() {
     // Get data from URL (gist)
     let response = await fetch(modelUrl);
     if (!response.ok) {
-        throw new Error(`HTTP error: ${response.status}`);
+      throw new Error(`HTTP error: ${response.status}`);
     }
     let data = await response.text();
     
@@ -18,10 +26,21 @@ async function initialize() {
 
     this.nlpManager = manager;
     this.ask = ask.bind(this);
-    this.buildAPIParams = buildAPIParams;
-    this.buildAnswer = buildAnswer;
+
+    this.initialised = true;
 
     return this;
+  },
+
+  reset() {
+    this.context = {};
+    return this;
+  }
 }
 
-module.exports = initialize;
+
+module.exports = {
+  AtlasApproxNlp,
+  buildAPIParams,
+  buildAnswer,
+}

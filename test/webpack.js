@@ -1,7 +1,11 @@
-let nlpInitialize = require('./atlasapprox-nlp.js');
+let { AtlasApproxNlp, buildAPIParams, buildAnswer } = require('./atlasapprox-nlp.js');
+let nlp = new AtlasApproxNlp();
 
 (async () => {
-  let nlp = await nlpInitialize();
+
+  await nlp.initialise();
+
   window.nlp = nlp;
+
   console.log("Module loaded");
 })();
