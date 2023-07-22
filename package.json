@@ -1,11 +1,12 @@
 {
   "name": "atlasapprox-nlp",
-  "version": "0.1.2",
+  "version": "0.1.6",
   "author": "Fabio Zanini",
   "license": "MIT",
-  "main": "index.js",
+  "main": "build/index.js",
   "files": [
-    "index.js",
+    "build/modelString.js",
+    "build/index.js",
     "README.md"
   ],
   "repository": {
@@ -13,15 +14,13 @@
     "url": "git+https://github.com/fabilab/cell_atlas_approximations_NLP.git"
   },
   "scripts": {
-    "trainMock": "node src/trainMock.js",
-    "train": "node src/train.js && cd gists/model && git add . && git commit -m 'bump' && git push && cd ../..",
-    "testCorpus": "run(){ node test/trainAndTest.js \"$1\" \"$2\"; }; run",
-    "build": "cat src/app.js src/tail_window.js > build/index.js",
-    "deploy": "npm run build && sed -i 's/debug = true/debug = false/' build/index.js && npx webpack build --entry ./build/index.js -o ./gists/atlasapproxnlp --mode production && mv gists/atlasapproxnlp/main.js gists/atlasapproxnlp/atlasapproxnlp.js && cd gists/atlasapproxnlp && git add . && git commit -m 'bump' && git push && cd ../..",
-    "testBrowser": "npm run build && npx webpack build --entry ./build/index.js -o ./test --mode development && mv test/main.js test/index.js && firefox test/index.html",
-    "buildNpm": "cat src/app.js src/tail_node.js > index.js",
-    "deployNpm": "npm run buildNpm && npm publish",
-    "testNpm": "npm run buildNpm && cp index.js test/atlasapprox-nlp.js && npx webpack serve ./test/webpack.js --static ./test --open /webpack.html --mode development"
+    "train": "node src/train.js",
+    "build": "npm run train && cp src/app.js build/index.js",
+    "testCorpus": "run(){ node test/testCorpus.js \"$1\" \"$2\"; }; run",
+    "testNode": "npm uninstall atlasapprox-nlp && rm -f atlasapprox-nlp-*.tgz && npm run build && npm pack && npm install atlasapprox-nlp-*.tgz && node test/testModule.js",
+    "testWebpack": "npm run build && cp build/index.js test/atlasapprox-nlp.js && cp build/modelString.js test/ && npx webpack serve ./test/webpack.js --static ./test --open /webpack.html --mode development",
+    "test": "npm run testNode && npm run testWebpack",
+    "deploy": "npm run build && sed -i 's/debug = true/debug = false/' build/index.js && npm publish"
   },
   "devDependencies": {
     "webpack": "^5.88.2",
@@ -33,6 +32,7 @@
     "@nlpjs/core": "^4.26.1",
     "@nlpjs/lang-en-min": "^4.26.1",
     "@nlpjs/nlp": "^4.27.0",
-    "@nlpjs/request-rn": "^4.25.0"
+    "@nlpjs/request-rn": "^4.25.0",
+    "atlasapprox-nlp": "file:atlasapprox-nlp-0.1.6.tgz"
   }
 }

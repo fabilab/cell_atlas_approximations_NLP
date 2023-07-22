@@ -1,6 +1,8 @@
-# These are generated from src/app.js
-index.js
-test/index.js
-
+# These are generated via npm scripts
 build
+test/index.js
+test/atlasapprox-nlp.js
+test/modelString.js
+
+# Deps
 node_modules

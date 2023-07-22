@@ -64,6 +64,61 @@
       ]
     },
     {
+      "intent": "organs.geneExpression",
+      "utterances": [
+        "list tissues",
+        "list organs",
+        "list organs in @organism",
+        "list tissues in @organism",
+        "list organs for @organism",
+        "list tissues for @organism",
+        "show organs",
+        "show tissues",
+        "show tissues for @organism",
+        "show organs for @organism",
+        "what organs are available?",
+        "what organs are available for @organism?",
+        "what organs are there for @organism?",
+        "what organs are available in @organism?",
+        "what organs are there in @organism?",
+        "what organs do you have?",
+        "what organs do you have for @organism?"
+      ],
+      "slotFilling": {
+        "organism": {
+          "mandatory": true,
+          "question": "In what organism?"
+        }
+      }
+    },
+    {
+      "intent": "organs.chromatinAccessibility",
+      "utterances": [
+        "list tissues in chromatin accessibility",
+        "list organs in chromatin accessibility",
+        "list organs in @organism in chromatin accessibility",
+        "list tissues in @organism in chromatin accessibility",
+        "list organs for @organism in chromatin accessibility",
+        "list tissues for @organism in chromatin accessibility",
+        "show organs in chromatin accessibility",
+        "show tissues in chromatin accessibility",
+        "show tissues for @organism in chromatin accessibility",
+        "show organs for @organism in chromatin accessibility",
+        "what organs are available by chromatin accessibility?",
+        "what organs are available for @organism by chromatin accessibility? ",
+        "what organs are there for @organism by chromatin accessibility?",
+        "what organs do you have by chromatin accessibility?",
+        "what organs do you have for @organism by chromatin accessibility?"
+      ],
+      "slotFilling": {
+        "organism": {
+          "mandatory": true,
+          "question": "In what organism?"
+        }
+      }
+    },
+ 
+    {
       "intent": "organisms.geneExpression",
       "utterances": [
         "show species",
@@ -110,59 +165,6 @@
         "what organisms are available via chromatin accessibility?"
       ]
     },
-    {
-      "intent": "organs.geneExpression",
-      "utterances": [
-        "list tissues",
-        "list organs",
-        "list organs in @organism",
-        "list tissues in @organism",
-        "list organs for @organism",
-        "list tissues for @organism",
-        "show organs",
-        "show tissues",
-        "show tissues for @organism",
-        "show organs for @organism",
-        "what organs are available?",
-        "what organs are available for @organism?",
-        "what organs are there for @organism?",
-        "what organs do you have?",
-        "what organs do you have for @organism?"
-      ],
-      "slotFilling": {
-        "organism": {
-          "mandatory": true,
-          "question": "In what organism?"
-        }
-      }
-    },
-    {
-      "intent": "organs.chromatinAccessibility",
-      "utterances": [
-        "list tissues in chromatin accessibility",
-        "list organs in chromatin accessibility",
-        "list organs in @organism in chromatin accessibility",
-        "list tissues in @organism in chromatin accessibility",
-        "list organs for @organism in chromatin accessibility",
-        "list tissues for @organism in chromatin accessibility",
-        "show organs in chromatin accessibility",
-        "show tissues in chromatin accessibility",
-        "show tissues for @organism in chromatin accessibility",
-        "show organs for @organism in chromatin accessibility",
-        "what organs are available by chromatin accessibility?",
-        "what organs are available for @organism by chromatin accessibility? ",
-        "what organs are there for @organism by chromatin accessibility?",
-        "what organs do you have by chromatin accessibility?",
-        "what organs do you have for @organism by chromatin accessibility?"
-      ],
-      "slotFilling": {
-        "organism": {
-          "mandatory": true,
-          "question": "In what organism?"
-        }
-      }
-    },
-
     {
       "intent": "celltypes.geneExpression",
       "utterances": [

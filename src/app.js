@@ -1,9 +1,12 @@
+// containerBootstrap is needed for webpack and similar browser envs
+// dock works in nodejs though. The hierarchy of objects is a little
+// fuzzy from the nlpjs v4 docs, so let's leave this as is for now.
 const { containerBootstrap } = require('@nlpjs/core');
 const { Nlp } = require('@nlpjs/nlp');
 const { LangEn } = require('@nlpjs/lang-en-min');
+const modelString = require('./modelString.js');
 
 let debug = true;
-const modelUrl = "https://gist.githubusercontent.com/iosonofabio/c42d91f7297c949eff0168078940af2d/raw/c5c6e4544b4548192b88fb3eb6639c29b48d582b/model.nlp";
 
 // Construct an answer given the API has provided the requested information
 function buildAnswer(intent, data) {
@@ -194,6 +197,7 @@ async function ask(question) {
     if (response.slotFill) {
         return {
             complete: false,
+            intent: response.intent,
             followUpQuestion: response.answer,
         };
     }
@@ -206,3 +210,44 @@ async function ask(question) {
     }
 };
 
+
+function AtlasApproxNlp(context = {}) {
+  this.initialised = false;
+  this.context = context;
+}
+
+AtlasApproxNlp.prototype = {
+  async initialise() {
+    if (this.initialised == true)
+      return this;
+
+    // Initialise nlpjs
+    const container = await containerBootstrap();
+    container.use(Nlp);
+    container.use(LangEn);
+    const manager = container.get('nlp');
+    
+    // Import the model into manager
+    // NOTE: this is a horrible hack, but hey
+    await manager.import(modelString);
+
+    this.nlpManager = manager;
+    this.ask = ask.bind(this);
+
+    this.initialised = true;
+
+    return this;
+  },
+
+  reset() {
+    this.context = {};
+    return this;
+  }
+}
+
+
+module.exports = {
+  AtlasApproxNlp,
+  buildAPIParams,
+  buildAnswer,
+}
