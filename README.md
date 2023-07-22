@@ -1,33 +1,36 @@
-[![npm version](https://badge.fury.io/js/atlasapprox-nlp.svg)](https://badge.fury.io/js/atlasapprox-nlp)
+[![npm version](https://badge.fury.io/js/@fabilab%2Fatlasapprox-nlp.svg)](https://badge.fury.io/js/@fabilab%2Fatlasapprox-nlp)
 
 <img src="https://raw.githubusercontent.com/fabilab/cell_atlas_approximations/main/figures/figure_NLP.png" width="150" height="150">
 
 # Cell Atlas Approximations - Natural Language Processing
 Cell atlases are single cell data sets on the scale of whole organisms. There are many ways for humans to query these atlases using natural language (e.g. English), however human-atlas interactions are currently limited to Python or R programmers.
 
-This project enables biologists, doctors, and anyone else to ask questions in their natural language (starting from English) and convert the question into a formalised query for an atlas approximation. This functionality is used internally in our [Human Interface](https://github.com/fabilab/cell_atlas_approximations_HI) web application. Intents understood via NLP in this library are then forwarded to our [JavaScript API](https://github.com/fabilab/cell_atlas_approximations_API) contained in the [atlasapprox](https://www.npmjs.com/package/atlasapprox) npm package.
+This project enables biologists, doctors, and anyone else to ask questions in their natural language (starting from English) and convert the question into a formalised query for an atlas approximation. This functionality is used internally in our [Human Interface](https://github.com/fabilab/cell_atlas_approximations_HI) web application. Intents understood via NLP in this library are then forwarded to our [JavaScript API](https://github.com/fabilab/cell_atlas_approximations_API) contained in the [atlasapprox](https://www.npmjs.com/package/@fabilab/atlasapprox) npm package.
 
 ## Installation
 ```bash
-npm install atlasapprox-nlp
+npm install @fabilab/atlasapprox-nlp
 ```
 
 If you want to use query the JavaScript API based on the answers you received here, you'll need to install that package as well:
 
 ```bash
-npm install atlasapprox
+npm install @fabilab/atlasapprox
 ```
 
 ## Usage
 ```javascript
-let { AtlasApproxNlp, buildAPIParams, buildAnswer } = require('./atlasapprox-nlp.js');
+// ES6 (e.g. in React development)
+import { AtlasApproxNlp, buildAPIParams, buildAnswer } from '@fabilab/atlasapprox-nlp';
+// CommonJS variant
+//let { AtlasApproxNlp, buildAPIParams, buildAnswer } = require('@fabilab/atlasapprox-nlp');
+
 let nlp = new AtlasApproxNlp();
 
 (async () => {
-
   await nlp.initialise();
-  console.log("Module loaded");
-  //window.nlp = nlp;  // Set it globally if needed
+
+  // NOTE: Multiple initalisation is OK
 
   // Ask a question
   let response = await nlp.ask("What measurement types are available?");
