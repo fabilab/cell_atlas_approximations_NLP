@@ -538,7 +538,7 @@
           "mandatory": true,
           "question": "You requested similar genes: similar to what gene?"
         },
-              "organism": {
+        "organism": {
           "mandatory": true,
           "question": "You requested similar genes: in what organism?"
         },
@@ -733,13 +733,14 @@
     },
     "nCelltypes": {
       "regex": [
-        "/([0-9]+) (cell types|similar)/"
+        "/([0-9]+) (cell types|similar cell)/"
       ]
     },
     "celltype": {
       "regex": [
         "/(?:types like|similar) (?:as|to) (\\w+)/",
-        "/(?:similar genes|similar peaks|similar chromatin peaks) (?:as|to) (\\w+)/",
+        "/(?:types like|similar as|similar to) (?:\\w+) (\\w+)/",
+        "/with (?:similar genes|similar peaks|similar chromatin peaks) (?:as|to) (\\w+)/",
         "/(?:for|markers of|marker genes of|marker peaks of) (\\w+)/",
         "/(?:where are|where were|organs contain|organs containing|locations of|location of) (\\w+)/",
         "/across (?:organs|tissues) in (?:\\w+) (\\w+)/"

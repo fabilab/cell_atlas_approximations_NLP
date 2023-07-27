@@ -1,3 +1,6 @@
+# Dist files
+fabilab-atlasapprox-nlp-*.tgz
+
 # These are generated via npm scripts
 build
 test/index.js

@@ -1,6 +1,6 @@
 {
   "name": "@fabilab/atlasapprox-nlp",
-  "version": "0.1.8",
+  "version": "0.1.11",
   "author": "Fabio Zanini",
   "license": "MIT",
   "main": "build/index.js",
@@ -32,7 +32,6 @@
     "@nlpjs/core": "^4.26.1",
     "@nlpjs/lang-en-min": "^4.26.1",
     "@nlpjs/nlp": "^4.27.0",
-    "@nlpjs/request-rn": "^4.25.0",
-    "atlasapprox-nlp": "file:atlasapprox-nlp-0.1.6.tgz"
+    "@nlpjs/request-rn": "^4.25.0"
   }
 }

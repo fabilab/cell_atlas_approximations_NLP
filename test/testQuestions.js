@@ -104,6 +104,15 @@ let questionsGroups = [
     {
       "questions": ["what cell type is similar to lung fibroblast in human?", "Col1a1,Col2a1"],
       "intent": "similar_celltypes.geneExpression"},
+    {
+      "questions": ["show 8 cell types like Uterus pericyte in human", "COL1A1,COL2A1"],
+      "intent": "similar_celltypes.geneExpression"},
+    {
+      "questions": ["show 10 similar genes to COL1A1 in human lung"],
+      "intent": "similar_features.geneExpression"},
+    {
+      "questions": ["show 5 cell types like Lung fibroblast in mouse", "Ptprc,Gzma,Col1a1,Col2a1,Col6a2"],
+      "intent": "similar_celltypes.geneExpression"},
   ];
 
 module.exports = {
