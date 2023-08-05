@@ -33,6 +33,9 @@ function buildAnswer(intent, data) {
     }
       
     switch (gIntent) {
+      case "measurement_types":
+        answer = "The available measurement types are: " + _chainList(data.measurement_tyupes, ", ", ".");
+        break;
       case "organisms":
         answer = "The available organisms are: " + _chainList(data.organisms, ", ", ".");
         break;
