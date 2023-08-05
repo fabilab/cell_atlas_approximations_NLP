@@ -664,6 +664,20 @@
           "question": "You requested remove features: what features?"
         }
       }
+    },
+    {
+      "intent": "plot.log",
+      "utterances": [
+        "log",
+        "exp",
+        "log data",
+        "take the log",
+        "unlog data",
+        "toggle log",
+        "logarithm of data",
+        "exponentiate data",
+        "take the logarithm"
+      ]
     }
   ],
 
