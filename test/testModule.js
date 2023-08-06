@@ -1,4 +1,4 @@
-let { AtlasApproxNlp } = require("atlasapprox-nlp");
+let { AtlasApproxNlp } = require("@fabilab/atlasapprox-nlp");
 let { questionsGroups } = require("./testQuestions.js");
 
 function getRandomInt(min, max) {

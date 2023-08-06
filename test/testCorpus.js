@@ -7,6 +7,51 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
 }
 
+const preProcess = (utterance) => {
+  // cell types with space require attention
+  const compositeCelltypes = [
+    [/(smooth|striated) muscle/i, "$1_muscle"],
+    [/(\w+) progenitor/i, "$1_progenitor"],
+  ];
+  for (let i = 0; i < compositeCelltypes.length; i++) {
+    let patterns = compositeCelltypes[i];
+    utterance = utterance.replace(patterns[0], patterns[1]);
+  }
+
+  return utterance;
+};
+
+const postProcess = (response) => {
+  let entitiesForDeletion = [];
+
+  // smooth muscle et al.: the "muscle" gets recognised as an organ. Fix that
+  for (let i = 0; i < response.entities.length; i++) {
+    const entity = response.entities[i];
+    if ((entity['entity'] == "celltype") && (entity['sourceText'].includes("muscle"))) {
+      entitiesForDeletion.push("organ");
+      break
+  } else if ((entity['entity'] == "celltype")) {
+     console.log(entity);
+    }
+  };
+
+  let newEntities = [];
+  for (let i = 0; i < response.entities.length; i++) {
+    const entity = response.entities[i];
+    let keep = true;
+    for (let j = 0; j < entitiesForDeletion.length; j++) {
+      if (entity['entity'] == entitiesForDeletion[j]) {
+        keep = false;
+        break;
+      }
+    };
+    if (keep)
+      newEntities.push(entity);
+  }
+  response.entities = newEntities;
+}
+
+
 (async () => {
   const dock = await dockStart({
     settings: {
@@ -24,15 +69,18 @@ function getRandomInt(min, max) {
   // Train the network
   await manager.train();
 
-
   // Create a function to interact with the bot
   async function ask(question, context = {}) {
+    question = preProcess(question);
+
     let response = await manager.process("en", question, context);
 
     let nAnswers = response.answers.length;
     if (nAnswers > 0) {
       response.answer = response.answers[getRandomInt(0, nAnswers)]["answer"];      
     }
+
+    postProcess(response);
 
     return response;
 
@@ -79,6 +127,9 @@ function getRandomInt(min, max) {
         }
         return false;
       }
+
+      if (response.intent == "celltype_location.geneExpression")
+        console.log(response);
     }
     return true;
   }

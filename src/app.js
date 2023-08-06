@@ -9,7 +9,7 @@ const modelString = require('./modelString.js');
 let debug = true;
 
 // Construct an answer given the API has provided the requested information
-function buildAnswer(intent, data) {
+const buildAnswer = (intent, data) => {
     function _chainList(list, sep, end) {
         let text = "";
         for (let i=0; i < list.length; i++) {
@@ -156,7 +156,7 @@ function buildAnswer(intent, data) {
     return answer;
 }
 
-function buildAPIParams(intent, entities) {
+const buildAPIParams = (intent, entities) => {
     // Extract endpoint from intent
     let endpoint = intent.split(".")[0];
 
@@ -185,13 +185,65 @@ function buildAPIParams(intent, entities) {
 }
 
 
+const preProcess = (utterance) => {
+  // cell types with space require attention
+  const compositeCelltypes = [
+    [/(smooth|striated) muscle/i, "$1_muscle"],
+    [/(\w+) progenitor/i, "$1_progenitor"],
+  ];
+  for (let i = 0; i < compositeCelltypes.length; i++) {
+    let patterns = compositeCelltypes[i];
+    utterance = utterance.replace(patterns[0], patterns[1]);
+  }
+
+  return utterance;
+};
+
+
+const postProcess = (response) => {
+  let entitiesForDeletion = [];
+
+  // smooth muscle et al.: the "muscle" gets recognised as an organ. Fix that
+  for (let i = 0; i < response.entities.length; i++) {
+    const entity = response.entities[i];
+    if ((entity['entity'] == "celltype") && (entity['sourceText'].includes("muscle"))) {
+      entitiesForDeletion.push("organ");
+      break
+  } else if ((entity['entity'] == "celltype")) {
+     console.log(entity);
+    }
+  };
+
+  let newEntities = [];
+  for (let i = 0; i < response.entities.length; i++) {
+    const entity = response.entities[i];
+    let keep = true;
+    for (let j = 0; j < entitiesForDeletion.length; j++) {
+      if (entity['entity'] == entitiesForDeletion[j]) {
+        keep = false;
+        break;
+      }
+    };
+    if (keep)
+      newEntities.push(entity);
+  }
+  response.entities = newEntities;
+}
+
+
 // This is a method class in the CommonJS module, because it needs the manager
 async function ask(question) {
 
     // This function is only used after window.nlpManager has been set
     const manager = this.nlpManager || window.nlpManager;
 
+    // Pre-process request for quirky situations (e.g. smooth muscle)
+    question = preProcess(question);
+
     let response = await manager.process("en", question, this.context);
+
+    // Post-process response for the same reason as above
+    postProcess(response);
 
     if (debug)
         console.log(response);

@@ -223,7 +223,8 @@
         "where were @celltype found in @organism?",
         "what organs contain @celltype in @organism?",
         "show locations of @celltype in @organism",
-        "list organs containing @celltype in @organism"
+        "list organs containing @celltype in @organism",
+        "where are @celltype@organ detected in @organism?"
       ],
       "slotFilling": {
         "organism": {
@@ -697,7 +698,9 @@
         "s_lacustris": ["s_lacustris", "sponge"],
         "x_laevis": ["x_laevis", "xenopus", "frog"],
         "m_leidyi": ["m_leidyi", "ctenophore", "jellyfish"],
-        "s_mediterranea": ["s_mediterranea", "planarian", "plenaria", "flatworm"]
+        "s_mediterranea": ["s_mediterranea", "planarian", "plenaria", "flatworm"],
+        "s_mansoni": ["s_mansoni", "schistosome"],
+        "h_miamia": ["h_miamia", "acoel", "hofstenia"]
       }
     },
     "organ": {

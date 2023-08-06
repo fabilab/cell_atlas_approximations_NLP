@@ -113,6 +113,15 @@ let questionsGroups = [
     {
       "questions": ["show 5 cell types like Lung fibroblast in mouse", "Ptprc,Gzma,Col1a1,Col2a1,Col6a2"],
       "intent": "similar_celltypes.geneExpression"},
+    {
+      "questions": "take the logarithm",
+      "intent": "plot.log"},
+    {
+      "questions": "where are smooth muscle detected in human?",
+      "intent": "celltype_location.geneExpression"},
+    {
+      "questions": "where are muscle progenitor detected in s_mansoni?",
+      "intent": "celltype_location.geneExpression"},
   ];
 
 module.exports = {
