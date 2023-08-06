@@ -122,6 +122,9 @@ let questionsGroups = [
     {
       "questions": "where are muscle progenitor detected in s_mansoni?",
       "intent": "celltype_location.geneExpression"},
+    {
+      "questions": "explore human",
+      "intent": "explore.organism"},
   ];
 
 module.exports = {

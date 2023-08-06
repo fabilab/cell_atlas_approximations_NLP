@@ -46,6 +46,24 @@
       ]
     },
     {
+      "intent": "explore.organism",
+      "utterances": [
+        "explore @organism",
+        "let me explore @organism",
+        "what is known about @organism?",
+        "delve into @organism",
+        "what can you tell me about @organism?",
+        "what data is available on @organism?",
+        "what is there on @organism?"
+      ],
+      "slotFilling": {
+        "organism": {
+          "mandatory": true,
+          "question": "Explore what organism?"
+        }
+      }
+    },
+    {
       "intent": "measurement_types",
       "utterances": [
          "show list of measurement types",
