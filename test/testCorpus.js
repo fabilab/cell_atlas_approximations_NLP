@@ -8,6 +8,9 @@ function getRandomInt(min, max) {
 }
 
 const preProcess = (utterance) => {
+  // list of features with ", " -> remove the space
+  utterance = utterance.replaceAll(", ", ",");
+
   // cell types with space require attention
   const compositeCelltypes = [
     [/(smooth|striated) muscle/i, "$1_muscle"],
@@ -100,7 +103,7 @@ const postProcess = (response) => {
     console.log(process.argv);
   }
 
-  async function testGroup(questions, intent, context = {}, debug = false) {
+  async function testGroup(questions, intent, entities = {}, context = {}, debug = false) {
     if (typeof questions === 'string' || questions instanceof String) {
       questions = [questions];
     }
@@ -128,6 +131,18 @@ const postProcess = (response) => {
         return false;
       }
 
+      for (let je = 0; je < response.entities.length; je++) {
+        const entity = response.entities[je];
+        const entityName = entity.entity;
+        const srcText = entity["sourceText"];
+        if ((entities[entityName] !== undefined) && (entities[entityName] != srcText)){
+          console.log(response);
+          console.log("--------------------------------------------");
+          console.log("ENTITY NOT CORRECT: " + entityName + " -> " + srcText);
+          return false;
+        }
+      };
+
       if (response.intent == "celltype_location.geneExpression")
         console.log(response);
     }
@@ -142,8 +157,8 @@ const postProcess = (response) => {
     console.log("Group" + (k+1));
     // Each question group resets the context
     let context = {};
-    let { questions, intent } = questionsGroups[k];
-    exit = !await testGroup(questions, intent, context, debug = true);
+    let { questions, intent, entities } = questionsGroups[k];
+    exit = !await testGroup(questions, intent, entities, context, debug = true);
     if (!exit) {
       console.log("--------------------------------------------");
       console.log("OK");

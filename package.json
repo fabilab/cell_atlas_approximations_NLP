@@ -1,6 +1,6 @@
 {
   "name": "@fabilab/atlasapprox-nlp",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "author": "Fabio Zanini",
   "license": "MIT",
   "main": "build/index.js",
@@ -28,6 +28,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "@fabilab/atlasapprox-nlp": "file:fabilab-atlasapprox-nlp-0.1.16.tgz",
     "@nlpjs/basic": "^4.27.0",
     "@nlpjs/core": "^4.26.1",
     "@nlpjs/lang-en-min": "^4.26.1",

@@ -186,6 +186,9 @@ const buildAPIParams = (intent, entities) => {
 
 
 const preProcess = (utterance) => {
+  // list of features with ", " -> remove the space
+  utterance = utterance.replaceAll(", ", ",");
+
   // cell types with space require attention
   const compositeCelltypes = [
     [/(smooth|striated) muscle/i, "$1_muscle"],
