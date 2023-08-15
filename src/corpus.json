@@ -331,7 +331,7 @@
       "slotFilling": {
         "features": {
           "mandatory": true,
-          "question": "You requested average chromatin accessibility: what genes?"
+          "question": "You requested average chromatin accessibility: what peaks?"
         },
         "organism": {
           "mandatory": true,
@@ -757,6 +757,7 @@
     "features": {
       "regex": [
         "/(?:dotplot of|expression of|fraction of|cells expressing) ([\\w;,\/]+)/",
+        "/(?:accessibility of) ([\\w;,:\/-]+)/",
         "/(?:genes similar to|genes like|similar genes to) ([\\w;,\/]+)/",
         "/(?:peaks similar to|peaks like|similar peaks to) ([\\w;,\/]+)/",
         "/(?:expresses|expresses most|expressor of|expressors of) ([\\w;,\/]+)/",

@@ -179,6 +179,13 @@ let questionsGroups = [
         "features": "ALK,CD8A,CD19",
       },
     },
+    {
+      "questions": "What is the chromatin accessibility of chr1:9955-10355 in human lung?",
+      "intent": "average.chromatinAccessibility",
+      "entities": {
+        "features": "chr1:9955-10355",
+      }
+    },
   ];
 
 module.exports = {
