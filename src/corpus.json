@@ -94,6 +94,8 @@
         "show tissues",
         "show tissues for @organism",
         "show organs for @organism",
+        "show organs for human",
+        "show organs for mouse",
         "what organs are available?",
         "what organs are available for @organism?",
         "what organs are there for @organism?",

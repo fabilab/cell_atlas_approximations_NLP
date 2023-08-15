@@ -134,11 +134,11 @@ const postProcess = (response) => {
       for (let je = 0; je < response.entities.length; je++) {
         const entity = response.entities[je];
         const entityName = entity.entity;
-        const srcText = entity["sourceText"];
-        if ((entities[entityName] !== undefined) && (entities[entityName] != srcText)){
+        const entityString = entity["type"] === "enum" ? entity["option"] : entity["sourceText"];
+        if ((entities[entityName] !== undefined) && (entities[entityName] != entityString)){
           console.log(response);
           console.log("--------------------------------------------");
-          console.log("ENTITY NOT CORRECT: " + entityName + " -> " + srcText);
+          console.log("ENTITY NOT CORRECT: " + entityName + " -> " + entityString);
           return false;
         }
       };
@@ -155,7 +155,7 @@ const postProcess = (response) => {
   for (let k = 0; k < questionsGroups.length; k++) {
     console.log("############################################");
     console.log("Group" + (k+1));
-    // Each question group resets the context
+    // NOTE: Each question group resets the context
     let context = {};
     let { questions, intent, entities } = questionsGroups[k];
     exit = !await testGroup(questions, intent, entities, context, debug = true);

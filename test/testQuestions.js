@@ -8,6 +8,21 @@ let questionsGroups = [
       "intent": "organisms.geneExpression",
     },
     {
+      "questions": ["show organs in human"],
+      "intent": "organs.geneExpression",
+    },
+    {
+      "questions": ["show organs for human"],
+      "intent": "organs.geneExpression",
+      "entities": {
+        "organism": "h_sapiens",
+      },
+    },
+    {
+      "questions": ["show organs for h_sapiens"],
+      "intent": "organs.geneExpression",
+    },
+    {
       "questions": ["what cell types are available?", "in mouse", "lung"],
       "intent": "celltypes.geneExpression"
     },
