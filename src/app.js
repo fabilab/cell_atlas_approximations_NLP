@@ -37,7 +37,7 @@ const postProcess = (response) => {
       entitiesForDeletion.push("organ");
       break
   } else if ((entity['entity'] == "celltype")) {
-     console.log(entity);
+     //console.log(entity);
     }
   };
 

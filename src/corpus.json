@@ -756,32 +756,32 @@
     },
     "features": {
       "regex": [
-        "/(?:dotplot of|expression of|fraction of|cells expressing) ([\\w;,\/]+)/",
-        "/(?:accessibility of) ([\\w;,:\/-]+)/",
-        "/(?:genes similar to|genes like|similar genes to) ([\\w;,\/]+)/",
-        "/(?:peaks similar to|peaks like|similar peaks to) ([\\w;,\/]+)/",
-        "/(?:expresses|expresses most|expressor of|expressors of) ([\\w;,\/]+)/",
-        "/(?:add|include|delete|remove) ([\\w;,\/]+)/"
+        "/(?:dotplot of|expression of|fraction of|cells expressing) ([\\w;,\/]+)/i",
+        "/(?:accessibility of) ([\\w;,:\/-]+)/i",
+        "/(?:genes similar to|genes like|similar genes to) ([\\w;,\/]+)/i",
+        "/(?:peaks similar to|peaks like|similar peaks to) ([\\w;,\/]+)/i",
+        "/(?:expresses|expresses most|expressor of|expressors of) ([\\w;,\/]+)/i",
+        "/(?:add|include|delete|remove) ([\\w;,\/]+)/i"
       ]
     },
     "nFeatures": {
       "regex": [
-        "/([0-9]+) (genes|marker|top|feature|peak|similar)/"
+        "/([0-9]+) (genes|marker|top|feature|peak|similar)/i"
       ]
     },
     "nCelltypes": {
       "regex": [
-        "/([0-9]+) (cell types|similar cell)/"
+        "/([0-9]+) (cell types|similar cell)/i"
       ]
     },
     "celltype": {
       "regex": [
-        "/(?:types like|similar) (?:as|to) (\\w+)/",
-        "/(?:types like|similar as|similar to) (?:\\w+) (\\w+)/",
-        "/with (?:similar genes|similar peaks|similar chromatin peaks) (?:as|to) (\\w+)/",
-        "/(?:for|markers of|marker genes of|marker peaks of) (\\w+)/",
-        "/(?:where are|where were|organs contain|organs containing|locations of|location of) (\\w+)/",
-        "/across (?:organs|tissues) in (?:\\w+) (\\w+)/"
+        "/(?:types like|similar) (?:as|to) (\\w+)/i",
+        "/(?:types like|similar as|similar to) (?:\\w+) (\\w+)/i",
+        "/with (?:similar genes|similar peaks|similar chromatin peaks) (?:as|to) (\\w+)/i",
+        "/(?:for|markers of|marker genes of|marker peaks of) (\\w+)/i",
+        "/(?:where are|where were|organs contain|organs containing|locations of|location of) (\\w+)/i",
+        "/across (?:organs|tissues) in (?:\\w+) (\\w+)/i"
       ]
     }
   }

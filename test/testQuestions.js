@@ -133,6 +133,10 @@ let questionsGroups = [
       "intent": "celltype_location.geneExpression",
     },
     {
+      "questions": "Where are fibroblast detected in human?",
+      "intent": "celltype_location.geneExpression",
+    },
+    {
       "questions": "What is the average expression of ALK,CD8A,CD19 across organs in human fibroblast?",
       "intent": "average.geneExpression.across_organs",
     },
