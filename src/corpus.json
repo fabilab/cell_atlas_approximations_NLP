@@ -720,7 +720,8 @@
         "m_leidyi": ["m_leidyi", "ctenophore", "jellyfish"],
         "s_mediterranea": ["s_mediterranea", "planarian", "plenaria", "flatworm"],
         "s_mansoni": ["s_mansoni", "schistosome"],
-        "h_miamia": ["h_miamia", "acoel", "hofstenia"]
+        "h_miamia": ["h_miamia", "acoel", "hofstenia"],
+        "d_melanogaster": ["d_melanogaster", "drosophila", "fly", "fruitfly"]
       }
     },
     "organ": {
