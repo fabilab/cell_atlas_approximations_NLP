@@ -89,7 +89,7 @@ let questionsGroups = [
       "intent": "markers.geneExpression",
     },
     {
-      "questions": "What is the fraction of IL6,TNF,APOE,COL1A1,ALK,CD8A,CD19,TP53 in human lung?",
+      "questions": "What is the fraction of cells expressing IL6,TNF,APOE,COL1A1,ALK,CD8A,CD19,TP53 in human lung?",
       "intent": "fraction_detected.geneExpression",
     },
     {
@@ -190,6 +190,15 @@ let questionsGroups = [
         "features": "chr1:9955-10355",
       }
     },
+    {
+      "questions": "Compare fraction of cells expressing TP53, APOE, CD19, COL1A1, TGFBI in fibroblast across organs in human?",
+      "intent": "fraction_detected.geneExpression.across_organs",
+      "entities": {
+        "features": "TP53,APOE,CD19,COL1A1,TGFBI",
+        "organism": "h_sapiens",
+        "celltype": "fibroblast",
+      },
+    }
   ];
 
 module.exports = {

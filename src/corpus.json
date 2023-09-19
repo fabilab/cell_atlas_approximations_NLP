@@ -761,7 +761,7 @@
         "/(?:accessibility of) ([\\w;,:\/-]+)/i",
         "/(?:genes similar to|genes like|similar genes to) ([\\w;,\/]+)/i",
         "/(?:peaks similar to|peaks like|similar peaks to) ([\\w;,\/]+)/i",
-        "/(?:expresses|expresses most|expressor of|expressors of) ([\\w;,\/]+)/i",
+        "/(?:expresses|expresses most|expressor of|expressors of|expressing) ([\\w;,\/]+)/i",
         "/(?:add|include|delete|remove) ([\\w;,\/]+)/i"
       ]
     },
@@ -782,7 +782,9 @@
         "/with (?:similar genes|similar peaks|similar chromatin peaks) (?:as|to) (\\w+)/i",
         "/(?:for|markers of|marker genes of|marker peaks of) (\\w+)/i",
         "/(?:where are|where were|organs contain|organs containing|locations of|location of) (\\w+)/i",
-        "/across (?:organs|tissues) in (?:\\w+) (\\w+)/i"
+        "/across (?:organs|tissues) in (?:\\w+) (\\w+)/i",
+        "/in (?:\\w+) (\\w+) across (?:organs|tissues)/i",
+        "/in (\\w+) across (?:organs|tissues)/i"
       ]
     }
   }
