@@ -757,7 +757,7 @@
     },
     "features": {
       "regex": [
-        "/(?:dotplot of|expression of|fraction of|cells expressing) ([\\w;,\/]+)/i",
+        "/(?:dotplot of|expression of|cells expressing) ([\\w;,\/]+)/i",
         "/(?:accessibility of) ([\\w;,:\/-]+)/i",
         "/(?:genes similar to|genes like|similar genes to) ([\\w;,\/]+)/i",
         "/(?:peaks similar to|peaks like|similar peaks to) ([\\w;,\/]+)/i",

@@ -198,6 +198,15 @@ let questionsGroups = [
         "organism": "h_sapiens",
         "celltype": "fibroblast",
       },
+    },
+    {
+      "questions": "what is the fraction expressing TP53, AHR, MED4, VWF, COL1A1, APOE across organs in human fibroblast?",
+      "intent": "fraction_detected.geneExpression.across_organs",
+      "entities": {
+        "features": "TP53,AHR,MED4,VWF,COL1A1,APOE",
+        "organism": "h_sapiens",
+        "celltype": "fibroblast",
+      },
     }
   ];
 
