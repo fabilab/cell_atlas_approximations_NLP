@@ -707,9 +707,9 @@
       "options": {
         "h_sapiens": ["human", "h_sapiens", "homo sapiens"],
         "m_musculus": ["mouse", "murine", "m_musculus"],
-        "m_myoxinus": [
-          "monkey", "lemur", "mouse lemur", "m_myoxinus",
-          "microbebus myoxinus", "microcebus"
+        "m_murinus": [
+          "monkey", "lemur", "mouse lemur", "m_murinus",
+          "microbebus murinus", "microcebus"
         ],
         "d_rerio": ["d_rerio", "zebrafish", "fish"],
         "c_elegans": ["c_elegans", "worm"],
@@ -721,7 +721,10 @@
         "s_mediterranea": ["s_mediterranea", "planarian", "plenaria", "flatworm"],
         "s_mansoni": ["s_mansoni", "schistosome"],
         "h_miamia": ["h_miamia", "acoel", "hofstenia"],
-        "d_melanogaster": ["d_melanogaster", "drosophila", "fly", "fruitfly"]
+        "d_melanogaster": ["d_melanogaster", "drosophila", "fly", "fruitfly"],
+        "i_pulchra": ["i_pulchra", "isodiametra"],
+        "l_minuta": ["l_minuta", "lemna", "duckweed"],
+        "n_vectensis": ["n_vectensis", "nematostella", "Nematostella"]
       }
     },
     "organ": {
@@ -752,6 +755,8 @@
         "Tongue": ["Tongue", "tongue"],
         "Trachea": ["trachea"],
         "Uterus": ["uterus"],
+        "Root": ["root", "Root"],
+        "Leaf": ["leaf", "leaves", "Leaf", "Leaves"],
         "whole": ["whole", "entire"]
       }
     },

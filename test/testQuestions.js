@@ -73,7 +73,7 @@ let questionsGroups = [
       "intent": "organisms.geneExpression",
     },
     {
-      "questions": "List cell types in microcebus myoxinus pancreas",
+      "questions": "List cell types in microcebus murinus pancreas",
       "intent": "celltypes.geneExpression",
     },
     {
