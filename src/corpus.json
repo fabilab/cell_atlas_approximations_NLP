@@ -661,6 +661,25 @@
       }
     },
     {
+      "intent": "feature_sequences.geneExpression",
+      "utterances": [
+        "what are the sequences of @features in @organism?",
+        "show the sequences of @features in @organism",
+        "what is the sequence of @features in @organism?",
+        "display the sequence of @features in @organism"
+      ],
+      "slotFilling": {
+        "features": {
+          "mandatory": true,
+          "question": "You requested gene sequences: what genes?"
+        }, 
+        "organism": {
+          "mandatory": true,
+          "question": "You requested gene sequences: in what organism?"
+        }
+      }
+    },
+    {
       "intent": "add.features",
       "utterances": [
         "add @features",
@@ -771,7 +790,7 @@
     },
     "features": {
       "regex": [
-        "/(?:dotplot of|expression of|cells expressing) ([\\w;,.\/]+)/i",
+        "/(?:dotplot of|sequence of|expression of|cells expressing) ([\\w;,.\/]+)/i",
         "/(?:accessibility of) ([\\w;,:\/-]+)/i",
         "/(?:genes similar to|genes like|similar genes to) ([\\w;,.\/]+)/i",
         "/(?:peaks similar to|peaks like|similar peaks to) ([\\w;,.\/]+)/i",

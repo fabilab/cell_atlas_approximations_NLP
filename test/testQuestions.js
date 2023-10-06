@@ -216,6 +216,14 @@ let questionsGroups = [
         "organism": "x_laevis",
         "organ": "liver",
       }
+    },
+    {
+      "questions": "what is the sequence of COL1A1 in human?",
+      "intent": "feature_sequences.geneExpression",
+      "entities": {
+        "features": "COL1A1",
+        "organism": "h_sapiens",
+      }
     }
   ];
 
