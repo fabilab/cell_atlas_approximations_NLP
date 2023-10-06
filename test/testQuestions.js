@@ -207,6 +207,15 @@ let questionsGroups = [
         "organism": "h_sapiens",
         "celltype": "fibroblast",
       },
+    },
+    {
+      "questions": "what is the expression of Hba1.L,Hbg1.L in frog liver",
+      "intent": "average.geneExpression",
+      "entities": {
+        "features": "Hba1.L,Hbg1.L",
+        "organism": "x_laevis",
+        "organ": "liver",
+      }
     }
   ];
 

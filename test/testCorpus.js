@@ -143,7 +143,7 @@ const postProcess = (response) => {
         }
       };
 
-      if (response.intent == "celltype_location.geneExpression")
+      if (response.intent == "average.geneExpression")
         console.log(response);
     }
     return true;
