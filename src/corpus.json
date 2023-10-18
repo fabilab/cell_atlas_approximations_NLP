@@ -372,6 +372,31 @@
       }
     },
     {
+      "intent": "neighborhood.geneExpression",
+      "utterances": [
+        "show cell neighborhoods of @features in @organism @organ",
+        "what are the metacells of @features in @organism @organ?",
+        "what are the cell states of @features in @organism @organ?",
+        "what is the expression of @features across cell states in @organism @organ?",
+        "what is the expression of @features across metacells in @organism @organ?",
+        "what is the expression of @features across neighborhoods in @organism @organ?"
+      ],
+      "slotFilling": {
+        "features": {
+          "mandatory": true,
+          "question": "You requested cell neighborhoods: what genes?"
+        },
+        "organism": {
+          "mandatory": true,
+          "question": "You requested cell neighborhoods: in what organism?"
+        },
+        "organ": {
+          "mandatory": true,
+          "question": "You requested cell neighborhoods: in what organ?"
+        }
+      }
+    },
+    {
       "intent": "markers.geneExpression",
       "utterances": [
         "show @nFeatures markers for @celltype",
@@ -718,6 +743,65 @@
         "exponentiate data",
         "take the logarithm"
       ]
+    },
+    {
+      "intent": "download",
+      "utterances": [
+        "download",
+        "download as @format",
+        "download all",
+        "download data"
+      ],
+      "slotFilling": {
+        "format": {
+          "mandatory": false,
+          "question": "You requested download. What file format?"
+        }
+      }
+    },
+    {
+      "intent": "zoom.in.neighborhood",
+      "utterances": [
+        "could you zoom in?",
+        "is it possible to increase detail?",
+        "show cell states",
+        "show metacells",
+        "show neighborhoods",
+        "zoom in",
+        "explore cell states",
+        "zoom in metacells",
+        "increase detail",
+        "add detail",
+        "more detail",
+        "more granular",
+        "more complexity",
+        "more complex",
+        "more information",
+        "more info"
+      ]
+    },
+    {
+      "intent": "zoom.out.neighborhood",
+      "utterances": [
+        "could you zoom out?",
+        "is it possible to reduce detail?",
+        "simplify data",
+        "coarse grain",
+        "zoom out",
+        "show cell types",
+        "explore cell types",
+        "zoom out to cell types",
+        "decrease detail",
+        "reduce detail",
+        "less detail",
+        "fewer details",
+        "less granular",
+        "simpler",
+        "less complexity",
+        "less complex",
+        "less information",
+        "less info"
+      ]
     }
   ],
 
@@ -786,6 +870,13 @@
         "whole": ["whole", "entire"],
         "wall": ["wall", "Wall", "body_wall"],
         "wing": ["wing", "wings"]
+      }
+    },
+    "format": {
+      "options": {
+        "fasta": ["fasta", "Fasta"],
+        "png": ["png", "image", "raster"],
+        "svg": ["svg", "vector"]
       }
     },
     "features": {

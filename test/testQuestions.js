@@ -212,9 +212,9 @@ let questionsGroups = [
       "questions": "what is the expression of Hba1.L,Hbg1.L in frog liver",
       "intent": "average.geneExpression",
       "entities": {
-        "features": "Hba1.L,Hbg1.L",
         "organism": "x_laevis",
         "organ": "liver",
+        "features": "Hba1.L,Hbg1.L",
       }
     },
     {
@@ -224,7 +224,43 @@ let questionsGroups = [
         "features": "COL1A1",
         "organism": "h_sapiens",
       }
-    }
+    },
+    {
+      "questions": "download",
+      "intent": "download"
+    },
+    {
+      "questions": "download as fasta",
+      "intent": "download",
+      "entities": {
+        "format": "fasta"
+      }
+    },
+    {
+      "questions": "show the expression of TRINITY_DN18225_c0_g1,TRINITY_DN18226_c0_g1 across cell states in i_pulchra whole?",
+      "intent": "neighborhood.geneExpression",
+      "entities": {
+        "organism": "i_pulchra",
+        "organ": "whole",
+        "features": "TRINITY_DN18225_c0_g1,TRINITY_DN18226_c0_g1",
+      }
+    },
+    {
+      "questions": "please zoom into cell states",
+      "intent": "zoom.in.neighborhood"
+    },
+    {
+      "questions": "can you increase detail?",
+      "intent": "zoom.in.neighborhood"
+    },
+    {
+      "questions": "please zoom out to cell types",
+      "intent": "zoom.out.neighborhood"
+    },
+    {
+      "questions": "please simplify",
+      "intent": "zoom.out.neighborhood"
+    },
   ];
 
 module.exports = {
