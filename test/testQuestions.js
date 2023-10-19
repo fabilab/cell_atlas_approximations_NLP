@@ -54,6 +54,15 @@ let questionsGroups = [
       "intent": "similar_features.geneExpression",
     },
     {
+      "questions": "Show 10 genes similar to Col1a1 in mouse lung",
+      "intent": "similar_features.geneExpression",
+      "entities": {
+        "organism": "m_musculus",
+        "organ": "lung",
+        "features": "Col1a1",
+      }
+    },
+    {
       "questions": ["show cell types like fibroblast", "in mouse", "10", "Col1a1,Col6a2"],
       "intent": "similar_celltypes.geneExpression",
     },

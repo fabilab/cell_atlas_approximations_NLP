@@ -573,7 +573,8 @@
         "what are @nFeatures genes similar to @features in @organism @organ?",
         "show @nFeatures genes similar to @features in @organism @organ",
         "show @nFeatures genes like @features in @organism @organ",
-        "show @nFeatures similar genes to @features in @organism @organ"
+        "show @nFeatures similar genes to @features in @organism @organ",
+        "show 10 genes similar to Col1a1 in mouse lung"
       ],
       "slotFilling": {
         "nFeatures": {
