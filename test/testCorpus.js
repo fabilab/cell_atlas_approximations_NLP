@@ -147,7 +147,9 @@ const postProcess = (response) => {
       for (let je = 0; je < response.entities.length; je++) {
         const entity = response.entities[je];
         const entityName = entity.entity;
-        const entityString = entity["type"] === "enum" ? entity["option"] : entity["sourceText"];
+        let entityString = entity["sourceText"];
+        if ((entity["type"] === "enum") && (entity["option"] !== undefined))
+          entityString = entity["option"];
         if ((entities[entityName] !== undefined) && (entities[entityName] != entityString)){
           console.log(response);
           console.log("--------------------------------------------");

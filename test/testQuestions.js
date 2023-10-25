@@ -305,6 +305,13 @@ let questionsGroups = [
       "questions": "please simplify",
       "intent": "zoom.out.neighborhood"
     },
+    {
+      "questions": "explore butterfly",
+      "intent": "explore.organism",
+      "entities": {
+        "organism": "butterfly",
+      }
+    }
   ];
 
 module.exports = {
