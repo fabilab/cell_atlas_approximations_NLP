@@ -30,6 +30,16 @@ let questionsGroups = [
       "intent": "markers.geneExpression"
     },
     {
+      "questions": ["what are the AT1 markers in human lung?", "10"],
+      "intent": "markers.geneExpression",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "lung",
+        "celltype": "AT1",
+        "number": "10",
+      }
+    },
+    {
       "questions": ["what is the expression of Col1a1 in mouse heart"],
       "intent": "average.geneExpression"
     },
@@ -48,6 +58,23 @@ let questionsGroups = [
     {
       "questions": ["who expresses Col1a1 the most?", "in mouse"],
       "intent": "highest_measurement.geneExpression",
+    },
+    {
+      "questions": ["what express COL1A1 in human?"],
+      "intent": "highest_measurement.geneExpression",
+      "entitites": {
+        "organism": "h_sapiens",
+        "features": "COL1A1",
+      }
+    },
+    {
+      "questions": ["what express COL1A1 in human lung?"],
+      "intent": "average.geneExpression",
+      "entitites": {
+        "organism": "h_sapiens",
+        "organ": "lung",
+        "features": "COL1A1",
+      }
     },
     {
       "questions": ["show genes similar to Pecam1", "10", "in mouse lung"],
@@ -231,6 +258,14 @@ let questionsGroups = [
       "intent": "feature_sequences.geneExpression",
       "entities": {
         "features": "COL1A1",
+        "organism": "h_sapiens",
+      }
+    },
+    {
+      "questions": "what are the sequences of COL1A1,COL6A2 in human?",
+      "intent": "feature_sequences.geneExpression",
+      "entities": {
+        "features": "COL1A1,COL6A2",
         "organism": "h_sapiens",
       }
     },

@@ -25,6 +25,19 @@ const preProcess = (utterance) => {
 };
 
 const postProcess = (response) => {
+
+  // highest expressor with a specific organ becomes average expression in that organ
+  // NOTE: I tried to do this by training but it's hard, good enough for now
+  if (response.intent.startsWith("highest_measurement")) {
+    for (let i = 0; i < response.entities.length; i++) {
+      const entity = response.entities[i];
+      if (entity['entity'] == "organ") {
+        response.intent = response.intent.replace("highest_measurement", "average");
+        break;
+      }
+    }
+  }
+
   let entitiesForDeletion = [];
 
   // smooth muscle et al.: the "muscle" gets recognised as an organ. Fix that

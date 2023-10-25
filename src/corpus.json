@@ -410,7 +410,8 @@
         "show the @nFeatures marker genes for @celltype in @organism @organ",
         "show the @nFeatures marker genes of @celltype in @organism @organ",
         "what are the marker genes for @celltype in @organism @organ?",
-        "what are the markers for @celltype in @organism @organ?"
+        "what are the markers for @celltype in @organism @organ?",
+        "what are the @celltype markers in @organism @organ?"
       ],
       "slotFilling": {
         "nFeatures": {
@@ -473,6 +474,9 @@
         "what cell type expresses @features the most?",
         "who expresses @features in @organism?",
         "who expresses most @features in @organism?",
+        "which cell express most @features in @organism?",
+        "what cell express most @features in @organism?",
+        "what express most @features in @organism?",
         "who is the highest expressor of @features in @organism?",
         "who is the highest expressing cell type of @features in @organism?",
         "what cell type is the highest expressor of @features in @organism?",
@@ -882,17 +886,18 @@
     },
     "features": {
       "regex": [
-        "/(?:dotplot of|sequence of|expression of|cells expressing) ([\\w;,.\/]+)/i",
+        "/(?:dotplot of|sequence of|sequences of|expression of|cells expressing) ([\\w;,.\/]+)/i",
         "/(?:accessibility of) ([\\w;,:\/-]+)/i",
         "/(?:genes similar to|genes like|similar genes to) ([\\w;,.\/]+)/i",
         "/(?:peaks similar to|peaks like|similar peaks to) ([\\w;,.\/]+)/i",
-        "/(?:expresses|expresses most|expressor of|expressors of|expressing) ([\\w;,.\/]+)/i",
+        "/(?:expresses|express|expresses most|express most|expressor of|expressors of|expressing) ([\\w;,.\/]+)/i",
         "/(?:add|include|delete|remove) ([\\w;:,.\/]+)/i"
       ]
     },
     "nFeatures": {
       "regex": [
-        "/([0-9]+) (genes|marker|top|feature|peak|similar)/i"
+        "/ ([0-9]+) (genes|marker|top|feature|peak|similar)/i",
+        "/^([0-9]+) (genes|marker|top|feature|peak|similar)/i"
       ]
     },
     "nCelltypes": {
@@ -906,6 +911,8 @@
         "/(?:types like|similar as|similar to) (?:\\w+) (\\w+)/i",
         "/with (?:similar genes|similar peaks|similar chromatin peaks) (?:as|to) (\\w+)/i",
         "/(?:for|markers of|marker genes of|marker peaks of) (\\w+)/i",
+        "/ (\\w+) (?:marker)/i",
+        "/^(\\w+) (?:marker)/i",
         "/(?:where are|where were|organs contain|organs containing|locations of|location of) (\\w+)/i",
         "/across (?:organs|tissues) in (?:\\w+) (\\w+)/i",
         "/in (?:\\w+) (\\w+) across (?:organs|tissues)/i",
