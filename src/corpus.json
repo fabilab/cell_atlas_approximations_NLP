@@ -833,7 +833,8 @@
         "d_melanogaster": ["d_melanogaster", "drosophila", "fly", "fruitfly"],
         "i_pulchra": ["i_pulchra", "isodiametra"],
         "l_minuta": ["l_minuta", "lemna", "duckweed"],
-        "n_vectensis": ["n_vectensis", "nematostella", "Nematostella"]
+        "n_vectensis": ["n_vectensis", "nematostella", "Nematostella"],
+        "s_pistillata": ["s_pistillata", "Stylophora", "coral"]
       },
       "regex": [
         "/(?:explore) ([\\w_]+)/i"
