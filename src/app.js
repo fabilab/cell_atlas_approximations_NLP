@@ -11,20 +11,14 @@ let debug = true;
 
 const preProcess = (utterance) => {
   // list of features with ", " -> remove the space
-  utterance = utterance.replaceAll(", ", ",");
+  utterance = utterance.replaceAll(" and ", ",")
+                       .replaceAll(",,", ",")
+                       .replaceAll(", ", ",");
 
-  // cell types with space require attention
-  const compositeCelltypes = [
-    [/(smooth|striated) muscle/i, "$1_muscle"],
-    [/(\w+) progenitor/i, "$1_progenitor"],
-  ];
-  for (let i = 0; i < compositeCelltypes.length; i++) {
-    let patterns = compositeCelltypes[i];
-    utterance = utterance.replace(patterns[0], patterns[1]);
-  }
+  // cell types with space are taken care of in the corpus
 
   return utterance;
-};
+}
 
 
 const postProcess = (response) => {
@@ -40,20 +34,16 @@ const postProcess = (response) => {
     }
   }
 
-  let entitiesForDeletion = [];
-
   // smooth muscle et al.: the "muscle" gets recognised as an organ. Fix that
+  let entitiesForDeletion = [];
+  let newEntities = [];
   for (let i = 0; i < response.entities.length; i++) {
     const entity = response.entities[i];
     if ((entity['entity'] == "celltype") && (entity['sourceText'].includes("muscle"))) {
       entitiesForDeletion.push("organ");
-      break
-  } else if ((entity['entity'] == "celltype")) {
-     //console.log(entity);
+      break;
     }
-  };
-
-  let newEntities = [];
+  }
   for (let i = 0; i < response.entities.length; i++) {
     const entity = response.entities[i];
     let keep = true;
@@ -62,7 +52,7 @@ const postProcess = (response) => {
         keep = false;
         break;
       }
-    };
+    }
     if (keep)
       newEntities.push(entity);
   }
@@ -76,12 +66,12 @@ async function ask(question) {
     // This function is only used after window.nlpManager has been set
     const manager = this.nlpManager || window.nlpManager;
 
-    // Pre-process request for quirky situations (e.g. smooth muscle)
+    // Pre-process request (remove spaces after comma, etc)
     question = preProcess(question);
 
     let response = await manager.process("en", question, this.context);
 
-    // Post-process response for the same reason as above
+    // Post-process response in a few cases
     postProcess(response);
 
     if (debug)

@@ -395,6 +395,24 @@ let questionsGroups = [
       "entities": {
         "measurement_type": "chromatin_accessibility",
       }
+    },
+    {
+      "questions": "Compare expression of APOE, CD19, COL1A1, TGFBI, EPCAM, COL13A1 in fibroblast across organs in human.",
+      "intent": "average.geneExpression.across_organs",
+      "entities": {
+        "celltype": "fibroblast",
+        "organism": "h_sapiens",
+        "features": "APOE,CD19,COL1A1,TGFBI,EPCAM,COL13A1",
+      }
+    },
+    {
+      "questions": "Compare expression of APOE, CD19, and COL13A1 in fibroblast across organs in human.",
+      "intent": "average.geneExpression.across_organs",
+      "entities": {
+        "celltype": "fibroblast",
+        "organism": "h_sapiens",
+        "features": "APOE,CD19,COL13A1",
+      }
     }
   ];
 

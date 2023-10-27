@@ -9,17 +9,11 @@ function getRandomInt(min, max) {
 
 const preProcess = (utterance) => {
   // list of features with ", " -> remove the space
-  utterance = utterance.replaceAll(", ", ",");
+  utterance = utterance.replaceAll(" and ", ",")
+                       .replaceAll(",,", ",")
+                       .replaceAll(", ", ",");
 
-  // cell types with space require attention
-  const compositeCelltypes = [
-    [/(smooth|striated) muscle/i, "$1_muscle"],
-    [/(\w+) progenitor/i, "$1_progenitor"],
-  ];
-  for (let i = 0; i < compositeCelltypes.length; i++) {
-    let patterns = compositeCelltypes[i];
-    utterance = utterance.replace(patterns[0], patterns[1]);
-  }
+  // cell types with spaces are taken care of in the corpus
 
   return utterance;
 };

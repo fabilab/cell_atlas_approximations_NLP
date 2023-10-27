@@ -544,15 +544,15 @@
       "slotFilling": {
         "features": {
           "mandatory": true,
-          "question": "You requested average expression across organs: what genes?"
+          "question": "You requested fraction of cells expressing across organs: what genes?"
         },
         "organism": {
           "mandatory": true,
-          "question": "You requested average expression across organs: in what organism?"
+          "question": "You requested fraction of cells expressing across organs: in what organism?"
         },
         "celltype": {
           "mandatory": true,
-          "question": "You requested average expression across organs: in what cell type?"
+          "question": "You requested fraction of cells expressing across organs: in what cell type?"
         }
       }
     },
@@ -943,11 +943,24 @@
       ]
     },
     "celltype": {
+      "regex": [
+        "/(?:types like|similar) (?:as|to) (\\w+)/i",
+        "/(?:types like|similar as|similar to) (?:\\w+) (\\w+)/i",
+        "/with (?:similar genes|similar peaks|similar chromatin peaks) (?:as|to) (\\w+)/i",
+        "/(?:for|markers|marker genes|marker peaks) (?:|for|of) (\\w+)/i",
+        "/ ([a-zA-Z]+\\w*) (?:marker)/i",
+        "/^([a-zA-Z]+\\w*) (?:marker)/i",
+        "/(?:where are|where were|organs contain|organs containing|locations of|location of) (\\w+)/i",
+        "/across (?:organs|tissues) in (?:\\w+) (\\w+)/i",
+        "/in (?:\\w+) (\\w+) across (?:organs|tissues)/i",
+        "/in (\\w+) across (?:organs|tissues)/i"
+      ],
       "options": {
         "radial glia": ["radial glia"],
         "smooth muscle": ["smooth muscle", "ASM", "asm"],
         "vascular smooth muscle": ["vascular smooth muscle", "VSM", "vsm"],
         "striated muscle": ["striated muscle"],
+        "muscle progenitor": ["muscle progenitor"],
         "proximal tubule epi": ["proximal tubule epi"],
         "Henle limb epi": ["Henle limb epi"],
         "collecting duct epi": ["collecting duct epi"],
@@ -975,19 +988,7 @@
         "kidney epi": ["kidney epi"],
         "hatching gland": ["hatching gland"],
         "fin epi": ["fin epi"]
-      },
-      "regex": [
-        "/(?:types like|similar) (?:as|to) (\\w+)/i",
-        "/(?:types like|similar as|similar to) (?:\\w+) (\\w+)/i",
-        "/with (?:similar genes|similar peaks|similar chromatin peaks) (?:as|to) (\\w+)/i",
-        "/(?:for|markers|marker genes|marker peaks) (?:|for|of) (\\w+)/i",
-        "/ ([a-zA-Z]+\\w*) (?:marker)/i",
-        "/^([a-zA-Z]+\\w*) (?:marker)/i",
-        "/(?:where are|where were|organs contain|organs containing|locations of|location of) (\\w+)/i",
-        "/across (?:organs|tissues) in (?:\\w+) (\\w+)/i",
-        "/in (?:\\w+) (\\w+) across (?:organs|tissues)/i",
-        "/in (\\w+) across (?:organs|tissues)/i"
-      ]
+      }
     }
   }
 }
