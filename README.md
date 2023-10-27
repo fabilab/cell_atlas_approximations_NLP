@@ -21,16 +21,16 @@ npm install @fabilab/atlasapprox
 ## Usage
 ```javascript
 // ES6 (e.g. in React development)
-import { AtlasApproxNlp, buildAPIParams, buildAnswer } from '@fabilab/atlasapprox-nlp';
+import { AtlasApproxNlp } from '@fabilab/atlasapprox-nlp';
 // CommonJS variant
-//let { AtlasApproxNlp, buildAPIParams, buildAnswer } = require('@fabilab/atlasapprox-nlp');
+//let { AtlasApproxNlp } = require('@fabilab/atlasapprox-nlp');
 
 let nlp = new AtlasApproxNlp();
 
 (async () => {
   await nlp.initialise();
 
-  // NOTE: Multiple initalisation is OK
+  // NOTE: Multiple initalisations are unnecessary but tolerated
 
   // Ask a question
   let response = await nlp.ask("What measurement types are available?");
