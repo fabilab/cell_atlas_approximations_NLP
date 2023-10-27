@@ -311,6 +311,35 @@ let questionsGroups = [
       "entities": {
         "organism": "butterfly",
       }
+    },
+    {
+      "questions": "What is the expression of TP53, AHR, MED4 in human blood?",
+      "intent": "average.geneExpression",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "blood",
+        "features": "TP53,AHR,MED4",
+      }
+    },
+    {
+      "questions": "Show the 10 marker genes for urothelial in h_sapiens bladder",
+      "intent": "markers.geneExpression",
+      "entities": {
+        "nFeatures": "10",
+        "organism": "h_sapiens",
+        "organ": "bladder",
+        "celltype": "urothelial",
+      }
+    },
+    {
+      "questions": "Show the 10 marker genes for luminal in h_sapiens mammary",
+      "intent": "markers.geneExpression",
+      "entities": {
+        "nFeatures": "10",
+        "organism": "h_sapiens",
+        "organ": "mammary",
+        "celltype": "luminal",
+      }
     }
   ];
 
