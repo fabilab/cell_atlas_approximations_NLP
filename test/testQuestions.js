@@ -340,6 +340,20 @@ let questionsGroups = [
         "organ": "mammary",
         "celltype": "luminal",
       }
+    },
+    {
+      "questions": "what organs are there for chromatin accessibility in human?",
+      "intent": "organs.chromatinAccessibility",
+      "entities": {
+        "organism": "h_sapiens",
+      }
+    },
+    {
+      "questions": ["what organs are there for chromatin accessibility", "in human?"],
+      "intent": "organs.chromatinAccessibility",
+      "entities": {
+        "organism": "h_sapiens",
+      }
     }
   ];
 

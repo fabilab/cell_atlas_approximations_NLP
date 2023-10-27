@@ -128,7 +128,11 @@
         "what organs are available by chromatin accessibility?",
         "what organs are available for @organism by chromatin accessibility? ",
         "what organs are there for @organism by chromatin accessibility?",
+        "what organs are there for chromatin accessibility in @organism?",
+        "what organs are there for chromatin accessibility?",
         "what organs do you have by chromatin accessibility?",
+        "what chromatin accessibility organs do you have?",
+        "what chromatin accessibility organs do you have in @organism?",
         "what organs do you have for @organism by chromatin accessibility?"
       ],
       "slotFilling": {
@@ -183,6 +187,7 @@
         "which organisms are available in the chromatin accessibility data?",
         "what organisms do you have in the chromatin accessibility data?",
         "what organisms are present in the chromatin accessibility data?",
+        "what chromatin accessibility organisms do you have?",
         "what organisms are available via chromatin accessibility?"
       ]
     },
@@ -635,6 +640,7 @@
         "show @nCelltypes cell types similar to @organ @celltype in @organism",
         "show cell types like @organ @celltype",
         "show cell types like @celltype",
+        "show cell types like @celltype in @organism",
         "show @nCelltypes cell types like @organ @celltype in @organism",
         "show @nCelltypes similar cell types to @organ @celltype in @organism"
       ],
