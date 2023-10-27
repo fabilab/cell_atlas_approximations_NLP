@@ -354,6 +354,24 @@ let questionsGroups = [
       "entities": {
         "organism": "h_sapiens",
       }
+    },
+    {
+      "questions": "where are radial glia in frog?",
+      "intent": "celltype_location.geneExpression",
+      "entities": {
+        "organism": "x_laevis",
+        "celltype": "radial glia",
+      }
+    },
+    {
+      "questions": "show 10 markers of radial glia in frog brain",
+      "intent": "markers.geneExpression",
+      "entities": {
+        "celltype": "radial glia",
+        "organism": "x_laevis",
+        "organ": "brain",
+        "nFeatures": "10",
+      }
     }
   ];
 
