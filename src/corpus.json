@@ -717,6 +717,25 @@
       }
     },
     {
+      "intent": "check_presence.geneExpression",
+      "utterances": [
+        "are @features present in @organism",
+        "does @organism have the genes @features?",
+        "check presence of @features in the @organism genome",
+        "does the @organism genome include @features?"
+      ],
+      "slotFilling": {
+        "features": {
+          "mandatory": true,
+          "question": "You requested check for feature presence: what genes?"
+        }, 
+        "organism": {
+          "mandatory": true,
+          "question": "You requested check for feature presence: in what organism?"
+        }
+      }
+    },
+    {
       "intent": "add.features",
       "utterances": [
         "add @features",
@@ -907,6 +926,7 @@
         "/(?:genes similar to|genes like|similar genes to) ([\\w;,.\/]+)/i",
         "/(?:peaks similar to|peaks like|similar peaks to) ([\\w;,.\/]+)/i",
         "/(?:expresses|express|expresses most|express most|expressor of|expressors of|expressing) ([\\w;,.\/]+)/i",
+        "/(?:are|are genes|are the genes|are features|are the features|is|is the gene|is the feature) ([\\w;,.\/]+) (?:present|found) in/i",
         "/(?:add|include|delete|remove) ([\\w;:,.\/]+)/i"
       ]
     },

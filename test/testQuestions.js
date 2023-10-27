@@ -372,6 +372,22 @@ let questionsGroups = [
         "organ": "brain",
         "nFeatures": "10",
       }
+    },
+    {
+      "questions": "are the genes COL1A1,COL1A2 present in the human genome?",
+      "intent": "check_presence.geneExpression",
+      "entities": {
+        "features": "COL1A1,COL1A2",
+        "organism": "h_sapiens",
+      }
+    },
+    {
+      "questions": "are COL1A1,COL1A2 found in the human genome?",
+      "intent": "check_presence.geneExpression",
+      "entities": {
+        "features": "COL1A1,COL1A2",
+        "organism": "h_sapiens",
+      }
     }
   ];
 
