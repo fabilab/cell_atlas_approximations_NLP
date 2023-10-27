@@ -388,6 +388,13 @@ let questionsGroups = [
         "features": "COL1A1,COL1A2",
         "organism": "h_sapiens",
       }
+    },
+    {
+      "questions": "what organisms have chromatin accessibility?",
+      "intent": "organisms.chromatinAccessibility",
+      "entities": {
+        "measurement_type": "chromatin_accessibility",
+      }
     }
   ];
 

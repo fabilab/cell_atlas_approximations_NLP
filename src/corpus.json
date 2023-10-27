@@ -142,7 +142,6 @@
         }
       }
     },
- 
     {
       "intent": "organisms.geneExpression",
       "utterances": [
@@ -188,7 +187,9 @@
         "what organisms do you have in the chromatin accessibility data?",
         "what organisms are present in the chromatin accessibility data?",
         "what chromatin accessibility organisms do you have?",
-        "what organisms are available via chromatin accessibility?"
+        "what organisms are available via chromatin accessibility?",
+        "what organisms have chromatin accessibility?",
+        "what species are there for chromatin accessibility?"
       ]
     },
     {
