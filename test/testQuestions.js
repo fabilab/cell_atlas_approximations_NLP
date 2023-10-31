@@ -413,6 +413,24 @@ let questionsGroups = [
         "organism": "h_sapiens",
         "features": "APOE,CD19,COL13A1",
       }
+    },
+    {
+      "questions": "What are the cell states of ML25764a, ML358828a, ML071151a, ML065728a in jellyfish whole?",
+      "intent": "neighborhood.geneExpression",
+      "entities": {
+        "organism": "m_leidyi",
+        "organ": "whole",
+        "features": "ML25764a,ML358828a,ML071151a,ML065728a"
+      }
+    },
+    {
+      "questions": "Show cell neighborhoods of TRINITY_DN30700_c7_g3, TRINITY_DN25289_c1_g3 in i_pulchra whole.",
+      "intent": "neighborhood.geneExpression",
+      "entities": {
+        "organism": "i_pulchra",
+        "organ": "whole",
+        "features": "TRINITY_DN30700_c7_g3,TRINITY_DN25289_c1_g3",
+      }
     }
   ];
 

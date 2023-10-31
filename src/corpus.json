@@ -384,6 +384,11 @@
         "show cell neighborhoods of @features in @organism @organ",
         "what are the metacells of @features in @organism @organ?",
         "what are the cell states of @features in @organism @organ?",
+        "what are the cell states for @features in @organism @organ?",
+        "show cell neighborhoods of @features in @organism @organ",
+        "show cell neighborhoods for @features in @organism @organ",
+        "show metacells of @features in @organism @organ",
+        "show metacells for @features in @organism @organ",
         "what is the expression of @features across cell states in @organism @organ?",
         "what is the expression of @features across metacells in @organism @organ?",
         "what is the expression of @features across neighborhoods in @organism @organ?"
@@ -924,6 +929,8 @@
       "regex": [
         "/(?:dotplot of|sequence of|sequences of|expression of|cells expressing) ([\\w;,.\/]+)/i",
         "/(?:accessibility of) ([\\w;,:\/-]+)/i",
+        "/cell (?:states|neighborhoods|neighbourhoods) (?:of|for) ([\\w;,.\/]+)/i",
+        "/metacells (?:of|for) ([\\w;,.\/]+)/i",
         "/(?:genes similar to|genes like|similar genes to) ([\\w;,.\/]+)/i",
         "/(?:peaks similar to|peaks like|similar peaks to) ([\\w;,.\/]+)/i",
         "/(?:expresses|express|expresses most|express most|expressor of|expressors of|expressing) ([\\w;,.\/]+)/i",
@@ -954,7 +961,9 @@
         "/across (?:organs|tissues) in (?:\\w+) (\\w+)/i",
         "/in (?:\\w+) (\\w+) across (?:organs|tissues)/i",
         "/in (\\w+) across (?:organs|tissues)/i"
-      ],
+      ]
+    },
+    "celltypeEnum": {
       "options": {
         "radial glia": ["radial glia"],
         "smooth muscle": ["smooth muscle", "ASM", "asm"],

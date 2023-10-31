@@ -34,6 +34,26 @@ const postProcess = (response) => {
     }
   }
 
+  // celltype and celltypeEnum are the same entity, it's just a hack
+  let foundCelltypeEnum = false;
+  for (let i = 0; i < response.entities.length; i++) {
+    const entity = response.entities[i];
+    if (entity['entity'] === "celltypeEnum") {
+      entity['entity'] = "celltype";
+      foundCelltypeEnum = true;
+      break;
+    }
+  }
+  if (foundCelltypeEnum) {
+    for (let i = 0; i < response.entities.length; i++) {
+      const entity = response.entities[i];
+      if ((entity['entity'] == "celltype") && (entity['type'] === 'regex')) {
+        response.entities.splice(i, i);
+        break;
+      }
+    }
+  }
+
   // smooth muscle et al.: the "muscle" gets recognised as an organ. Fix that
   let entitiesForDeletion = [];
   let newEntities = [];
@@ -110,6 +130,7 @@ AtlasApproxNlp.prototype = {
     container.use(Nlp);
     container.use(LangEn);
     const manager = container.get('nlp');
+    //manager.forceNER = true;
     
     // Import the model into manager
     // NOTE: this is a horrible hack, but hey

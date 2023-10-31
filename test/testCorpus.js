@@ -32,9 +32,31 @@ const postProcess = (response) => {
     }
   }
 
-  let entitiesForDeletion = [];
+  // celltype and celltypeEnum are the same entity, it's just a hack
+  // needed because although multiple entries for the same thing work in node,
+  // they seem to be broken in the browser version (??)
+  let foundCelltypeEnum = false;
+  for (let i = 0; i < response.entities.length; i++) {
+    const entity = response.entities[i];
+    if (entity['entity'] === "celltypeEnum") {
+      entity['entity'] = "celltype";
+      foundCelltypeEnum = true;
+      break;
+    }
+  }
+  if (foundCelltypeEnum) {
+    for (let i = 0; i < response.entities.length; i++) {
+      const entity = response.entities[i];
+      if ((entity['entity'] == "celltype") && (entity['type'] === 'regex')) {
+        response.entities.splice(i, i);
+        break;
+      }
+    }
+  }
 
   // smooth muscle et al.: the "muscle" gets recognised as an organ. Fix that
+  let entitiesForDeletion = [];
+  let newEntities = [];
   for (let i = 0; i < response.entities.length; i++) {
     const entity = response.entities[i];
     if ((entity['entity'] == "celltype") && (entity['sourceText'].includes("muscle"))) {
@@ -44,8 +66,6 @@ const postProcess = (response) => {
      console.log(entity);
     }
   };
-
-  let newEntities = [];
   for (let i = 0; i < response.entities.length; i++) {
     const entity = response.entities[i];
     let keep = true;
