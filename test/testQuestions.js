@@ -431,6 +431,15 @@ let questionsGroups = [
         "organ": "whole",
         "features": "TRINITY_DN30700_c7_g3,TRINITY_DN25289_c1_g3",
       }
+    },
+    {
+      "questions": "show expression of HBA1, KDM7A-DT, HBA2, MARK3, KAT2B, YOD1, FBXO9, KIAA0232, TTPAL, SLC25A37, HBB in human marrow",
+      "intent": "average.geneExpression",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "marrow",
+        "features": "HBA1,KDM7A-DT,HBA2,MARK3,KAT2B,YOD1,FBXO9,KIAA0232,TTPAL,SLC25A37,HBB",
+      }
     }
   ];
 
