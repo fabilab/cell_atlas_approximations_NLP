@@ -45,7 +45,7 @@
       ]
     },
     {
-      "intent": "explore.organism",
+      "intent": "explore.organism.geneExpression",
       "utterances": [
         "explore @organism",
         "explore",
@@ -60,6 +60,24 @@
         "organism": {
           "mandatory": true,
           "question": "Explore what organism?"
+        }
+      }
+    },
+    {
+      "intent": "explore.organism.chromatinAccessibility",
+      "utterances": [
+        "explore @organism's chromatin state",
+        "explore the chromatin state of @organism",
+        "let me explore the chromatin accesibility of @organism",
+        "what is known about the chromatin state of @organism?",
+        "delve into ATAC-Seq of @organism",
+        "what can you tell me about @organism's chromatin?",
+        "what data is available on open chromatin in @organism?"
+      ],
+      "slotFilling": {
+        "organism": {
+          "mandatory": true,
+          "question": "Explore chromatin state of what organism?"
         }
       }
     },
@@ -868,7 +886,7 @@
         "s_pistillata": ["s_pistillata", "Stylophora", "coral"]
       },
       "regex": [
-        "/(?:explore) ([\\w_]+)/i"
+        "/(?:explore) +([\\w_]+)/i"
       ]
     },
     "organ": {

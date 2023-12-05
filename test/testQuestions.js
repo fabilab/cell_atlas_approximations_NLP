@@ -210,7 +210,7 @@ let questionsGroups = [
     },
     {
       "questions": "explore human",
-      "intent": "explore.organism",
+      "intent": "explore.organism.geneExpression",
     },
     {
       "questions": "What is the average expression of ALK, CD8A, CD19 in human lung?",
@@ -307,7 +307,7 @@ let questionsGroups = [
     },
     {
       "questions": "explore butterfly",
-      "intent": "explore.organism",
+      "intent": "explore.organism.geneExpression",
       "entities": {
         "organism": "butterfly",
       }
@@ -458,6 +458,13 @@ let questionsGroups = [
         "organism": "h_sapiens",
         "organ": "lymphnode",
         "features": "CD19",
+      }
+    },
+    {
+      "questions": "explore the chromatin state of human",
+      "intent": "explore.organism.chromatinAccessibility",
+      "entities": {
+        "organism": "h_sapiens"
       }
     }
   ];

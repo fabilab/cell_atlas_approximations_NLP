@@ -20,6 +20,27 @@ const preProcess = (utterance) => {
 
 const postProcess = (response) => {
 
+  let newEntities;
+
+  // organism has a fallback regex, which is a little too generic
+  if (response.intent.startsWith("explore.organism")) {
+    newEntities = [];
+    let organismEntities = []
+    for (let i = 0; i < response.entities.length; i++) {
+      const entity = response.entities[i];
+      if (entity['entity'] === "organism") {
+        if (entity["alias"] === undefined) {
+          newEntities.push(entity);
+        } else if (entity["option"] !== undefined) {
+          newEntities.push(entity);
+        }
+      } else {
+        newEntities.push(entity);
+      }
+    }
+    response.entities = newEntities;
+  }
+
   // highest expressor with a specific organ becomes average expression in that organ
   // NOTE: I tried to do this by training but it's hard, good enough for now
   if (response.intent.startsWith("highest_measurement")) {
@@ -56,7 +77,7 @@ const postProcess = (response) => {
 
   // smooth muscle et al.: the "muscle" gets recognised as an organ. Fix that
   let entitiesForDeletion = [];
-  let newEntities = [];
+  newEntities = [];
   for (let i = 0; i < response.entities.length; i++) {
     const entity = response.entities[i];
     if ((entity['entity'] == "celltype") && (entity['sourceText'].includes("muscle"))) {
