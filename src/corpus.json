@@ -892,6 +892,7 @@
         "leaf": ["leaf", "leaves", "Leaf", "Leaves", "seedling"],
         "flower": ["flower", "bud", "anther"],
         "liver": ["liver"],
+        "lymphnode": ["lymph", "node", "lymp_node", "lymphnodes"],
         "lung": ["Lung", "lung"],
         "male_reproductive": ["male_reproductive"],
         "mammary": ["mammary", "mammary gland"],
@@ -911,7 +912,7 @@
         "thyroid": ["thyroid"],
         "tongue": ["Tongue", "tongue"],
         "trachea": ["trachea"],
-        "uterus": ["uterus"],
+        "uterus": ["uterus", "womb"],
         "wall": ["wall", "Wall", "body_wall"],
         "whole": ["whole", "entire"],
         "wing": ["wing", "wings"]
@@ -926,15 +927,15 @@
     },
     "features": {
       "regex": [
-        "/(?:dotplot of|sequence of|sequences of|expression of|cells expressing) ([\\w;,.\/-]+)/i",
-        "/(?:accessibility of) ([\\w;,:\/-]+)/i",
-        "/cell (?:states|neighborhoods|neighbourhoods) (?:of|for) ([\\w;,.\/-]+)/i",
-        "/metacells (?:of|for) ([\\w;,.\/-]+)/i",
-        "/(?:genes similar to|genes like|similar genes to) ([\\w;,.\/-]+)/i",
-        "/(?:peaks similar to|peaks like|similar peaks to) ([\\w;,.\/-]+)/i",
-        "/(?:expresses|express|expresses most|express most|expressor of|expressors of|expressing) ([\\w;,.\/-]+)/i",
-        "/(?:are|are genes|are the genes|are features|are the features|is|is the gene|is the feature) ([\\w;,.\/-]+) (?:present|found) in/i",
-        "/(?:add|include|delete|remove) ([\\w;:,.\/-]+)/i"
+        "/(?:dotplot of|sequence of|sequences of|expression of|cells expressing) +([\\w;,.\/-]+)/i",
+        "/(?:accessibility of) +([\\w;,:\/-]+)/i",
+        "/cell (?:states|neighborhoods|neighbourhoods) +(?:of|for) +([\\w;,.\/-]+)/i",
+        "/metacells (?:of|for) +([\\w;,.\/-]+)/i",
+        "/(?:genes similar to|genes like|similar genes to) +([\\w;,.\/-]+)/i",
+        "/(?:peaks similar to|peaks like|similar peaks to) +([\\w;,.\/-]+)/i",
+        "/(?:expresses|express|expresses most|express most|expressor of|expressors of|expressing) +([\\w;,.\/-]+)/i",
+        "/(?:are|are genes|are the genes|are features|are the features|is|is the gene|is the feature) +([\\w;,.\/-]+) (?:present|found) in/i",
+        "/(?:add|include|delete|remove) +([\\w;:,.\/-]+)/i"
       ]
     },
     "nFeatures": {

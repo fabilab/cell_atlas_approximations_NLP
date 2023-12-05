@@ -440,6 +440,25 @@ let questionsGroups = [
         "organ": "marrow",
         "features": "HBA1,KDM7A-DT,HBA2,MARK3,KAT2B,YOD1,FBXO9,KIAA0232,TTPAL,SLC25A37,HBB",
       }
+    },
+    {
+      "questions": "what are the 5 markers of T cells in the human lymphnode?",
+      "intent": "markers.geneExpression",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "lymphnode",
+        "celltype": "T",
+        "number": "5",
+      }
+    },
+    {
+      "questions": "what is the expression of   CD19 in B cells in human lymphnode?",
+      "intent": "average.geneExpression",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "lymphnode",
+        "features": "CD19",
+      }
     }
   ];
 
