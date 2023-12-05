@@ -950,7 +950,7 @@
         "/cell (?:states|neighborhoods|neighbourhoods) +(?:of|for) +([\\w;,.\/-]+)/i",
         "/metacells (?:of|for) +([\\w;,.\/-]+)/i",
         "/(?:genes similar to|genes like|similar genes to) +([\\w;,.\/-]+)/i",
-        "/(?:peaks similar to|peaks like|similar peaks to) +([\\w;,.\/-]+)/i",
+        "/(?:peaks similar to|peaks like|similar peaks to) +([\\w;:,.\/-]+)/i",
         "/(?:expresses|express|expresses most|express most|expressor of|expressors of|expressing) +([\\w;,.\/-]+)/i",
         "/(?:are|are genes|are the genes|are features|are the features|is|is the gene|is the feature) +([\\w;,.\/-]+) (?:present|found) in/i",
         "/(?:add|include|delete|remove) +([\\w;:,.\/-]+)/i"

@@ -466,6 +466,16 @@ let questionsGroups = [
       "entities": {
         "organism": "h_sapiens"
       }
+    },
+    {
+      "questions": "what are 5 peaks similar to chr1:9955-10355 in human lung?",
+      "intent": "similar_features.chromatinAccessibility",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "lung",
+        "features": "chr1:9955-10355",
+        "number": "5",
+      }
     }
   ];
 
