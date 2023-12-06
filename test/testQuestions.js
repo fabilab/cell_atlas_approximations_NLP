@@ -392,9 +392,6 @@ let questionsGroups = [
     {
       "questions": "what organisms have chromatin accessibility?",
       "intent": "organisms.chromatinAccessibility",
-      "entities": {
-        "measurement_type": "chromatin_accessibility",
-      }
     },
     {
       "questions": "Compare expression of APOE, CD19, COL1A1, TGFBI, EPCAM, COL13A1 in fibroblast across organs in human.",

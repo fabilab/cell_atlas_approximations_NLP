@@ -10,10 +10,11 @@ let debug = true;
 
 
 const preProcess = (utterance) => {
-  // list of features with ", " -> remove the space
+  // list of features with ", " -> remove the space and remove multiple spaces
   utterance = utterance.replaceAll(" and ", ",")
                        .replaceAll(",,", ",")
-                       .replaceAll(", ", ",");
+                       .replaceAll(", ", ",")
+                       .replaceAll(/ +/g, " ");
 
   // cell types with space are taken care of in the corpus
 

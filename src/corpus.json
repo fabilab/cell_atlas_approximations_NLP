@@ -900,7 +900,7 @@
         "s_pistillata": ["s_pistillata", "Stylophora", "coral"]
       },
       "regex": [
-        "/(?:explore) +([\\w_]+)/i"
+        "/(?:explore) ([\\w_]+)/i"
       ]
     },
     "organ": {
@@ -959,22 +959,22 @@
     },
     "features": {
       "regex": [
-        "/(?:dotplot of|sequence of|sequences of|expression of|cells expressing) +([\\w;,.\/-]+)/i",
-        "/(?:accessibility of) +([\\w;,:\/-]+)/i",
-        "/(?:state|neighborhood|neighbourhood|neighbor)[s]? +(?:of|for) +([\\w;,.\/-]+)/i",
-        "/metacell[s]? +(?:of|for) +([\\w;,.\/-]+)/i",
-        "/(?:genes similar to|genes most similar to|genes like|similar genes to) +([\\w;,.\/-]+)/i",
-        "/(?:peaks similar to|peaks most similar to|peaks like|similar peaks to) +([\\w;:,.\/-]+)/i",
-        "/(?:expresses|express|expresses most|express most|expressor of|expressors of|expressing) +([\\w;,.\/-]+)/i",
-        "/(?:highest|largest|biggest) +([\\w;,.\/-]+) +expressor/i",
-        "/(?:are|are genes|are the genes|are features|are the features|is|is the gene|is the feature) +([\\w;,.\/-]+) (?:present|found) in/i",
-        "/(?:add|include|delete|remove) +([\\w;:,.\/-]+)/i"
+        "/(?:dotplot of|sequence of|sequences of|expression of|cells expressing) ([\\w;,.\/-]+)/i",
+        "/(?:accessibility of) ([\\w;,:\/-]+)/i",
+        "/(?:state|neighborhood|neighbourhood|neighbor)[s]? (?:of|for) ([\\w;,.\/-]+)/i",
+        "/metacell[s]? (?:of|for) ([\\w;,.\/-]+)/i",
+        "/(?:genes similar to|genes most similar to|genes like|similar genes to) ([\\w;,.\/-]+)/i",
+        "/(?:peaks similar to|peaks most similar to|peaks like|similar peaks to) ([\\w;:,.\/-]+)/i",
+        "/(?:expresses|express|expresses most|express most|expressor of|expressors of|expressing) ([\\w;,.\/-]+)/i",
+        "/(?:highest|largest|biggest) ([\\w;,.\/-]+) expressor/i",
+        "/(?:are|are genes|are the genes|are features|are the features|is|is the gene|is the feature) ([\\w;,.\/-]+) (?:present|found) in/i",
+        "/(?:add|include|delete|remove) ([\\w;:,.\/-]+)/i"
       ]
     },
     "nFeatures": {
       "regex": [
-        "/ ([0-9]+) (genes|marker|top|feature|peak|similar)/i",
-        "/^([0-9]+) (genes|marker|top|feature|peak|similar)/i"
+        "/(?:^| )([0-9]+) (?:top|highest|bottom|lowest)/i",
+        "/(?:^| )([0-9]+) (genes|marker|top|feature|peak|similar)/i"
       ]
     },
     "nCelltypes": {
@@ -987,11 +987,10 @@
         "/(?:types like|similar) (?:as|to) (\\w+)/i",
         "/(?:types like|similar as|similar to) (?:\\w+) (\\w+)/i",
         "/with (?:similar genes|similar peaks|similar chromatin peaks) (?:as|to) (\\w+)/i",
-        "/(?:for|markers|marker genes|marker peaks) +(?:|for|of) +(\\w+|\\w+ +\\w+) +in/i",
-        "/(?:for|markers|marker genes|marker peaks) +(?:|for|of) +(\\w+|\\w+ +\\w+)$/i",
+        "/(?:for|markers|marker genes|marker peaks) (?:|for|of) (\\w+|\\w+ \\w+)(?:$| in| cells)/i",
         "/ ([a-zA-Z]+\\w*) (?:marker)/i",
         "/^([a-zA-Z]+\\w*) (?:marker)/i",
-        "/(?:where are|where were|organs contain|organs containing|locations of|location of) (\\w+)/i",
+        "/(?:where are|where were|organs contain|organs containing|locations of|location of) (\\w+|\\w+ \\w+)(?:$| detected| found| in)/i",
         "/across (?:organs|tissues) in (?:\\w+) (\\w+)/i",
         "/in (?:\\w+) (\\w+) across (?:organs|tissues)/i",
         "/in (\\w+) across (?:organs|tissues)/i"
@@ -999,38 +998,12 @@
     },
     "celltypeEnum": {
       "options": {
-        "radial glia": ["radial glia"],
         "smooth muscle": ["smooth muscle", "ASM", "asm"],
         "vascular smooth muscle": ["vascular smooth muscle", "VSM", "vsm"],
         "striated muscle": ["striated muscle"],
         "muscle progenitor": ["muscle progenitor"],
-        "proximal tubule epi": ["proximal tubule epi"],
-        "Henle limb epi": ["Henle limb epi"],
-        "collecting duct epi": ["collecting duct epi"],
-        "distal tubule epi": ["distal tubule epi"],
-        "alveolar fibroblast": ["alveolar fibroblast", "alvf"],
-        "alveolar macrophage": ["alveolar macrophage", "alvm"],
-        "precursor B": ["precursor B"],
-        "late pro-B": ["late pro-B"],
-        "immature B": ["immature B"],
-        "macrophage progenitor": ["macrophage progenitor"],
-        "plasma": ["plasma cell"],
         "transit amp": ["transit amp", "transit"],
-        "retinal pigment": ["retinal pigment"],
-        "innate lymphoid": ["innate lymphoid", "ILC", "IL"],
-        "macula densa": ["macula densa"],
-        "hair follicular": ["hair follicular"],
-        "anterior epi": ["anterior epi"],
-        "spinal cord": ["spinal cord"],
-        "ph arches": ["ph arches", "arches"],
-        "pancreas primordium": ["pancreas primordium"],
-        "otic placode": ["otic placode"],
-        "optic cup": ["optic cup"],
-        "olfactory placode": ["olfactory placode"],
-        "neural crest": ["neural crest"],
-        "kidney epi": ["kidney epi"],
-        "hatching gland": ["hatching gland"],
-        "fin epi": ["fin epi"]
+        "innate lymphoid": ["innate lymphoid", "ILC", "IL"]
       }
     }
   }

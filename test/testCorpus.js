@@ -8,10 +8,11 @@ function getRandomInt(min, max) {
 }
 
 const preProcess = (utterance) => {
-  // list of features with ", " -> remove the space
+  // list of features with ", " -> remove the space and multiple spaces
   utterance = utterance.replaceAll(" and ", ",")
                        .replaceAll(",,", ",")
-                       .replaceAll(", ", ",");
+                       .replaceAll(", ", ",")
+                       .replaceAll(/ +/g, " ");
 
   // cell types with spaces are taken care of in the corpus
 
@@ -230,7 +231,7 @@ const postProcess = (response) => {
   let exit = false;
   for (let k = 0; k < questionsGroups.length; k++) {
     console.log("############################################");
-    console.log("Group" + (k+1));
+    console.log("Group " + (k+1));
     // NOTE: Each question group resets the context
     let context = {};
     let { questions, intent, entities } = questionsGroups[k];
