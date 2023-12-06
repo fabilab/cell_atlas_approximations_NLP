@@ -162,6 +162,8 @@ const postProcess = (response) => {
       if (debug)
         console.log(question);
       let response = await ask(question, context);
+
+      // Check intent
       if (response.intent != intent) {
         if (debug) {
           console.log(response);
@@ -170,6 +172,8 @@ const postProcess = (response) => {
         }
         return false;
       }
+
+      // Check unfilled slots
       if ((response.slotFill) && (i == questions.length - 1)) {
         if (debug) {
           console.log(response);
@@ -179,6 +183,7 @@ const postProcess = (response) => {
         return false;
       }
 
+      // Check wrong entities
       for (let je = 0; je < response.entities.length; je++) {
         const entity = response.entities[je];
         const entityName = entity.entity;
@@ -189,6 +194,27 @@ const postProcess = (response) => {
           console.log(response);
           console.log("--------------------------------------------");
           console.log("ENTITY NOT CORRECT: " + entityName + " -> " + entityString);
+          return false;
+        }
+      };
+
+      // Check missing entities
+      let entityFound;
+      for (key in entities) {
+        entityFound = false;
+        for (let je = 0; je < response.entities.length; je++) {
+          const entity = response.entities[je];
+          const entityName = entity.entity;
+          if (entityName == key) {
+            entityFound = true;
+            break;
+          }
+        }
+
+        if ((entityFound == false) && (i == questions.length - 1)) {
+          console.log(response);
+          console.log("--------------------------------------------");
+          console.log("ENTITY MISSING: " + key);
           return false;
         }
       };

@@ -398,6 +398,7 @@
     {
       "intent": "neighborhood.geneExpression",
       "utterances": [
+        "show neighborhood for @features in @organism @organ",
         "show cell neighborhoods of @features in @organism @organ",
         "what are the metacells of @features in @organism @organ?",
         "what are the cell states of @features in @organism @organ?",
@@ -429,6 +430,8 @@
       "intent": "markers.geneExpression",
       "utterances": [
         "show @nFeatures markers for @celltype",
+        "show @nFeatures markers of @celltype in @organism @organ",
+        "show @nFeatures markers of @celltypeEnum in @organism @organ",
         "show @nFeatures markers of @celltype",
         "show marker genes for @celltype",
         "show marker genes of @celltype",
@@ -506,12 +509,19 @@
         "which cell express most @features in @organism?",
         "what cell express most @features in @organism?",
         "what express most @features in @organism?",
+        "what express most @features across @organism organs?",
+        "what express most @features across the @organism body?",
+        "what are the highest @features expressors in @organism?",
         "who is the highest expressor of @features in @organism?",
         "who is the highest expressing cell type of @features in @organism?",
         "what cell type is the highest expressor of @features in @organism?",
         "who expresses @features the highest in @organism?",
         "list highest expressors of @features in @organism",
-        "show top expressing cell types of @features in @organism"
+        "show top expressing cell types of @features in @organism",
+        "show the top @nFeatures expressors of @features in @organism",
+        "show the highest @nFeatures expressors of @features in @organism",
+        "show the @nFeatures highest expressors of @features in @organism",
+        "show the @nFeatures top expressors of @features in @organism"
       ],
       "slotFilling": {
         "features": {
@@ -521,6 +531,9 @@
         "organism": {
           "mandatory": true,
           "question": "You requested highest expressors: in what organism?"
+        },
+        "nFeatures": {
+          "mandatory": false
         }
       }
     },
@@ -605,6 +618,7 @@
       "utterances": [
         "what are @nFeatures genes similar to @features in @organism @organ?",
         "show @nFeatures genes similar to @features in @organism @organ",
+        "show @nFeatures genes most similar to @features in @organism @organ",
         "show @nFeatures genes like @features in @organism @organ",
         "show @nFeatures similar genes to @features in @organism @organ",
         "show 10 genes similar to Col1a1 in mouse lung"
@@ -947,11 +961,12 @@
       "regex": [
         "/(?:dotplot of|sequence of|sequences of|expression of|cells expressing) +([\\w;,.\/-]+)/i",
         "/(?:accessibility of) +([\\w;,:\/-]+)/i",
-        "/cell (?:states|neighborhoods|neighbourhoods) +(?:of|for) +([\\w;,.\/-]+)/i",
-        "/metacells (?:of|for) +([\\w;,.\/-]+)/i",
-        "/(?:genes similar to|genes like|similar genes to) +([\\w;,.\/-]+)/i",
-        "/(?:peaks similar to|peaks like|similar peaks to) +([\\w;:,.\/-]+)/i",
+        "/(?:state|neighborhood|neighbourhood|neighbor)[s]? +(?:of|for) +([\\w;,.\/-]+)/i",
+        "/metacell[s]? +(?:of|for) +([\\w;,.\/-]+)/i",
+        "/(?:genes similar to|genes most similar to|genes like|similar genes to) +([\\w;,.\/-]+)/i",
+        "/(?:peaks similar to|peaks most similar to|peaks like|similar peaks to) +([\\w;:,.\/-]+)/i",
         "/(?:expresses|express|expresses most|express most|expressor of|expressors of|expressing) +([\\w;,.\/-]+)/i",
+        "/(?:highest|largest|biggest) +([\\w;,.\/-]+) +expressor/i",
         "/(?:are|are genes|are the genes|are features|are the features|is|is the gene|is the feature) +([\\w;,.\/-]+) (?:present|found) in/i",
         "/(?:add|include|delete|remove) +([\\w;:,.\/-]+)/i"
       ]
@@ -972,7 +987,8 @@
         "/(?:types like|similar) (?:as|to) (\\w+)/i",
         "/(?:types like|similar as|similar to) (?:\\w+) (\\w+)/i",
         "/with (?:similar genes|similar peaks|similar chromatin peaks) (?:as|to) (\\w+)/i",
-        "/(?:for|markers|marker genes|marker peaks) (?:|for|of) (\\w+)/i",
+        "/(?:for|markers|marker genes|marker peaks) +(?:|for|of) +(\\w+|\\w+ +\\w+) +in/i",
+        "/(?:for|markers|marker genes|marker peaks) +(?:|for|of) +(\\w+|\\w+ +\\w+)$/i",
         "/ ([a-zA-Z]+\\w*) (?:marker)/i",
         "/^([a-zA-Z]+\\w*) (?:marker)/i",
         "/(?:where are|where were|organs contain|organs containing|locations of|location of) (\\w+)/i",

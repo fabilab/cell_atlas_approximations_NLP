@@ -36,7 +36,7 @@ let questionsGroups = [
         "organism": "h_sapiens",
         "organ": "lung",
         "celltype": "AT1",
-        "number": "10",
+        "nFeatures": "10",
       }
     },
     {
@@ -448,7 +448,7 @@ let questionsGroups = [
         "organism": "h_sapiens",
         "organ": "lymphnode",
         "celltype": "T",
-        "number": "5",
+        "nFeatures": "5",
       }
     },
     {
@@ -474,7 +474,35 @@ let questionsGroups = [
         "organism": "h_sapiens",
         "organ": "lung",
         "features": "chr1:9955-10355",
-        "number": "5",
+        "nFeatures": "5",
+      }
+    },
+    {
+      "questions": "show neighborhood for CD1C in human pancreas",
+      "intent": "neighborhood.geneExpression",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "pancreas",
+        "features": "CD1C",
+      }
+    },
+    {
+      "questions": "what are the 20 highest PDPN expressors in human?",
+      "intent": "highest_measurement.geneExpression",
+      "entities": {
+        "organism": "h_sapiens",
+        "features": "PDPN",
+        "nFeatures": "20",
+      }
+    },
+    {
+      "questions": "show 10 genes most similar to PDGFRB in human uterus",
+      "intent": "similar_features.geneExpression",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "uterus",
+        "features": "PDGFRB",
+        "nFeatures": "10",
       }
     }
   ];
