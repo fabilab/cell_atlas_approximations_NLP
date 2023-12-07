@@ -987,23 +987,12 @@
         "/(?:type)s? (?:are |is )?(?:like|similar as| similar to) (\\w+)/i",
         "/(?:type)s? (?:are |is )?(?:like|similar as|similar to) (?:\\w+) (\\w+)/i",
         "/with (?:similar genes|similar peaks|similar chromatin peaks) (?:as|to) (\\w+)/i",
-        "/(?:for|markers|marker genes|marker peaks) (?:|for|of) (\\w+|\\w+ \\w+)(?:$| in| cells)/i",
-        "/ ([a-zA-Z]+\\w*)(?<!top) (?:marker)/i",
-        "/^([a-zA-Z]+\\w*)(?<!top) (?:marker)/i",
-        "/(?:where are|where were|organs contain|organs containing|locations of|location of) (\\w+|\\w+ \\w+)(?:$| detected| found| in)/i",
-        "/across (?:organs|tissues) in (?:\\w+) (\\w+)/i",
-        "/in (?:\\w+) (\\w+) across (?:organs|tissues)/i",
-        "/in (\\w+) across (?:organs|tissues)/i"
-      ],
-      "options": {
-        "smooth muscle": ["smooth muscle", "ASM", "asm"],
-        "vascular smooth muscle": ["vascular smooth muscle", "VSM", "vsm"],
-        "striated muscle": ["striated muscle"],
-        "muscle progenitor": ["muscle progenitor"],
-        "transit amp": ["transit amp", "transit"],
-        "innate lymphoid": ["innate lymphoid", "ILC", "IL"],
-        "nerve stromal": ["nerve stromal"]
-      }
+        "/(?:for|markers|marker genes|marker peaks) (?:|for|of) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+)(?:$| in| cells)/i",
+        "/(?:where are|where were|organs contain|organs containing|locations of|location of) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+)(?:$| detected| found| in)/i",
+        "/across (?:organs|tissues) in (?:\\w+) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+)/i",
+        "/in (?:\\w+) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+) across (?:organs|tissues)/i",
+        "/in (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+) across (?:organs|tissues)/i"
+      ]
     }
   }
 }

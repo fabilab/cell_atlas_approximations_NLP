@@ -30,7 +30,7 @@ let questionsGroups = [
       "intent": "markers.geneExpression"
     },
     {
-      "questions": ["what are the AT1 markers in human lung?", "10"],
+      "questions": ["what are the markers of AT1 in human lung?", "10"],
       "intent": "markers.geneExpression",
       "entities": {
         "organism": "h_sapiens",
@@ -167,10 +167,18 @@ let questionsGroups = [
     {
       "questions": "where are fibroblast in human?",
       "intent": "celltype_location.geneExpression",
+      "entities": {
+        "organism": "h_sapiens",
+        "celltype": "fibroblast",
+      }
     },
     {
       "questions": "Where are fibroblast detected in human?",
       "intent": "celltype_location.geneExpression",
+      "entities": {
+        "organism": "h_sapiens",
+        "celltype": "fibroblast",
+      }
     },
     {
       "questions": "What is the average expression of ALK,CD8A,CD19 across organs in human fibroblast?",
