@@ -181,8 +181,14 @@ let questionsGroups = [
       "intent": "fraction_detected.geneExpression.across_organs",
     },
     {
-      "questions": ["what cell type is similar to lung fibroblast in human?", "Col1a1,Col2a1"],
+      "questions": ["what cell type is similar to lung fibroblast in human?", "10", "Col1a1,Col2a1"],
       "intent": "similar_celltypes.geneExpression",
+      "entities": {
+        "organism": "h_sapiens",
+        "celltype": "fibroblast",
+        "features": "Col1a1,Col2a1",
+        "nCelltypes": "10",
+      }
     },
     {
       "questions": ["show 8 cell types like Uterus pericyte in human", "COL1A1,COL2A1"],
@@ -500,6 +506,35 @@ let questionsGroups = [
         "organ": "uterus",
         "features": "PDGFRB",
         "nFeatures": "10",
+      }
+    },
+    {
+      "questions": "Show the 10 top marker peaks for vascular smooth muscle in h_sapiens nerve",
+      "intent": "markers.chromatinAccessibility",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "nerve",
+        "celltype": "vascular smooth muscle",
+        "nFeatures": "10",
+      }
+    },
+    {
+      "questions": ["what are cell types similar to lung fibroblast in human in chromatin accessibility?", "10"],
+      "intent": "similar_celltypes.chromatinAccessibility",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "lung",
+        "celltype": "fibroblast",
+        "nCelltypes": "10",
+      }
+    },
+    {
+      "questions": "compare expression of APOE, CD19, COL1A1 in smooth muscle across tissues in human",
+      "intent": "average.geneExpression.across_organs",
+      "entities": {
+        "organism": "h_sapiens",
+        "celltype": "smooth muscle",
+        "features": "APOE,CD19,COL1A1",
       }
     }
   ];

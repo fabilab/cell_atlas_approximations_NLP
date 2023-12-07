@@ -82,19 +82,22 @@ const postProcess = (response) => {
   for (let i = 0; i < response.entities.length; i++) {
     const entity = response.entities[i];
     if ((entity['entity'] == "celltype") && (entity['sourceText'].includes("muscle"))) {
-      entitiesForDeletion.push("organ");
-      break;
+      entitiesForDeletion.push(["organ", "muscle"]);
+      break
+  } else if ((entity['entity'] == "celltype")) {
+     //console.log(entity);
     }
-  }
+  };
   for (let i = 0; i < response.entities.length; i++) {
     const entity = response.entities[i];
     let keep = true;
     for (let j = 0; j < entitiesForDeletion.length; j++) {
-      if (entity['entity'] == entitiesForDeletion[j]) {
+      let keyFD, valueFD = entitiesForDeletion[j];
+      if ((entity['entity'] == keyFD) && (entity['sourceText'] == valueFD)) {
         keep = false;
         break;
       }
-    }
+    };
     if (keep)
       newEntities.push(entity);
   }

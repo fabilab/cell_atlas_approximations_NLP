@@ -242,7 +242,7 @@
         "what are the ATAC cell types in @organism",
         "what are the ATAC-Seq cell types in @organism",
         "what are the chromatin accessibility cell types in @organism",
-        "what are the cell types in @organism @organ chromatin accessibility",
+        "what are the cell types in @organism @organ in chromatin accessibility",
         "what cell types are there by chromatin accessibility?",
         "what cell types are there in @organism @organ by chromatin accessibility?",
         "what cell types are available by chromatin accessibility?",
@@ -682,11 +682,6 @@
         "show @nCelltypes similar cell types to @organ @celltype in @organism"
       ],
       "slotFilling": {
-	      "nCelltypes": {
-	        "mandatory": false,
-          "default": 10,
-	        "question": "You requested similar cell types: how many?"
-        },
         "organism": {
           "mandatory": true,
           "question": "You requested similar cell types: in what organism?"
@@ -699,6 +694,10 @@
           "mandatory": true,
           "question": "You requested similar cell types: similar to what cell type?"
         },
+	      "nCelltypes": {
+	        "mandatory": true,
+	        "question": "You requested similar cell types: how many?"
+        },
         "features": {
           "mandatory": true,
           "question": "You requested similar cell types. Similarity between cell types is a little ambiguous and depends on the genes chosen. What genes would you like to use?"
@@ -708,7 +707,8 @@
     {
       "intent": "similar_celltypes.chromatinAccessibility",
       "utterances": [
-        "what are cell types in chromatin accessibility similar to @organ @celltype in @organism?",
+        "what are cell types similar to @organ @celltype in @organism in chromatin accessibility?",
+        "what are the @nCelltypes cell types in chromatin accessibility similar to @organ @celltype in @organism?",
         "show @nCelltypes cell types with similar chromatin peaks to @organ @celltype in @organism",
         "show cell types like @organ @celltype by chromatin accessibility",
         "show @nCelltypes cell types like @organ @celltype by chromatin accessibility in @organism",
@@ -716,8 +716,7 @@
       ],
       "slotFilling": {
 	      "nCelltypes": {
-	        "mandatory": false,
-          "default": 10,
+	        "mandatory": true,
 	        "question": "You requested similar cell types: how many?"
         },
         "organism": {
@@ -929,6 +928,7 @@
         "male_reproductive": ["male_reproductive"],
         "mammary": ["mammary", "mammary gland"],
         "muscle": ["muscle", "muscles"],
+        "nerve": ["nerve", "nerves", "peripheral nerves"],
         "ovary": ["ovary", "ovaries"],
         "oenocyte": ["oenocyte", "oenocytes"],
         "oviduct": ["oviduct"],
@@ -984,19 +984,17 @@
     },
     "celltype": {
       "regex": [
-        "/(?:types like|similar) (?:as|to) (\\w+)/i",
-        "/(?:types like|similar as|similar to) (?:\\w+) (\\w+)/i",
+        "/(?:type)s? (?:are |is )?(?:like|similar as| similar to) (\\w+)/i",
+        "/(?:type)s? (?:are |is )?(?:like|similar as|similar to) (?:\\w+) (\\w+)/i",
         "/with (?:similar genes|similar peaks|similar chromatin peaks) (?:as|to) (\\w+)/i",
         "/(?:for|markers|marker genes|marker peaks) (?:|for|of) (\\w+|\\w+ \\w+)(?:$| in| cells)/i",
-        "/ ([a-zA-Z]+\\w*) (?:marker)/i",
-        "/^([a-zA-Z]+\\w*) (?:marker)/i",
+        "/ ([a-zA-Z]+\\w*)(?<!top) (?:marker)/i",
+        "/^([a-zA-Z]+\\w*)(?<!top) (?:marker)/i",
         "/(?:where are|where were|organs contain|organs containing|locations of|location of) (\\w+|\\w+ \\w+)(?:$| detected| found| in)/i",
         "/across (?:organs|tissues) in (?:\\w+) (\\w+)/i",
         "/in (?:\\w+) (\\w+) across (?:organs|tissues)/i",
         "/in (\\w+) across (?:organs|tissues)/i"
-      ]
-    },
-    "celltypeEnum": {
+      ],
       "options": {
         "smooth muscle": ["smooth muscle", "ASM", "asm"],
         "vascular smooth muscle": ["vascular smooth muscle", "VSM", "vsm"],
