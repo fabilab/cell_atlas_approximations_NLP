@@ -544,6 +544,15 @@ let questionsGroups = [
         "celltype": "smooth muscle",
         "features": "APOE,CD19,COL1A1",
       }
+    },
+    {
+      "questions": "Compare fraction expressing PTPRC, MARCO, CD68, CD14 in macrophage across organs in human",
+      "intent": "fraction_detected.geneExpression.across_organs",
+      "entities": {
+        "organism": "h_sapiens",
+        "celltype": "macrophage",
+        "features": "PTPRC,MARCO,CD68,CD14",
+      }
     }
   ];
 
