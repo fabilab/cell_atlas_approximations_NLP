@@ -1001,7 +1001,8 @@
         "striated muscle": ["striated muscle"],
         "muscle progenitor": ["muscle progenitor"],
         "transit amp": ["transit amp", "transit"],
-        "innate lymphoid": ["innate lymphoid", "ILC", "IL"]
+        "innate lymphoid": ["innate lymphoid", "ILC", "IL"],
+        "nerve stromal": ["nerve stromal"]
       }
     }
   }
