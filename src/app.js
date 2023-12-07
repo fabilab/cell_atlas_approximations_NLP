@@ -92,7 +92,8 @@ const postProcess = (response) => {
     const entity = response.entities[i];
     let keep = true;
     for (let j = 0; j < entitiesForDeletion.length; j++) {
-      let keyFD, valueFD = entitiesForDeletion[j];
+      let keyFD = entitiesForDeletion[j][0];
+      let valueFD = entitiesForDeletion[j][1];
       if ((entity['entity'] == keyFD) && (entity['sourceText'] == valueFD)) {
         keep = false;
         break;
