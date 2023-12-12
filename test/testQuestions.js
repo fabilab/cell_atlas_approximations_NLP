@@ -553,6 +553,17 @@ let questionsGroups = [
         "celltype": "macrophage",
         "features": "PTPRC,MARCO,CD68,CD14",
       }
+    },
+    {
+      "questions": "please convert to dot plot",
+      "intent": "plot.dotplot"
+    },
+    {
+      "questions": "what organs contain neuron across species?",
+      "intent": "organxorganism.geneExpression",
+      "entities": {
+        "celltype": "neuron",
+      }
     }
   ];
 

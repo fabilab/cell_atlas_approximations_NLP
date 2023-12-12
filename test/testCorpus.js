@@ -114,9 +114,6 @@ const postProcess = (response) => {
         languages: ['en'],
         corpora: ["src/corpus.json"],
       },
-      ner: {
-        threahold: 0.7,
-      }
     },
     use: ['Basic', 'LangEn'],
   });

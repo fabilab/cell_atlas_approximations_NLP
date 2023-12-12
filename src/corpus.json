@@ -299,6 +299,20 @@
       }
     },
     {
+      "intent": "organxorganism.geneExpression",
+      "utterances": [
+        "where are @celltype cells found across the tree of life?",
+        "show organs containing @celltype across species",
+        "show organs that have @celltype across organisms"
+      ],
+      "slotFilling": {
+        "celltype": {
+          "mandatory": true,
+          "question": "You requested presence of a cell type across the tree of life: what cell type?"
+        }
+      }
+    },
+    {
       "intent": "celltypexorgan.chromatinAccessibility",
       "utterances": [
         "show the table of cell types by chromatin accessibility in all @organism organs",
@@ -394,6 +408,15 @@
           "question": "You requested fraction of cells expressing: in what organ?"
         }
       }
+    },
+    {
+      "intent": "plot.dotplot",
+      "utterances": [
+        "please convert to dot plot",
+        "transform into a dotplot",
+        "could I see the dotplot of this?",
+        "what is the dot plot equivalent?"
+      ]
     },
     {
       "intent": "neighborhood.geneExpression",
@@ -988,7 +1011,7 @@
         "/(?:type)s? (?:are |is )?(?:like|similar as|similar to) (?:\\w+) (\\w+)/i",
         "/with (?:similar genes|similar peaks|similar chromatin peaks) (?:as|to) (\\w+)/i",
         "/(?:for|markers|marker genes|marker peaks) (?:|for|of) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+)(?:$| in| cells)/i",
-        "/(?:where are|where were|organs contain|organs containing|locations of|location of) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+)(?:$| detected| found| in)/i",
+        "/(?:where are|where were|organs contain|organs containing|organs that have|organs with|locations of|location of) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+)(?:$| detected| found| in| across)/i",
         "/across (?:organs|tissues) in (?:\\w+) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+)/i",
         "/in (?:\\w+) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+) across (?:organs|tissues)/i",
         "/in (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+) across (?:organs|tissues)/i"
