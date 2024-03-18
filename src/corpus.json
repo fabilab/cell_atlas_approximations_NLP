@@ -11,7 +11,8 @@
         "good day",
         "g'day",
         "hi",
-        "hey"
+        "hey",
+        "what can you do?"
       ],
       "answers": [
         "Hello! Type \"help\" to get started.",
@@ -42,6 +43,22 @@
       "answers": [
         "Thank you. We try our best :-)",
         "Great! Check out https://fabilab.org to see what else we do."
+      ]
+    },
+    {
+      "intent": "greetings.bye",
+      "utterances": [
+        "Thank you!",
+        "thanks",
+        "cheers",
+        "many thanks",
+        "goodbye",
+        "bye",
+        "see you",
+        "see ya",
+        "see you soon",
+        "restart",
+        "I am done"
       ]
     },
     {
@@ -410,12 +427,64 @@
       }
     },
     {
-      "intent": "plot.dotplot",
+      "intent": "fraction_detected.chromatinAccessibility",
       "utterances": [
+        "what is the fraction of cells with open chromatin at @features?",
+        "what is the fraction of cells with open chromatin at @features in @organism?",
+        "what is the fraction of cells with open chromatin at @features in @organism @organ?",
+        "what is the fraction of accessible chromatin at @features in @organism @organ?"
+      ],
+      "slotFilling": {
+        "features": {
+          "mandatory": true,
+          "question": "You requested average chromatin accessibility: what peaks?"
+        },
+        "organism": {
+          "mandatory": true,
+          "question": "You requested average chromatin accessibility: in what organism?"
+        },
+        "organ": {
+          "mandatory": true,
+          "question": "You requested average chromatin accessibility: in what organ?"
+        }
+      }
+    },
+    {
+      "intent": "comeasurement.geneExpression",
+      "utterances": [
+        "what cell types coexpress @features and @features in @organism?",
+        "what cells coexpress @features in @organism?",
+        "what is the joint expression of @features and @features in @organism?",
+        "show coexpression of @features and @features in @organism"
+      ],
+      "slotFilling": {
+          "features": {
+          "mandatory": true,
+          "question": "You requested coexpression: what two genes?"
+        },
+        "organism": {
+          "mandatory": true,
+          "question": "You requested coexpression: in what organism?"
+        } 
+      }
+    },
+    {
+      "intent": "convert_to.dotplot",
+      "utterances": [
+        "convert to dotplot",
         "please convert to dot plot",
         "transform into a dotplot",
         "could I see the dotplot of this?",
         "what is the dot plot equivalent?"
+      ]
+    },
+    {
+      "intent": "convert_to.heatmap",
+      "utterances": [
+        "convert to heatmap",
+        "please convert to heatmap",
+        "transform into a heat map",
+        "what is the heat map for this?"
       ]
     },
     {
@@ -983,7 +1052,8 @@
     "features": {
       "regex": [
         "/(?:dotplot of|sequence of|sequences of|expression of|cells expressing) ([\\w;,.\/-]+)/i",
-        "/(?:accessibility of) ([\\w;,:\/-]+)/i",
+        "/(?:accessibility|accessible chromatin|open chromatin) (?:at|of) ([\\w;,:\/-]+)/i",
+        "/(?:coexpress|expression of|cells coexpressing) ([\\w;,.\/-]+ and [\\w;,.\/-]+)/i",
         "/(?:state|neighborhood|neighbourhood|neighbor)[s]? (?:of|for) ([\\w;,.\/-]+)/i",
         "/metacell[s]? (?:of|for) ([\\w;,.\/-]+)/i",
         "/(?:genes similar to|genes most similar to|genes like|similar genes to) ([\\w;,.\/-]+)/i",

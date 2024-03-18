@@ -556,7 +556,11 @@ let questionsGroups = [
     },
     {
       "questions": "please convert to dot plot",
-      "intent": "plot.dotplot"
+      "intent": "convert_to.dotplot"
+    },
+    {
+      "questions": "convert to heat map",
+      "intent": "convert_to.heatmap"
     },
     {
       "questions": "what organs contain neuron across species?",
@@ -564,7 +568,36 @@ let questionsGroups = [
       "entities": {
         "celltype": "neuron",
       }
-    }
+    },
+    {
+      "questions": "What is the fraction of cells with open chromatin at chr1:9955-10355 in human lung?",
+      "intent": "fraction_detected.chromatinAccessibility",
+      "entities": {
+        "features": "chr1:9955-10355",
+        "organ": "lung",
+        "organism": "h_sapiens",
+      }
+    },
+    {
+      "questions": "Thank you",
+      "intent": "greetings.bye",
+    },
+    {
+      "questions": "what cells coexpress ADGRE1 and PDGFRA in human?",
+      "intent": "comeasurement.geneExpression",
+      "entities": {
+        "features": "ADGRE1,PDGFRA",
+        "organism": "h_sapiens"
+      }
+    },
+     {
+      "questions": "what cells coexpress ADGRE1, PDGFRA in human?",
+      "intent": "comeasurement.geneExpression",
+      "entities": {
+        "features": "ADGRE1,PDGFRA",
+        "organism": "h_sapiens"
+      }
+    }, 
   ];
 
 module.exports = {
