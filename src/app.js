@@ -76,6 +76,15 @@ const postProcess = (response) => {
     }
   }
 
+  // Sometimes people write "radial glia cells" but they just mean "radial glia", cut " cells"
+  for (let i = 0; i < response.entities.length; i++) {
+    const entity = response.entities[i];
+    if ((entity['entity'] == "celltype") && (entity['type'] === 'regex') && (entity['sourceText'].endsWith(" cells"))) {
+      const ctlength = entity['sourceText'].length;
+      entity['sourceText'] = entity['sourceText'].slice(0, ctlength - (" cells").length);
+    }
+  }
+
   // smooth muscle et al.: the "muscle" gets recognised as an organ. Fix that
   let entitiesForDeletion = [];
   newEntities = [];

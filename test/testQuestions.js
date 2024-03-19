@@ -378,6 +378,14 @@ let questionsGroups = [
       }
     },
     {
+      "questions": "where are radial glia cells in frog?",
+      "intent": "celltype_location.geneExpression",
+      "entities": {
+        "organism": "x_laevis",
+        "celltype": "radial glia",
+      }
+    },
+    {
       "questions": "show 10 markers of radial glia in frog brain",
       "intent": "markers.geneExpression",
       "entities": {
@@ -598,6 +606,13 @@ let questionsGroups = [
         "organism": "h_sapiens"
       }
     }, 
+    {
+      "questions": "where are smooth muscle cells found across the tree of life?",
+      "intent": "organxorganism.geneExpression",
+      "entities": {
+        "celltype": "smooth muscle",
+      }
+    }
   ];
 
 module.exports = {
