@@ -26,6 +26,22 @@ let questionsGroups = [
       "questions": ["what cell types are available?", "in mouse", "lung"],
       "intent": "celltypes.geneExpression"
     },
+    {
+      "questions": ["what cell types are available in bread wheat?", "whole"],
+      "intent": "celltypes.geneExpression",
+      "entities": {
+        "organism": "t_aestivum",
+        "organ": "whole",
+      }
+    },
+    {
+      "questions": ["what cell types are available in sea urchin?", "whole"],
+      "intent": "celltypes.geneExpression",
+      "entities": {
+        "organism": "s_purpuratus",
+        "organ": "whole",
+      }
+    },
     { "questions": ["what are the markers for fibroblast in mouse lung", "5"],
       "intent": "markers.geneExpression"
     },
@@ -36,6 +52,16 @@ let questionsGroups = [
         "organism": "h_sapiens",
         "organ": "lung",
         "celltype": "AT1",
+        "nFeatures": "10",
+      }
+    },
+    {
+      "questions": ["what are the markers for all cells in human lung?", "10"],
+      "intent": "markers.geneExpression",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "lung",
+        "celltype": "all",
         "nFeatures": "10",
       }
     },

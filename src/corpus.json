@@ -988,7 +988,13 @@
         "i_pulchra": ["i_pulchra", "isodiametra"],
         "l_minuta": ["l_minuta", "lemna", "duckweed"],
         "n_vectensis": ["n_vectensis", "nematostella", "Nematostella"],
-        "s_pistillata": ["s_pistillata", "Stylophora", "coral"]
+        "s_pistillata": ["s_pistillata", "Stylophora", "coral"],
+        "p_dumerilii": ["p_dumerilii", "platynereis", "dumerilii"],
+        "c_gigas": ["c_gigas", "crassostrea", "trochophore"],
+        "p_crozieri": ["p_crozieri", "muller"],
+        "a_thaliana": ["a_thaliana", "arabidopsis", "thaliana"],
+        "t_aestivum": ["t_aestivum", "bread wheat"],
+        "s_purpuratus": ["s_purpuratus", "sea urchin"]
       },
       "regex": [
         "/(?:explore) ([\\w_]+)/i"
