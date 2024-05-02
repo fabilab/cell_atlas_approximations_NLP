@@ -56,7 +56,7 @@ let questionsGroups = [
       }
     },
     {
-      "questions": ["what are the markers for all cells in human lung?", "10"],
+      "questions": ["what are 10 markers for all cells in human lung?"],
       "intent": "markers.geneExpression",
       "entities": {
         "organism": "h_sapiens",
@@ -637,6 +637,16 @@ let questionsGroups = [
       "intent": "organxorganism.geneExpression",
       "entities": {
         "celltype": "smooth muscle",
+      }
+    },
+    {
+      "questions": "what are 5 marker of fibroblast in human lung?",
+      "intent": "markers.geneExpression",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "lung",
+        "celltype": "fibroblast",
+        "nFeatures": "5",
       }
     }
   ];

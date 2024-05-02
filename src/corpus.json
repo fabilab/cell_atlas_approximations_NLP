@@ -1086,7 +1086,7 @@
         "/(?:type)s? (?:are |is )?(?:like|similar as| similar to) (\\w+)/i",
         "/(?:type)s? (?:are |is )?(?:like|similar as|similar to) (?:\\w+) (\\w+)/i",
         "/with (?:similar genes|similar peaks|similar chromatin peaks) (?:as|to) (\\w+)/i",
-        "/(?:for|markers|marker genes|marker peaks) (?:|for|of) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+)(?:$| in| cells)/i",
+        "/(?:for|markers|marker genes|marker peaks|marker) (?:|for|of) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+)(?:$| in| cells)/i",
         "/(?:where are|where were|organs contain|organs containing|organs that have|organs with|locations of|location of) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+)(?:$| detected| found| in| across)/i",
         "/across (?:organs|tissues) in (?:\\w+) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+)/i",
         "/in (?:\\w+) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+) across (?:organs|tissues)/i",
