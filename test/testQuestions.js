@@ -659,6 +659,33 @@ let questionsGroups = [
         "celltype": "macrophage",
         "nFeatures": "5",
       }
+    },
+    {
+      "questions": "who expresses the interaction partners of NOTCH1 in human marrow?",
+      "intent": "interactors.geneExpression",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "marrow",
+        "features": "NOTCH1",
+      }
+    },
+    {
+      "questions": "who expresses interactors of NOTCH1 in human marrow?",
+      "intent": "interactors.geneExpression",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "marrow",
+        "features": "NOTCH1",
+      }
+    },
+    {
+      "questions": "who expresses partners of NOTCH1 in human marrow?",
+      "intent": "interactors.geneExpression",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "marrow",
+        "features": "NOTCH1",
+      }
     }
   ];
 
