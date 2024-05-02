@@ -557,6 +557,47 @@
       }
     },
     {
+      "intent": "markers.geneExpression.across_organs",
+      "utterances": [
+        "show @nFeatures markers for @celltype in @organism @organ versus other organs",
+        "show @nFeatures markers for @celltype in @organism @organ against other organs",
+        "show @nFeatures markers for @celltype in @organism @organ compared to other organs",
+        "show @nFeatures markers for @celltype in @organism @organ compared to other tissues",
+        "plot the @nFeatures top marker genes for @celltype in @organism @organ versus other organs",
+        "plot the @nFeatures top marker genes for @celltype in @organism @organ against other organs",
+        "plot the @nFeatures top marker genes for @celltype in @organism @organ compared to other organs",
+        "plot the @nFeatures top marker genes for @celltype in @organism @organ versus other tissues",
+        "what are the marker genes for @celltype in @organism @organ versus other organs?",
+        "what are the marker genes for @celltype in @organism @organ against other organs?",
+        "what are the markers for @celltype in @organism @organ versus other organs?",
+        "what are the markers for @celltype in @organism @organ against other organs?",
+        "what are the markers for @celltype in @organism @organ against other tissues?",
+        "what are the markers for @celltype in @organism @organ compared to other organs?",
+        "what are the @celltype markers in @organism @organ versus other organs?",
+        "what are the @celltype markers in @organism @organ against other organs?",
+        "what are the @celltype markers in @organism @organ compared to other organs?",
+        "what are the @celltype markers in @organism @organ compared to other tissues?"
+      ],
+      "slotFilling": {
+        "nFeatures": {
+          "mandatory": true,
+          "question": "You requested marker genes versus other organs: how many?"
+        },
+        "celltype": {
+          "mandatory": true,
+          "question": "You requested marker genes versus other organs: what cell type?"
+        },
+        "organism": {
+          "mandatory": true,
+          "question": "You requested marker genes versus other organs: in what organism?"
+        },
+        "organ": {
+          "mandatory": true,
+          "question": "You requested marker genes versus other organs: in what organ?"
+        }
+      }
+    },
+    {
       "intent": "markers.chromatinAccessibility",
       "utterances": [
         "show @nFeatures marker peaks for @celltype",

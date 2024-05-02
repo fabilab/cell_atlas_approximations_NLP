@@ -163,7 +163,7 @@ const postProcess = (response) => {
     console.log(process.argv);
   }
 
-  async function testGroup(questions, intent, entities = {}, context = {}, debug = false) {
+  async function testGroup(questions, intent, entities = {}, context = {}, debug = false, log = false) {
     if (typeof questions === 'string' || questions instanceof String) {
       questions = [questions];
     }
@@ -231,7 +231,13 @@ const postProcess = (response) => {
         }
       };
 
+      if (log === true) {
+        console.log(response);
+        console.log("--------------------------------------------");
+      }
+
     }
+
     return true;
   }
 
@@ -243,8 +249,8 @@ const postProcess = (response) => {
     console.log("Group " + (k+1));
     // NOTE: Each question group resets the context
     let context = {};
-    let { questions, intent, entities } = questionsGroups[k];
-    exit = !await testGroup(questions, intent, entities, context, debug = true);
+    let { questions, intent, entities, log } = questionsGroups[k];
+    exit = !await testGroup(questions, intent, entities, context, debug = true, log);
     if (!exit) {
       console.log("--------------------------------------------");
       console.log("OK");

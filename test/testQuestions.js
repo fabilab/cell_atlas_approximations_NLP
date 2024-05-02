@@ -648,6 +648,17 @@ let questionsGroups = [
         "celltype": "fibroblast",
         "nFeatures": "5",
       }
+    },
+    {
+      "questions": "what are 5 markers of macrophage in human spleen compared to other organs?",
+      "intent": "markers.geneExpression.across_organs",
+      "log": false,
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "spleen",
+        "celltype": "macrophage",
+        "nFeatures": "5",
+      }
     }
   ];
 
