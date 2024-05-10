@@ -112,6 +112,17 @@ const postProcess = (response) => {
       newEntities.push(entity);
   }
   response.entities = newEntities;
+
+  // there are semantic variations for "these genes", standardise a bit
+  for (let i = 0; i < response.entities.length; i++) {
+    const entity = response.entities[i];
+    if (entity['entity'] !== "features")
+      continue;
+    const srcTxt = entity['sourceText'];
+    if (['these genes', 'these features', 'this gene', 'this feature'].includes(srcTxt)) {
+      response.entities[i]['sourceText'] = "these genes";
+    }
+  }
 }
 
 

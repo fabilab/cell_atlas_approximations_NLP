@@ -690,11 +690,21 @@ let questionsGroups = [
     {
       "questions": "what are the homologs of Ptprc, Col1a1 from mouse to human?",
       "intent": "homologs.geneExpression",
-      "log": true,
+      "log": false,
       "entities": {
         "organism": "m_musculus",
         "targetOrganism": "h_sapiens",
         "features": "Ptprc,Col1a1",
+      }
+    },
+    {
+      "questions": "what are the homologs of these features from mouse to human?",
+      "intent": "homologs.geneExpression",
+      "log": true,
+      "entities": {
+        "organism": "m_musculus",
+        "targetOrganism": "h_sapiens",
+        "features": "these genes",
       }
     }
   ];
