@@ -623,6 +623,29 @@
       }
     },
     {
+      "intent": "homologs.geneExpression",
+      "utterances": [
+        "what are the homologs of @features from @organism to @targetOrganism?",
+        "what are the homologs of @features from @organism to @targetOrganism?",
+        "what are the homologues of @features from @organism in @targetOrganism?",
+        "what are the homologues of @features from @organism in @targetOrganism?"
+      ],
+      "slotFilling": {
+        "organism": {
+          "mandatory": true,
+          "question": "You requested homologs: what is the original organism?"
+        },
+        "targetOrganism": {
+          "mandatory": true,
+          "question": "You requested homologs: what is the target organism?"
+        },
+        "features": {
+          "mandatory": true,
+          "question": "You requested homologs: of what genes?"
+        }
+      }
+    },
+    {
       "intent": "markers.chromatinAccessibility",
       "utterances": [
         "show @nFeatures marker peaks for @celltype",
@@ -1060,11 +1083,49 @@
         "p_crozieri": ["p_crozieri", "muller"],
         "a_thaliana": ["a_thaliana", "arabidopsis", "thaliana"],
         "t_aestivum": ["t_aestivum", "bread wheat"],
-        "s_purpuratus": ["s_purpuratus", "sea urchin"]
+        "s_purpuratus": ["s_purpuratus", "sea urchin"],
+        "o_sativa": ["o_sativa", "rice"],
+        "z_mays": ["z_mays", "maize", "corn"],
+        "f_vesca": ["f_vesca", "strawberry"]
       },
       "regex": [
         "/(?:explore) ([\\w_]+)/i"
       ]
+    },
+    "targetOrganism": {
+      "options": {
+        "h_sapiens": ["human", "h_sapiens", "homo sapiens"],
+        "m_musculus": ["mouse", "murine", "m_musculus"],
+        "m_murinus": [
+          "monkey", "lemur", "mouse lemur", "m_murinus",
+          "microbebus murinus", "microcebus"
+        ],
+        "d_rerio": ["d_rerio", "zebrafish", "fish"],
+        "c_elegans": ["c_elegans", "worm"],
+        "c_hemisphaerica": ["c_hemisphaerica", "clytia", "hydrazoan", "medusa"],
+        "a_queenslandica": ["a_queenslandica", "amphimedon"],
+        "t_adhaerens": ["t_adhaerens", "t_adherens", "trichoplax", "placozoa"],
+        "s_lacustris": ["s_lacustris", "sponge"],
+        "x_laevis": ["x_laevis", "xenopus", "frog"],
+        "m_leidyi": ["m_leidyi", "ctenophore", "jellyfish"],
+        "s_mediterranea": ["s_mediterranea", "planarian", "plenaria", "flatworm"],
+        "s_mansoni": ["s_mansoni", "schistosome"],
+        "h_miamia": ["h_miamia", "acoel", "hofstenia"],
+        "d_melanogaster": ["d_melanogaster", "drosophila", "fly", "fruitfly"],
+        "i_pulchra": ["i_pulchra", "isodiametra"],
+        "l_minuta": ["l_minuta", "lemna", "duckweed"],
+        "n_vectensis": ["n_vectensis", "nematostella", "Nematostella"],
+        "s_pistillata": ["s_pistillata", "Stylophora", "coral"],
+        "p_dumerilii": ["p_dumerilii", "platynereis", "dumerilii"],
+        "c_gigas": ["c_gigas", "crassostrea", "trochophore"],
+        "p_crozieri": ["p_crozieri", "muller"],
+        "a_thaliana": ["a_thaliana", "arabidopsis", "thaliana"],
+        "t_aestivum": ["t_aestivum", "bread wheat"],
+        "s_purpuratus": ["s_purpuratus", "sea urchin"],
+        "o_sativa": ["o_sativa", "rice"],
+        "z_mays": ["z_mays", "maize", "corn"],
+        "f_vesca": ["f_vesca", "strawberry"]
+      }
     },
     "organ": {
       "options": {
@@ -1084,7 +1145,7 @@
         "heart": ["Heart", "heart"],
         "kidney": ["kidney", "kidneys"],
         "leg": ["leg", "legs"],
-        "leaf": ["leaf", "leaves", "Leaf", "Leaves", "seedling"],
+        "leaf": ["leaf", "leaves", "Leaf", "Leaves"],
         "flower": ["flower", "bud", "anther"],
         "liver": ["liver"],
         "lymphnode": ["lymph", "node", "lymp_node", "lymphnodes"],
@@ -1100,6 +1161,7 @@
         "proboscis": ["proboscis", "Proboscis"],
         "root": ["root", "Root"],
         "salivary": ["Salivary", "salivary gland"],
+        "seedling": ["Seedling", "seed"],
         "skin": ["skin"],
         "spleen": ["spleen"],
         "stomach": ["stomach"],
@@ -1124,7 +1186,7 @@
     "features": {
       "regex": [
         "/(?:dotplot of|sequence of|sequences of|expression of|cells expressing) ([\\w;,.\/-]+)/i",
-        "/(?:interactors|partners) (?:of|for) ([\\w;,.\/-]+)/i",
+        "/(?:interactors|partners|homologs|homolog|homologue|homologues) (?:of|for) ([\\w;,.\/-]+)/i",
         "/(?:accessibility|accessible chromatin|open chromatin) (?:at|of) ([\\w;,:\/-]+)/i",
         "/(?:coexpress|expression of|cells coexpressing) ([\\w;,.\/-]+ and [\\w;,.\/-]+)/i",
         "/(?:state|neighborhood|neighbourhood|neighbor)[s]? (?:of|for) ([\\w;,.\/-]+)/i",
