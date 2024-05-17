@@ -700,11 +700,33 @@ let questionsGroups = [
     {
       "questions": "what are the homologs of these features from mouse to human?",
       "intent": "homologs.geneExpression",
-      "log": true,
+      "log": false,
       "entities": {
         "organism": "m_musculus",
         "targetOrganism": "h_sapiens",
         "features": "these genes",
+      }
+    },
+    {
+      "questions": "where is the video guide for this website?",
+      "intent": "link.video",
+    },
+    {
+      "questions": "where is the user guide for this website?",
+      "intent": "link.userguide",
+    },
+    {
+      "questions": "where is the API for this website?",
+      "intent": "link.api",
+    },
+    {
+      "questions": "show 5 markers for all cells in rice root?",
+      "intent": "markers.geneExpression",
+      "entities": {
+        "organism": "o_sativa",
+        "organ": "root",
+        "celltype": "all",
+        "nFeatures": "5",
       }
     }
   ];
