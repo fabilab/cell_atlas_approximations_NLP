@@ -892,6 +892,7 @@
       "utterances": [
         "what cell types are similar to @organ @celltype in @organism?",
         "what are cell types similar to @organ @celltype in @organism?",
+        "what are @nCelltypes celltypes similar to @organ @celltype in @organism?",
         "show @nCelltypes cell types similar to @organ @celltype in @organism",
         "show cell types like @organ @celltype",
         "show cell types like @celltype",
@@ -1244,7 +1245,7 @@
     },
     "nCelltypes": {
       "regex": [
-        "/([0-9]+) (cell types|similar cell)/i"
+        "/([0-9]+) (celltypes|cell types|similar cell)/i"
       ]
     },
     "celltype": {

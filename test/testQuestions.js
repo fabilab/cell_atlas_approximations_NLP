@@ -728,6 +728,20 @@ let questionsGroups = [
         "celltype": "all",
         "nFeatures": "5",
       }
+    },
+    {
+      "questions": [
+        "what are 10 celltypes similar to fat fibroblast in human?",
+        "COL1A1,COL2A1,COL6A2",
+      ],
+      "intent": "similar_celltypes.geneExpression",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "fat",
+        "celltype": "fibroblast",
+        "nCelltypes": "10",
+        "features": "COL1A1,COL2A1,COL6A2",
+      }
     }
   ];
 
