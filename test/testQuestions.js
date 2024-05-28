@@ -571,6 +571,26 @@ let questionsGroups = [
       }
     },
     {
+      "questions": ["what are 10 cell types in chromatin accessibility similar to lung fibroblast in human?"],
+      "intent": "similar_celltypes.chromatinAccessibility",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "lung",
+        "celltype": "fibroblast",
+        "nCelltypes": "10",
+      }
+    },
+    {
+      "questions": ["what are the 10 cell types in chromatin accessibility similar to lung fibroblast in human?"],
+      "intent": "similar_celltypes.chromatinAccessibility",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "lung",
+        "celltype": "fibroblast",
+        "nCelltypes": "10",
+      }
+    },
+    {
       "questions": "compare expression of APOE, CD19, COL1A1 in smooth muscle across tissues in human",
       "intent": "average.geneExpression.across_organs",
       "entities": {

@@ -67,6 +67,7 @@
         "where is the video guide?",
         "show me the youtube link",
         "where are the video tutorials?",
+        "where is your youtube channel?",
         "link to the videos"
       ],
       "answers": [
@@ -1250,8 +1251,8 @@
     },
     "celltype": {
       "regex": [
-        "/(?:type)s? (?:are |is )?(?:like|similar as| similar to) (\\w+)/i",
-        "/(?:type)s? (?:are |is )?(?:like|similar as|similar to) (?:\\w+) (\\w+)/i",
+        "/(?:type)s? (?:in chromatin accessibility )?(?:are |is )?(?:like|similar as| similar to) (\\w+)/i",
+        "/(?:type)s? (?:in chromatin accessibility )?(?:are |is )?(?:like|similar as|similar to) (?:\\w+) (\\w+)/i",
         "/with (?:similar genes|similar peaks|similar chromatin peaks) (?:as|to) (\\w+)/i",
         "/(?:for|markers|marker genes|marker peaks|marker) (?:|for|of) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+)(?:$| in| cells)/i",
         "/(?:where are|where were|organs contain|organs containing|organs that have|organs with|locations of|location of) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+)(?:$| detected| found| in| across)/i",
