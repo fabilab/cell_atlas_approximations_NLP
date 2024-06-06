@@ -762,6 +762,16 @@ let questionsGroups = [
         "nCelltypes": "10",
         "features": "COL1A1,COL2A1,COL6A2",
       }
+    },
+    {
+      "questions": ["what are the 3 top surface markers of B cells in human liver"],
+      "intent": "markers.geneExpression",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "liver",
+        "nFeatures": "3",
+        "surface": "surface",
+      }
     }
   ];
 
