@@ -5,6 +5,7 @@ const { containerBootstrap } = require('@nlpjs/core');
 const { Nlp } = require('@nlpjs/nlp');
 const { LangEn } = require('@nlpjs/lang-en-min');
 const modelString = require('./modelString.js');
+const trainingUtterances = require('./utterances.js'); 
 
 let debug = true;
 
@@ -199,4 +200,5 @@ AtlasApproxNlp.prototype = {
 
 module.exports = {
   AtlasApproxNlp,
+  trainingUtterances,
 }
