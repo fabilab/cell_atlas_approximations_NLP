@@ -722,19 +722,23 @@
       "intent": "highest_measurement.geneExpression",
       "utterances": [
         "who expresses @features?",
+        "who expresses @features but not @featuresNegative?",
         "who expresses @features the most?",
         "what cell type expresses @features the most?",
         "who expresses @features in @organism?",
         "who expresses most @features in @organism?",
         "which cell express most @features in @organism?",
         "what cell express most @features in @organism?",
+        "what cell express most @features but lacks @featuresNegative in @organism?",
         "what express most @features in @organism?",
         "what express most @features across @organism organs?",
+        "what express most @features but does not express @featuresNegative across @organism organs?",
         "what express most @features across the @organism body?",
         "what are the highest @features expressors in @organism?",
         "who is the highest expressor of @features in @organism?",
         "who is the highest expressing cell type of @features in @organism?",
         "what cell type is the highest expressor of @features in @organism?",
+        "what cell type is the highest expressor of @features but not @featuresNegative in @organism?",
         "who expresses @features the highest in @organism?",
         "list highest expressors of @features in @organism",
         "show top expressing cell types of @features in @organism",
@@ -1238,6 +1242,12 @@
         "/(?:highest|largest|biggest) ([\\w;,.\/-]+) expressor/i",
         "/(?:are|are genes|are the genes|are features|are the features|is|is the gene|is the feature) ([\\w;,.\/-]+) (?:present|found) in/i",
         "/(?:add|include|delete|remove) ([\\w;:,.\/-]+)/i"
+      ]
+    },
+    "featuresNegative": {
+      "regex": [
+        "/but not (?:of |for )?([\\w;,.\/-]+)/i",
+        "/but (?:lacks |does not express |do not express |does not have |do not have|does not contain |do not contain |is missing )([\\w;,.\/-]+)/i"
       ]
     },
     "nFeatures": {

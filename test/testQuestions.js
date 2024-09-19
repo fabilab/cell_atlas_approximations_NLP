@@ -792,6 +792,42 @@ let questionsGroups = [
         "nFeatures": "3",
         "surface": "surface",
       }
+    },
+    {
+      "questions": ["who expresses Col1a1 but not Gzma,Gzmb in mouse?"],
+      "intent": "highest_measurement.geneExpression",
+      "entities": {
+        "organism": "m_musculus",
+        "features": "Col1a1",
+        "featuresNegative": "Gzma,Gzmb",
+      }
+    },
+    {
+      "questions": ["who expresses Col1a1 but lacks Gzma,Gzmb in mouse?"],
+      "intent": "highest_measurement.geneExpression",
+      "entities": {
+        "organism": "m_musculus",
+        "features": "Col1a1",
+        "featuresNegative": "Gzma,Gzmb",
+      }
+    },
+    {
+      "questions": ["who expresses Col1a1 but is missing Gzma,Gzmb in mouse?"],
+      "intent": "highest_measurement.geneExpression",
+      "entities": {
+        "organism": "m_musculus",
+        "features": "Col1a1",
+        "featuresNegative": "Gzma,Gzmb",
+      }
+    },
+    {
+      "questions": ["what is the highest expressor of Col1a1 but not of Gzma,Gzmb in mouse?"],
+      "intent": "highest_measurement.geneExpression",
+      "entities": {
+        "organism": "m_musculus",
+        "features": "Col1a1",
+        "featuresNegative": "Gzma,Gzmb",
+      }
     }
   ];
 
