@@ -1,6 +1,6 @@
 {
   "name": "@fabilab/atlasapprox-nlp",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "author": "Fabio Zanini",
   "license": "MIT",
   "main": "build/index.js",

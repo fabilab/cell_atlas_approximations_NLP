@@ -1202,6 +1202,7 @@
         "root": ["root", "Root"],
         "salivary": ["Salivary", "salivary gland"],
         "seedling": ["Seedling", "seed"],
+        "shoot": ["shoot"],
         "skin": ["skin"],
         "spleen": ["spleen"],
         "stomach": ["stomach"],
@@ -1242,7 +1243,8 @@
     "nFeatures": {
       "regex": [
         "/(?:^| )([0-9]+) (?:top|highest|bottom|lowest)/i",
-        "/(?:^| )([0-9]+) (genes|marker|top|feature|peak|similar)/i"
+        "/(?:^| )([0-9]+) (genes|marker|top|feature|peak|similar)/i",
+        "/(?:^| )([0-9]+) surface (genes|marker|top|feature|peak|similar)/i"
       ]
     },
     "nCelltypes": {

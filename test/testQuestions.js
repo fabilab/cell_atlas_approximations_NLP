@@ -750,6 +750,16 @@ let questionsGroups = [
       }
     },
     {
+      "questions": "show 5 markers for all cells in arabidopsis shoot?",
+      "intent": "markers.geneExpression",
+      "entities": {
+        "organism": "a_thaliana",
+        "organ": "shoot",
+        "celltype": "all",
+        "nFeatures": "5",
+      }
+    },
+    {
       "questions": [
         "what are 10 celltypes similar to fat fibroblast in human?",
         "COL1A1,COL2A1,COL6A2",
@@ -765,6 +775,16 @@ let questionsGroups = [
     },
     {
       "questions": ["what are the 3 top surface markers of B cells in human liver"],
+      "intent": "markers.geneExpression",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "liver",
+        "nFeatures": "3",
+        "surface": "surface",
+      }
+    },
+    {
+      "questions": ["show 3 surface markers of B cells in human liver"],
       "intent": "markers.geneExpression",
       "entities": {
         "organism": "h_sapiens",
