@@ -1109,6 +1109,7 @@
         "d_rerio": ["d_rerio", "zebrafish", "fish"],
         "c_elegans": ["c_elegans", "worm"],
         "c_hemisphaerica": ["c_hemisphaerica", "clytia", "hydrazoan", "medusa"],
+        "c_intestinalis": ["c_intestinalis", "ciona", "sea vase"],
         "a_queenslandica": ["a_queenslandica", "amphimedon"],
         "t_adhaerens": ["t_adhaerens", "t_adherens", "trichoplax", "placozoa"],
         "s_lacustris": ["s_lacustris", "sponge"],
@@ -1147,6 +1148,7 @@
         "d_rerio": ["d_rerio", "zebrafish", "fish"],
         "c_elegans": ["c_elegans", "worm"],
         "c_hemisphaerica": ["c_hemisphaerica", "clytia", "hydrazoan", "medusa"],
+        "c_intestinalis": ["c_intestinalis", "ciona", "sea vase"],
         "a_queenslandica": ["a_queenslandica", "amphimedon"],
         "t_adhaerens": ["t_adhaerens", "t_adherens", "trichoplax", "placozoa"],
         "s_lacustris": ["s_lacustris", "sponge"],
@@ -1230,23 +1232,23 @@
     },
     "features": {
       "regex": [
-        "/(?:dotplot of|sequence of|sequences of|expression of|cells expressing) ((these genes|these features|this gene|this feature)|([\\w;,.\/-]+))/i",
-        "/(?:interactors|partners|homologs|homolog|homologue|homologues) (?:of|for) ((these genes|these features|this gene|this feature)|([\\w;,.\/-]+))/i",
+        "/(?:dotplot of|sequence of|sequences of|expression of|cells expressing) ((these genes|these features|this gene|this feature)|([\\w;:,.\/-]+))/i",
+        "/(?:interactors|partners|homologs|homolog|homologue|homologues) (?:of|for) ((these genes|these features|this gene|this feature)|([\\w;:,.\/-]+))/i",
         "/(?:accessibility|accessible chromatin|open chromatin) (?:at|of) ([\\w;,:\/-]+)/i",
-        "/(?:coexpress|expression of|cells coexpressing) ([\\w;,.\/-]+ and [\\w;,.\/-]+)/i",
-        "/(?:state|neighborhood|neighbourhood|neighbor)[s]? (?:of|for) ((these genes|these features|this gene|this feature)|([\\w;,.\/-]+))/i",
-        "/metacell[s]? (?:of|for) ((these genes|these features|this gene|this feature)|([\\w;,.\/-]+))/i",
-        "/(?:genes similar to|genes most similar to|genes like|similar genes to) ([\\w;,.\/-]+)/i",
+        "/(?:coexpress|expression of|cells coexpressing) ([\\w;,.\/-]+ and [\\w;:,.\/-]+)/i",
+        "/(?:state|neighborhood|neighbourhood|neighbor)[s]? (?:of|for) ((these genes|these features|this gene|this feature)|([\\w;:,.\/-]+))/i",
+        "/metacell[s]? (?:of|for) ((these genes|these features|this gene|this feature)|([\\w;:,.\/-]+))/i",
+        "/(?:genes similar to|genes most similar to|genes like|similar genes to) ([\\w;:,.\/-]+)/i",
         "/(?:peaks similar to|peaks most similar to|peaks like|similar peaks to) ([\\w;:,.\/-]+)/i",
         "/(?:expresses|express|expresses most|express most|expressor of|expressors of|expressing)(?:(?! the| interaction| interactor| partner)) ((these genes|these features|this gene|this feature)|([\\w;,.\/-]+))/i",
-        "/(?:highest|largest|biggest) ([\\w;,.\/-]+) expressor/i",
-        "/(?:are|are genes|are the genes|are features|are the features|is|is the gene|is the feature) ([\\w;,.\/-]+) (?:present|found) in/i",
+        "/(?:highest|largest|biggest) ([\\w;:,.\/-]+) expressor/i",
+        "/(?:are|are genes|are the genes|are features|are the features|is|is the gene|is the feature) ([\\w;:,.\/-]+) (?:present|found) in/i",
         "/(?:add|include|delete|remove) ([\\w;:,.\/-]+)/i"
       ]
     },
     "featuresNegative": {
       "regex": [
-        "/but not (?:of |for )?([\\w;,.\/-]+)/i",
+        "/but not (?:of |for )?([\\w;:,.\/-]+)/i",
         "/but (?:lacks |does not express |do not express |does not have |do not have|does not contain |do not contain |is missing )([\\w;,.\/-]+)/i"
       ]
     },

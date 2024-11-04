@@ -828,7 +828,25 @@ let questionsGroups = [
         "features": "Col1a1",
         "featuresNegative": "Gzma,Gzmb",
       }
-    }
+    },
+    {
+      "questions": ["what are the 10 top markers of muscle in ciona?"],
+      "intent": "markers.geneExpression",
+      "entities": {
+        "organism": "c_intestinalis",
+        "celltype": "muscle",
+        "nFeatures": "10",
+      }
+    },
+    {
+      "questions": ["what is the expression of KH2012:KH.C1.1004 in ciona whole?"],
+      "intent": "average.geneExpression",
+      "entities": {
+        "organism": "c_intestinalis",
+        "organ": "whole",
+        "features": "KH2012:KH.C1.1004",
+      }
+    },
   ];
 
 module.exports = {
