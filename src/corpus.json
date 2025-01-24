@@ -136,6 +136,21 @@
       }
     },
     {
+      "intent": "explore.celltype",
+      "utterances": [
+        "show profile of @celltype",
+        "what is the profile of @celltype?",
+        "what is the transcriptional fingerprint of @celltype?",
+        "I want to explore the profile of @celltype"
+      ],
+      "slotFilling": {
+        "celltype": {
+          "mandatory": true,
+          "question": "Explore what cell type?"
+        }
+      }
+    },
+    {
       "intent": "measurement_types",
       "utterances": [
          "show list of measurement types",
@@ -1101,7 +1116,7 @@
     "organism": {
       "options": {
         "h_sapiens": ["human", "h_sapiens", "homo sapiens"],
-        "m_musculus": ["mouse", "murine", "m_musculus"],
+        "m_musculus": ["mouse", "mice", "murine", "m_musculus", "rodent"],
         "m_murinus": [
           "monkey", "lemur", "mouse lemur", "m_murinus",
           "microbebus murinus", "microcebus"
@@ -1269,7 +1284,7 @@
         "/(?:type)s? (?:in chromatin accessibility )?(?:are |is )?(?:like|similar as| similar to) (\\w+)/i",
         "/(?:type)s? (?:in chromatin accessibility )?(?:are |is )?(?:like|similar as|similar to) (?:\\w+) (\\w+)/i",
         "/with (?:similar genes|similar peaks|similar chromatin peaks) (?:as|to) (\\w+)/i",
-        "/(?:for|markers|marker genes|marker peaks|marker) (?:|for|of) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+)(?:$| in| cells)/i",
+        "/(?:for|markers|marker genes|marker peaks|marker|profile|fingerprint) (?:|for|of) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+)(?:$| in| cells)/i",
         "/(?:where are|where were|organs contain|organs containing|organs that have|organs with|locations of|location of) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+)(?:$| detected| found| in| across)/i",
         "/across (?:organs|tissues) in (?:\\w+) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+)/i",
         "/in (?:\\w+) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+) across (?:organs|tissues)/i",

@@ -803,7 +803,7 @@ let questionsGroups = [
       }
     },
     {
-      "questions": ["who expresses Col1a1 but lacks Gzma,Gzmb in mouse?"],
+      "questions": ["who expresses Col1a1 but lacks Gzma,Gzmb in mice?"],
       "intent": "highest_measurement.geneExpression",
       "entities": {
         "organism": "m_musculus",
@@ -845,6 +845,20 @@ let questionsGroups = [
         "organism": "c_intestinalis",
         "organ": "whole",
         "features": "KH2012:KH.C1.1004",
+      }
+    },
+    {
+      "questions": ["show the profile of fibroblast"],
+      "intent": "explore.celltype",
+      "entities": {
+        "celltype": "fibroblast",
+      }
+    },
+    {
+      "questions": ["show the fingerprint of fibroblast"],
+      "intent": "explore.celltype",
+      "entities": {
+        "celltype": "fibroblast",
       }
     },
   ];
