@@ -179,8 +179,15 @@ let questionsGroups = [
       "intent": "measurement_types",
     },
     {
-      "questions": ["what are 10 cell types with similar chromatin peaks to fibroblast in human?", "lung"],
+      "questions": ["what are 10 cell types with similar chromatin peaks to fibroblast in human?", "lung", "chr1:9955-10355,chr10:1000-2000"],
       "intent": "similar_celltypes.chromatinAccessibility",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "lung",
+        "celltype": "fibroblast",
+        "nCelltypes": "10",
+        "features": "chr1:9955-10355,chr10:1000-2000",
+      }
     },
     {
       "questions": "what ATAC-Seq cell types are there in human lung?",
@@ -561,33 +568,36 @@ let questionsGroups = [
       }
     },
     {
-      "questions": ["what are cell types similar to lung fibroblast in human in chromatin accessibility?", "10"],
+      "questions": ["what are cell types similar to lung fibroblast in human in chromatin accessibility?", "10", "chr1:9955-10355,chr10:1000-2000"],
       "intent": "similar_celltypes.chromatinAccessibility",
       "entities": {
         "organism": "h_sapiens",
         "organ": "lung",
         "celltype": "fibroblast",
         "nCelltypes": "10",
+        "features": "chr1:9955-10355,chr10:1000-2000",
       }
     },
     {
-      "questions": ["what are 10 cell types in chromatin accessibility similar to lung fibroblast in human?"],
+      "questions": ["what are 10 cell types in chromatin accessibility similar to lung fibroblast in human?", "chr1:9955-10355,chr10:1000-2000"],
       "intent": "similar_celltypes.chromatinAccessibility",
       "entities": {
         "organism": "h_sapiens",
         "organ": "lung",
         "celltype": "fibroblast",
         "nCelltypes": "10",
+        "features": "chr1:9955-10355,chr10:1000-2000",
       }
     },
     {
-      "questions": ["what are the 10 cell types in chromatin accessibility similar to lung fibroblast in human?"],
+      "questions": ["what are the 10 cell types in chromatin accessibility similar to lung fibroblast in human?", "chr1:9955-10355,chr10:1000-2000"],
       "intent": "similar_celltypes.chromatinAccessibility",
       "entities": {
         "organism": "h_sapiens",
         "organ": "lung",
         "celltype": "fibroblast",
         "nCelltypes": "10",
+        "features": "chr1:9955-10355,chr10:1000-2000",
       }
     },
     {
@@ -861,6 +871,34 @@ let questionsGroups = [
         "celltype": "fibroblast",
       }
     },
+    {
+      "questions": ["explore h_vulgaris"],
+      "intent": "explore.organism.geneExpression",
+      "entities": {
+        "organism": "h_vulgaris",
+      }
+    },
+    {
+      "questions": ["show 10 markers of proendodermal in hydra whole"],
+      "intent": "markers.geneExpression",
+      "entities": {
+        "organism": "h_vulgaris",
+        "organ": "whole",
+        "celltype": "proendodermal",
+        "nFeatures": "10",
+      }
+    },
+    {
+      "questions": ["what are cell types in chromatin accessibility similar to lung fibroblast in human", "10", "chr1:9955-10355,chr10:1000-2000"],
+      "intent": "similar_celltypes.chromatinAccessibility",
+      "entities": {
+        "organism": "h_sapiens",
+        "organ": "lung",
+        "celltype": "fibroblast",
+        "nCelltypes": "10",
+        "features": "chr1:9955-10355,chr10:1000-2000",
+      }
+    }
   ];
 
 module.exports = {

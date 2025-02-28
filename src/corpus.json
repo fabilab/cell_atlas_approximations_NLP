@@ -948,6 +948,8 @@
       "intent": "similar_celltypes.chromatinAccessibility",
       "utterances": [
         "what are cell types similar to @organ @celltype in @organism in chromatin accessibility?",
+        "what are cell types in chromatin accessibility similar to @organ @celltype in @organism?",
+        "what are @nCelltypes cell types in chromatin accessibility similar to @organ @celltype in @organism?",
         "what are the @nCelltypes cell types in chromatin accessibility similar to @organ @celltype in @organism?",
         "show @nCelltypes cell types with similar chromatin peaks to @organ @celltype in @organism",
         "show cell types like @organ @celltype by chromatin accessibility",
@@ -970,6 +972,10 @@
         "celltype": {
           "mandatory": true,
           "question": "You requested similar cell types: similar to what cell type?"
+        },
+        "features": {
+          "mandatory": true,
+          "question": "You requested similar cell types. Similarity between cell types is a little ambiguous and depends on the peaks chosen. What peaks would you like to use?"
         }
       }
     },
@@ -1133,6 +1139,7 @@
         "s_mediterranea": ["s_mediterranea", "planarian", "plenaria", "flatworm"],
         "s_mansoni": ["s_mansoni", "schistosome"],
         "h_miamia": ["h_miamia", "acoel", "hofstenia"],
+        "h_vulgaris": ["h_vulgaris", "hydra", "polyp", "hydra vulgaris"],
         "d_melanogaster": ["d_melanogaster", "drosophila", "fly", "fruitfly"],
         "i_pulchra": ["i_pulchra", "isodiametra"],
         "l_minuta": ["l_minuta", "lemna", "duckweed"],
@@ -1172,8 +1179,9 @@
         "s_mediterranea": ["s_mediterranea", "planarian", "plenaria", "flatworm"],
         "s_mansoni": ["s_mansoni", "schistosome"],
         "h_miamia": ["h_miamia", "acoel", "hofstenia"],
+        "h_vulgaris": ["h_vulgaris", "hydra", "polyp", "hydra vulgaris"],
         "d_melanogaster": ["d_melanogaster", "drosophila", "fly", "fruitfly"],
-        "i_pulchra": ["i_pulchra", "isodiametra"],
+        "i_pulchra": ["i_pulchra", "isodiametra", "pulchra"],
         "l_minuta": ["l_minuta", "lemna", "duckweed"],
         "n_vectensis": ["n_vectensis", "nematostella", "Nematostella"],
         "s_pistillata": ["s_pistillata", "Stylophora", "coral"],
