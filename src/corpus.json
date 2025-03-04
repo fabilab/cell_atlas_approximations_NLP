@@ -751,6 +751,8 @@
         "what express most @features across the @organism body?",
         "what are the highest @features expressors in @organism?",
         "who is the highest expressor of @features in @organism?",
+        "who are the highest expressors of @features in @organism?",
+        "what are the highest expressors of @features in @organism?",
         "who is the highest expressing cell type of @features in @organism?",
         "what cell type is the highest expressor of @features in @organism?",
         "what cell type is the highest expressor of @features but not @featuresNegative in @organism?",

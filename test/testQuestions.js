@@ -840,6 +840,24 @@ let questionsGroups = [
       }
     },
     {
+      "questions": ["what are the 10 highest expressors of wat, Hml in fly?"],
+      "intent": "highest_measurement.geneExpression",
+      "entities": {
+        "organism": "d_melanogaster",
+        "features": "wat,Hml",
+        "nFeatures": "10",
+      }
+    },
+    {
+      "questions": ["what are 10 top expressors of wat, Hml in fly?"],
+      "intent": "highest_measurement.geneExpression",
+      "entities": {
+        "organism": "d_melanogaster",
+        "features": "wat,Hml",
+        "nFeatures": "10",
+      }
+    },
+    {
       "questions": ["what are the 10 top markers of muscle in ciona?"],
       "intent": "markers.geneExpression",
       "entities": {
