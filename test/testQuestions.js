@@ -849,6 +849,14 @@ let questionsGroups = [
       }
     },
     {
+      "questions": ["what are the highest expressors of CD19,CD68 in human?"],
+      "intent": "highest_measurement.geneExpression",
+      "entities": {
+        "organism": "h_sapiens",
+        "features": "CD19,CD68",
+      }
+    },
+    {
       "questions": ["what are 10 top expressors of wat, Hml in fly?"],
       "intent": "highest_measurement.geneExpression",
       "entities": {
